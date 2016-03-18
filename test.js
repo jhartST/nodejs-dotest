@@ -1,4 +1,4 @@
-var doTest = require ('.');
+var doTest = require ('./');
 
 doTest.add ('Module interface', function () {
   doTest.test ()
