@@ -1,4 +1,9 @@
 {
+  "author": {
+    "name": "Franklin van de Meent",
+    "email": "fr@nkl.in",
+    "url": "https://frankl.in"
+  },
   "name": "dotest",
   "version": "0.1.0",
   "description": "Yet another unit test runner",
@@ -10,6 +15,5 @@
     "test",
     "unittest"
   ],
-  "author": "Franklin van de Meent <https://frankl.in> (fr@nkl.in)",
   "license": "Unlicense"
 }
