@@ -18,6 +18,11 @@
   "bugs": {
     "url": "https://github.com/fvdm/nodejs-dotest/issues"
   },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "2.x"
+  },
+  "optionalDependencies": {},
   "engines": {
     "node": ">=0.12"
   },
