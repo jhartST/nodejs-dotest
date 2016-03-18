@@ -1,0 +1,15 @@
+{
+  "name": "dotest",
+  "version": "0.1.0",
+  "description": "Yet another unit test runner",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint . && node test.js"
+  },
+  "keywords": [
+    "test",
+    "unittest"
+  ],
+  "author": "Franklin van de Meent <https://frankl.in> (fr@nkl.in)",
+  "license": "Unlicense"
+}
