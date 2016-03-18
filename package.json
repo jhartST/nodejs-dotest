@@ -11,6 +11,13 @@
   "scripts": {
     "test": "eslint . && node test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fvdm/nodejs-dotest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fvdm/nodejs-dotest/issues"
+  },
   "keywords": [
     "test",
     "unittest"
