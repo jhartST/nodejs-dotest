@@ -203,7 +203,7 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test () .isError ('fail', 'My data', data);
+doTest.test () .isString ('fail', 'My data', data);
 ```
 
 
