@@ -520,11 +520,11 @@ unitTests.isNotEmpty = function isNotEmpty (level, what, input) {
     result: true,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + typestr + ' is not empty';
+        return colorStr ('blue', what) + ' ' + typestr + ' is not empty';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + typestr + ' should not be empty';
+      return colorStr ('blue', what) + ' ' + typestr + ' should not be empty';
     }
   };
 
