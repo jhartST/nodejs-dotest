@@ -21,6 +21,7 @@ doTest.add ('Methods', function (fake) {
     .isBoolean ('fail', '.isBoolean', true)
     .isFunction ('fail', '.isFunction', function () {})
     .isExactly ('fail', '.isExactly', ':)', ':)')
+    .isCondition ('fail', '.isCondition', 1, '<', 2)
     .isNotEmpty ('fail', '.isNotEmpty', 'text')
     .done ();
 });
