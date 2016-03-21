@@ -480,7 +480,7 @@ unitTests.isCondition = function isCondition (level, what, one, operator, two) {
     level: level,
     result: false,
     get describe () {
-      var opstr = one + ' ' + typestrOne + ' ' + operator + ' ' + two + ' ' + typestrTwo;
+      var opstr = typestrOne + ' ' + operator + ' ' + typestrTwo;
       var str = colorStr ('blue', what) + ' ' + opstr;
 
       if (!this.result) {
