@@ -217,7 +217,7 @@ unitTests.isError = function isError (level, what, input) {
     result: getType (input) === 'error',
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is indeed an Error';
+        return colorStr ('blue', what) + ' is an Error';
       }
 
       counters[level]++;
@@ -245,7 +245,7 @@ unitTests.isObject = function isObject (level, what, input) {
     result: getType (input) === 'object',
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is indeed an Object';
+        return colorStr ('blue', what) + ' is an Object';
       }
 
       counters[level]++;
@@ -273,7 +273,7 @@ unitTests.isArray = function isArray (level, what, input) {
     result: getType (input) === 'array',
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is indeed an Array';
+        return colorStr ('blue', what) + ' is an Array';
       }
 
       counters[level]++;
@@ -301,7 +301,7 @@ unitTests.isString = function isString (level, what, input) {
     result: getType (input) === 'string',
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is indeed a String';
+        return colorStr ('blue', what) + ' is a String';
       }
 
       counters[level]++;
@@ -329,7 +329,7 @@ unitTests.isNumber = function isNumber (level, what, input) {
     result: getType (input) === 'number',
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is indeed a Number';
+        return colorStr ('blue', what) + ' is a Number';
       }
 
       counters[level]++;
@@ -357,7 +357,7 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
     result: getType (input) === 'undefined',
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is indeed Undefined';
+        return colorStr ('blue', what) + ' is Undefined';
       }
 
       counters[level]++;
@@ -385,7 +385,7 @@ unitTests.isBoolean = function isBoolean (level, what, input) {
     result: getType (input) === 'boolean',
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is indeed a Boolean';
+        return colorStr ('blue', what) + ' is a Boolean';
       }
 
       counters[level]++;
@@ -413,7 +413,7 @@ unitTests.isFunction = function isFunction (level, what, input) {
     result: getType (input) === 'function',
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is indeed a Function';
+        return colorStr ('blue', what) + ' is a Function';
       }
 
       counters[level]++;
@@ -478,7 +478,7 @@ unitTests.isNotEmpty = function isNotEmpty (level, what, input) {
     result: true,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' (' + typestr + ') is indeed not empty';
+        return colorStr ('blue', what) + ' (' + typestr + ') is not empty';
       }
 
       counters[level]++;
