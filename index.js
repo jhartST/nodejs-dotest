@@ -463,6 +463,48 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
 
 
 /**
+ * Check if the two values meet the condition
+ *
+ * @param level {string} - fail, warn
+ * @param what {string} - describe the test
+ * @param one {mixed} - variable to test against
+ * @param operator {string} - < > <= >=
+ * @param two {mixed} - variable to test against
+ * @returns {object} - unitTests
+ */
+
+unitTests.isCondition = function isCondition (level, what, one, operator, two) {
+  var typestrOne = typeStr (one) + ' (' + getType (one) + ')';
+  var typestrTwo = typeStr (two) + ' (' + getType (two) + ')';
+  var data = {
+    level: level,
+    result: false,
+    get describe () {
+      var opstr = one + ' ' + typestrOne + ' ' + operator + ' ' + two + ' ' + typestrTwo;
+      var str = colorStr ('blue', what) + ' ' + opstr;
+
+      if (!this.result) {
+        counters[level]++;
+      }
+
+      return str;
+    }
+  };
+
+  switch (operator) {
+    case '<': data.result = one < two; break;
+    case '>': data.result = one > two; break;
+    case '<=': data.result = one <= two; break;
+    case '>=': data.result = one >= two; break;
+    default: data.result = false; break;
+  }
+
+  output (data);
+  return unitTests;
+};
+
+
+/**
  * Check if input is not an empty var, string, object, array, error
  *
  * @param level {string} - fail, warn
