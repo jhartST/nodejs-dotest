@@ -18,6 +18,7 @@ doTest.add ('Methods', function (fake) {
     .isString ('fail', '.isString', '')
     .isNumber ('fail', '.isNumber', 1)
     .isUndefined ('fail', '.isUndefined', fake)
+    .isNull ('fail', '.isNull', null)
     .isBoolean ('fail', '.isBoolean', true)
     .isFunction ('fail', '.isFunction', function () {})
     .isExactly ('fail', '.isExactly', ':)', ':)')
