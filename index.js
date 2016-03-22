@@ -685,8 +685,8 @@ function processExit () {
   var timing = (Date.now () - counters.startTime) / 1000;
 
   console.log ();
-  log ('info', counters.fail + ' errors');
-  log ('info', counters.warn + ' warnings');
+  log ('info', colorStr ('yellow', counters.fail) + ' errors');
+  log ('info', colorStr ('yellow', counters.warn) + ' warnings');
   log ('info', colorStr ('yellow', timing) + ' seconds');
   console.log ();
 
