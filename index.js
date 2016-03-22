@@ -687,6 +687,7 @@ function processExit () {
   console.log ();
   log ('info', colorStr ('yellow', counters.fail) + ' errors');
   log ('info', colorStr ('yellow', counters.warn) + ' warnings');
+  console.log ();
   log ('info', colorStr ('yellow', timing) + ' seconds');
   console.log ();
 
