@@ -203,6 +203,19 @@ function typeStr (str) {
 
 unitTests = {
   done: doNext
+  info: function info (str) {
+    if (typeof str === 'string') {
+      log ('info', str);
+    } else {
+      log ('info', typeStr (str));
+      console.dir (str, {
+        depth: null,
+        colors: true
+      });
+    }
+
+    return unitTests;
+  }
 };
 
 
