@@ -209,7 +209,7 @@ function typeStr (str) {
 
 
 unitTests = {
-  done: doNext
+  done: doNext,
   info: function info (str) {
     if (typeof str === 'string') {
       log ('info', str);
