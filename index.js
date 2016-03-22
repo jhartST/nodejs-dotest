@@ -16,7 +16,8 @@ var next = -1;
 var unitTests = {};
 var counters = {
   fail: 0,
-  warn: 0
+  warn: 0,
+  startTime: Date.now ()
 };
 
 
@@ -678,9 +679,12 @@ function add (label, runner) {
  */
 
 function processExit () {
+  var timing = (Date.now () - counters.startTime) / 1000;
+
   console.log ();
   log ('info', counters.fail + ' errors');
   log ('info', counters.warn + ' warnings');
+  log ('info', colorStr ('yellow', timing) + ' seconds');
   console.log ();
 
   if (counters.fail) {
