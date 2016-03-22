@@ -245,6 +245,26 @@ function (err, data) {
 ```
 
 
+#### .isNull
+**( level, what, input )**
+
+Check if `input` is _null_.
+
+
+param | type   | required | description
+:-----|:-------|:---------|:-------------------------------
+level | string | yes      | Either `fail` or `warn`
+what  | string | yes      | Text to prepend to check result
+input | mixed  | yes      | The variable to check
+
+
+```js
+function (err, data) {
+  doTest.test () .isNull ('warn', 'My data', data);
+}
+```
+
+
 #### .isBoolean
 **( level, what, input )**
 
