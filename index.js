@@ -10,6 +10,7 @@ License:        Unlicense (public domain, see LICENSE file)
 var path = require ('path');
 var dir = path.parse (process.mainModule.filename) .dir;
 var pkg = require (path.join (dir, 'package.json'));
+var lib = require ('./package.json');
 
 var queue = [];
 var next = -1;
@@ -659,6 +660,7 @@ function run () {
     log ('note', 'Module name:      ' + colorStr ('yellow', pkg.name));
     log ('note', 'Module version:   ' + colorStr ('yellow', pkg.version));
     log ('note', 'Node.js version:  ' + colorStr ('yellow', process.versions.node));
+    log ('note', 'dotest version:   ' + colorStr ('yellow', lib.version));
   }
 
   doNext ();
