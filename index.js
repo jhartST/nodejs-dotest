@@ -215,10 +215,7 @@ unitTests = {
       log ('info', str);
     } else {
       log ('info', typeStr (str));
-      console.dir (str, {
-        depth: null,
-        colors: true
-      });
+      log ('object', str);
     }
 
     return unitTests;
