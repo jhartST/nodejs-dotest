@@ -25,6 +25,7 @@ doTest.add ('Methods', function (fake) {
     .isCondition ('fail', '.isCondition', 1, '<', 2)
     .isEmpty ('fail', '.isEmpty', '')
     .isNotEmpty ('fail', '.isNotEmpty', 'text')
+    .info ({ hello: 'world' })
     .done ();
 });
 
