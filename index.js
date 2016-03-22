@@ -221,7 +221,7 @@ unitTests.isError = function isError (level, what, input) {
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' (' + typestr + ') is not an Error';
+      return colorStr ('blue', what) + ' ' + typestr + ' is not an Error';
     }
   };
 
@@ -249,7 +249,7 @@ unitTests.isObject = function isObject (level, what, input) {
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' (' + typestr + ') is not an Object';
+      return colorStr ('blue', what) + ' ' + typestr + ' is not an Object';
     }
   };
 
@@ -277,7 +277,7 @@ unitTests.isArray = function isArray (level, what, input) {
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' (' + typestr + ') is not an Array';
+      return colorStr ('blue', what) + ' ' + typestr + ' is not an Array';
     }
   };
 
@@ -305,7 +305,7 @@ unitTests.isString = function isString (level, what, input) {
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' (' + typestr + ') is not a String';
+      return colorStr ('blue', what) + ' ' + typestr + ' is not a String';
     }
   };
 
@@ -333,7 +333,7 @@ unitTests.isNumber = function isNumber (level, what, input) {
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' (' + typestr + ') is not a Number';
+      return colorStr ('blue', what) + ' ' + typestr + ' is not a Number';
     }
   };
 
@@ -361,7 +361,7 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' (' + typestr + ') is not Undefined';
+      return colorStr ('blue', what) + ' ' + typestr + ' is not Undefined';
     }
   };
 
@@ -389,7 +389,7 @@ unitTests.isBoolean = function isBoolean (level, what, input) {
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' (' + typestr + ') is not a Boolean';
+      return colorStr ('blue', what) + ' ' + typestr + ' is not a Boolean';
     }
   };
 
@@ -417,7 +417,7 @@ unitTests.isFunction = function isFunction (level, what, input) {
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' (' + typestr + ') is not a Function';
+      return colorStr ('blue', what) + ' ' + typestr + ' is not a Function';
     }
   };
 
