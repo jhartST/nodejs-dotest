@@ -5,7 +5,11 @@ doTest.add ('Module interface', function () {
     .isObject ('fail', 'exports', doTest)
     .isFunction ('fail', '.add', doTest.add)
     .isFunction ('fail', '.run', doTest.run)
+    .isFunction ('fail', '.log', doTest.log)
+    .isFunction ('fail', '.exit', doTest.exit)
     .isFunction ('fail', '.test', doTest.test)
+    .isFunction ('fail', '.test.done', doTest.test () .done)
+    .isFunction ('fail', '.test.info', doTest.test () .info)
     .done ();
 });
 
