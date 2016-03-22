@@ -170,6 +170,10 @@ function getType (input) {
     return 'object';
   }
 
+  if (input === null) {
+    return 'null';
+  }
+
   return (typeof input);
 }
 
