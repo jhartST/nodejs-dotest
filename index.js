@@ -505,6 +505,49 @@ unitTests.isCondition = function isCondition (level, what, one, operator, two) {
 
 
 /**
+ * Check if input is an empty var, string, object, array, error
+ *
+ * @param level {string} - fail, warn
+ * @param input {mixed} - variable to test against
+ * @returns {object} - unitTests
+ */
+
+unitTests.isEmpty = function isEmpty (level, what, input) {
+  var type = getType (input);
+  var typestr = typeStr (input);
+  var data = {
+    level: level,
+    result: false,
+    get describe () {
+      if (this.result) {
+        return colorStr ('blue', what) + ' ' + typestr + ' is empty';
+      }
+
+      counters[level]++;
+      return colorStr ('blue', what) + ' ' + typestr + ' should be empty';
+    }
+  };
+
+  if (type === 'undefined') {
+    data.result = true;
+  } else if (input === null) {
+    data.result = true;
+  } else if (type === 'string' && !input) {
+    data.result = true;
+  } else if (type === 'object' && !Object.keys (input).length) {
+    data.result = true;
+  } else if (type === 'array' && !input.length) {
+    data.result = true;
+  } else if (type === 'error' && !Object.keys (input).length && !input.message) {
+    data.result = true;
+  }
+
+  output (data);
+  return unitTests;
+};
+
+
+/**
  * Check if input is not an empty var, string, object, array, error
  *
  * @param level {string} - fail, warn
