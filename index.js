@@ -115,11 +115,6 @@ function doNext (callback) {
 }
 
 
-unitTests = {
-  done: doNext
-};
-
-
 /**
  * Write test result to console
  *
@@ -204,6 +199,11 @@ function typeStr (str) {
 
   return colorStr ('magenta', str);
 }
+
+
+unitTests = {
+  done: doNext
+};
 
 
 /**
