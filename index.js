@@ -375,6 +375,34 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
 
 
 /**
+ * Test for null
+ *
+ * @param level {string} - fail, warn
+ * @param input {mixed} - variable to test against
+ * @returns {object} - unitTests
+ */
+
+unitTests.isNull = function isUndefined (level, what, input) {
+  var typestr = typeStr (input);
+  var data = {
+    level: level,
+    result: getType (input) === 'null',
+    get describe () {
+      if (this.result) {
+        return colorStr ('blue', what) + ' is Null';
+      }
+
+      counters[level]++;
+      return colorStr ('blue', what) + ' ' + typestr + ' is not Null';
+    }
+  };
+
+  output (data);
+  return unitTests;
+};
+
+
+/**
  * Test for Boolean
  *
  * @param level {string} - fail, warn
