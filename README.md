@@ -320,10 +320,29 @@ doTest.test () .isExactly ('fail', 'My data', 1, '<', 2);
 ```
 
 
-#### .isNotEmpty
+#### .isEmpty
 **( level, what, input )**
 
 Check if `input` is _undefined_, _null_, or an empty _string_, _object_, _array_ or _Error_.
+In case of _Error_ the `input.message` and `Object.keys (input)` are checked.
+
+
+param | type   | required | description
+:-----|:-------|:---------|:-------------------------------
+level | string | yes      | Either `fail` or `warn`
+what  | string | yes      | Text to prepend to check result
+input | mixed  | yes      | The variable to check
+
+
+```js
+doTest.test () .isEmpty ('fail', 'My data', data);
+```
+
+
+#### .isNotEmpty
+**( level, what, input )**
+
+Check if `input` is not _undefined_, _null_, or an empty _string_, _object_, _array_ or _Error_.
 In case of _Error_ the `input.message` and `Object.keys (input)` are checked.
 
 
