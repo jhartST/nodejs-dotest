@@ -300,6 +300,26 @@ doTest.test () .isExactly ('fail', 'My data', 'foo', 'bar');
 ```
 
 
+#### .isCondition
+**( level, what, one, operator, two )**
+
+Check if the two values meet the condition.
+
+
+param    | type   | required | description
+:--------|:-------|:---------|:-------------------------------
+level    | string | yes      | Either `fail` or `warn`
+what     | string | yes      | Text to prepend to check result
+one      | mixed  | yes      | Variable to test against
+operator | string |          | `<` `>` `<=` `>=`
+two      | mixed  |          | Variable to test against
+
+
+```js
+doTest.test () .isExactly ('fail', 'My data', 1, '<', 2);
+```
+
+
 #### .isNotEmpty
 **( level, what, input )**
 
