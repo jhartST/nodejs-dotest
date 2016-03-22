@@ -81,6 +81,12 @@ function log (type, str) {
       console.log (str.stack);
       console.log ();
       break;
+    case 'object':
+      console.dir (str, {
+        depth: null,
+        colors: true
+      });
+      break;
     case 'plain': console.log (str); break;
     default:
       console.log (colorStr (types[type][0], types[type][1]) + '    ' + str);
