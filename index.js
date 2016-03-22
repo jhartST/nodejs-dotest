@@ -656,9 +656,9 @@ function test (err) {
 function run () {
   if (next === -1) {
     log ('note', 'Running tests...\n');
-    log ('note', 'Module name:      ' + pkg.name);
-    log ('note', 'Module version:   ' + pkg.version);
-    log ('note', 'Node.js version:  ' + process.versions.node);
+    log ('note', 'Module name:      ' + colorStr ('yellow', pkg.name));
+    log ('note', 'Module version:   ' + colorStr ('yellow', pkg.version));
+    log ('note', 'Node.js version:  ' + colorStr ('yellow', process.versions.node));
   }
 
   doNext ();
