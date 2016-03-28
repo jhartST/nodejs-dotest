@@ -499,8 +499,7 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
         return str;
       }
 
-      str += colorStr ('blue', what) + ' ' + typestrOne + ' and ' + typestrTwo + '';
-      str += ' are not exact matches';
+      str += colorStr ('blue', what) + ' ' + typestrOne + ' should be exactly ' + typestrTwo;
 
       counters[level]++;
       return str;
