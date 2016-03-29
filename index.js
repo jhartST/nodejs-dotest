@@ -144,7 +144,7 @@ function output (data) {
     default: str = str; break;
   }
 
-  str += '    ' + data.describe;
+  str += '    ' + colorStr ('blue', data.what) + ' ' + data.describe;
   console.log (str);
 }
 
@@ -237,13 +237,14 @@ unitTests.isError = function isError (level, what, input) {
   var data = {
     level: level,
     result: getType (input) === 'error',
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is an Error';
+        return 'is an Error';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' is not an Error';
+      return typestr + ' is not an Error';
     }
   };
 
@@ -265,13 +266,14 @@ unitTests.isObject = function isObject (level, what, input) {
   var data = {
     level: level,
     result: getType (input) === 'object',
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is an Object';
+        return 'is an Object';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' is not an Object';
+      return typestr + ' is not an Object';
     }
   };
 
@@ -293,13 +295,14 @@ unitTests.isArray = function isArray (level, what, input) {
   var data = {
     level: level,
     result: getType (input) === 'array',
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is an Array';
+        return 'is an Array';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' is not an Array';
+      return typestr + ' is not an Array';
     }
   };
 
@@ -321,13 +324,14 @@ unitTests.isString = function isString (level, what, input) {
   var data = {
     level: level,
     result: getType (input) === 'string',
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is a String';
+        return 'is a String';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' is not a String';
+      return typestr + ' is not a String';
     }
   };
 
@@ -349,13 +353,14 @@ unitTests.isNumber = function isNumber (level, what, input) {
   var data = {
     level: level,
     result: getType (input) === 'number',
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is a Number';
+        return 'is a Number';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' is not a Number';
+      return typestr + ' is not a Number';
     }
   };
 
@@ -377,13 +382,14 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
   var data = {
     level: level,
     result: getType (input) === 'undefined',
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is Undefined';
+        return 'is Undefined';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' is not Undefined';
+      return typestr + ' is not Undefined';
     }
   };
 
@@ -405,13 +411,14 @@ unitTests.isNull = function isUndefined (level, what, input) {
   var data = {
     level: level,
     result: getType (input) === 'null',
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is Null';
+        return 'is Null';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' is not Null';
+      return typestr + ' is not Null';
     }
   };
 
@@ -433,13 +440,14 @@ unitTests.isBoolean = function isBoolean (level, what, input) {
   var data = {
     level: level,
     result: getType (input) === 'boolean',
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is a Boolean';
+        return 'is a Boolean';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' is not a Boolean';
+      return typestr + ' is not a Boolean';
     }
   };
 
@@ -461,13 +469,14 @@ unitTests.isFunction = function isFunction (level, what, input) {
   var data = {
     level: level,
     result: getType (input) === 'function',
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' is a Function';
+        return 'is a Function';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' is not a Function';
+      return typestr + ' is not a Function';
     }
   };
 
@@ -491,15 +500,15 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
   var data = {
     level: level,
     result: one === two,
+    what: what,
     get describe () {
       var str = '';
 
       if (this.result) {
-        str = colorStr ('blue', what) + ' is exactly ' + typestrTwo + ' (' + getType (two) + ')';
-        return str;
+        return 'is exactly ' + typestrTwo + ' (' + getType (two) + ')';
       }
 
-      str += colorStr ('blue', what) + ' ' + typestrOne + ' should be exactly ' + typestrTwo;
+      str += typestrOne + ' should be exactly ' + typestrTwo;
 
       counters[level]++;
       return str;
@@ -528,9 +537,9 @@ unitTests.isCondition = function isCondition (level, what, one, operator, two) {
   var data = {
     level: level,
     result: false,
+    what: what,
     get describe () {
-      var opstr = typestrOne + ' ' + operator + ' ' + typestrTwo;
-      var str = colorStr ('blue', what) + ' ' + opstr;
+      var str = typestrOne + ' ' + operator + ' ' + typestrTwo;
 
       if (!this.result) {
         counters[level]++;
@@ -567,13 +576,14 @@ unitTests.isEmpty = function isEmpty (level, what, input) {
   var data = {
     level: level,
     result: false,
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' ' + typestr + ' is empty';
+        return typestr + ' is empty';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' should be empty';
+      return typestr + ' should be empty';
     }
   };
 
@@ -610,13 +620,14 @@ unitTests.isNotEmpty = function isNotEmpty (level, what, input) {
   var data = {
     level: level,
     result: true,
+    what: what,
     get describe () {
       if (this.result) {
-        return colorStr ('blue', what) + ' ' + typestr + ' is not empty';
+        return typestr + ' is not empty';
       }
 
       counters[level]++;
-      return colorStr ('blue', what) + ' ' + typestr + ' should not be empty';
+      return typestr + ' should not be empty';
     }
   };
 
