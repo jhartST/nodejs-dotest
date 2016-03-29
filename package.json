@@ -5,7 +5,7 @@
     "url": "https://frankl.in"
   },
   "name": "dotest",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Yet another unit test runner",
   "main": "index.js",
   "scripts": {
