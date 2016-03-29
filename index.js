@@ -73,7 +73,7 @@ function log (type, str) {
       console.log (colorStr ('bold', str));
       break;
     case 'error':
-      console.log (colorStr ('red', colorStr ('bold', 'ERROR   ')) + str.message + '\n');
+      console.log (colorStr ('red', 'ERROR  ') + str.message + '\n');
       console.dir (str, {
         depth: null,
         colors: true
