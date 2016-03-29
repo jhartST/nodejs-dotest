@@ -57,9 +57,7 @@ function colorStr (color, str) {
 
 function log (type, str) {
   var types = {
-    fail: ['red', 'FAIL'],
     good: ['green', 'good'],
-    warn: ['yellow', 'warn'],
     info: ['cyan', 'info']
   };
 
@@ -71,6 +69,14 @@ function log (type, str) {
   switch (type) {
     case 'note':
       console.log (colorStr ('bold', str));
+      break;
+    case 'fail':
+      counters.fail++;
+      console.log (colorStr ('red', 'FAIL') + '    ' + str);
+      break;
+    case 'warn':
+      counters.warn++;
+      console.log (colorStr ('yellow', 'warn') + '    ' + str);
       break;
     case 'error':
       console.log (colorStr ('red', 'ERROR  ') + str.message + '\n');
@@ -139,7 +145,7 @@ function output (data) {
 
   switch (state) {
     case 'good': str = colorStr ('green', 'good'); break;
-    case 'fail': str = colorStr ('red', 'fail'); break;
+    case 'fail': str = colorStr ('red', 'FAIL'); break;
     case 'warn': str = colorStr ('yellow', 'warn'); break;
     default: str = str; break;
   }
