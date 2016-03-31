@@ -562,6 +562,41 @@ unitTests.isNot = function isExactly (level, what, one, two) {
 
 
 /**
+/**
+ * Check if a string matches a regex
+ *
+ * @param level {string} - fail, warn
+ * @param input {mixed} - variable to test against
+ * @param regex {mixed} - regular expression to match
+ * @returns {object} - unitTests
+ */
+
+unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
+  var typestrOne = typeStr (input);
+  var typestrTwo = typeStr (regex);
+  var data = {
+    level: level,
+    result: !!~input.match (regex),
+    what: what,
+    get describe () {
+      var str = '';
+
+      if (this.result) {
+        return 'is matching ' + typestrTwo + ' (' + getType (regex) + ')';
+      }
+
+      str += typestrOne + ' should be exactly ' + typestrTwo;
+
+      counters[level]++;
+      return str;
+    }
+  };
+
+  output (data);
+  return unitTests;
+};
+
+
  * Check if the two values meet the condition
  *
  * @param level {string} - fail, warn
