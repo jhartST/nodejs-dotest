@@ -27,6 +27,7 @@ doTest.add ('Methods', function (fake) {
     .isFunction ('fail', '.isFunction', function () {})
     .isExactly ('fail', '.isExactly', ':)', ':)')
     .isNot ('fail', '.isNot', 'a', 'b')
+    .isRegexp ('fail', '.isRegexp', /^\w$/)
     .isRegexpMatch ('fail', '.isRegexMatch', 'a', /^\w$/)
     .isCondition ('fail', '.isCondition', 1, '<', 2)
     .isEmpty ('fail', '.isEmpty', '')

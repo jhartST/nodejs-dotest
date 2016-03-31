@@ -163,6 +163,10 @@ function output (data) {
  */
 
 function getType (input) {
+  if (input instanceof RegExp) {
+    return 'regexp';
+  }
+
   if (input instanceof Error) {
     return 'error';
   }
@@ -199,6 +203,8 @@ function typeStr (str) {
 
   if (type === 'string' && str.length < 20) {
     str = '"' + str + '"';
+  } else if (type === 'regexp') {
+    str = str.toString ();
   } else if (type === 'string') {
     str = 'string';
   } else if (str === null) {
@@ -562,6 +568,38 @@ unitTests.isNot = function isExactly (level, what, one, two) {
 
 
 /**
+ * Check if input is a RegExp
+ *
+ * @param level {string} - fail, warn
+ * @param input {mixed} - variable to test against
+ * @returns {object} - unitTests
+ */
+
+unitTests.isRegexp = function isRegexp (level, what, input) {
+  var typestrOne = typeStr (input);
+  var data = {
+    level: level,
+    result: input instanceof RegExp,
+    what: what,
+    get describe () {
+      var str = '';
+
+      if (this.result) {
+        return 'is a RegExp';
+      }
+
+      str += typestrOne + ' should be a RegExp';
+
+      counters[level]++;
+      return str;
+    }
+  };
+
+  output (data);
+  return unitTests;
+};
+
+
 /**
  * Check if a string matches a regex
  *
@@ -597,6 +635,7 @@ unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
 };
 
 
+/**
  * Check if the two values meet the condition
  *
  * @param level {string} - fail, warn
