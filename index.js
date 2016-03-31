@@ -527,6 +527,41 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
 
 
 /**
+ * Check if two values are not the same
+ *
+ * @param level {string} - fail, warn
+ * @param one {mixed} - variable to test against
+ * @param two {mixed} - variable to test against
+ * @returns {object} - unitTests
+ */
+
+unitTests.isNot = function isExactly (level, what, one, two) {
+  var typestrOne = typeStr (one);
+  var typestrTwo = typeStr (two);
+  var data = {
+    level: level,
+    result: one !== two,
+    what: what,
+    get describe () {
+      var str = '';
+
+      if (this.result) {
+        return 'is not equal to ' + typestrTwo + ' (' + getType (two) + ')';
+      }
+
+      str += typestrOne + ' should not be equal to ' + typestrTwo;
+
+      counters[level]++;
+      return str;
+    }
+  };
+
+  output (data);
+  return unitTests;
+};
+
+
+/**
  * Check if the two values meet the condition
  *
  * @param level {string} - fail, warn
