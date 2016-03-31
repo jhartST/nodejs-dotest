@@ -541,7 +541,7 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
  * @returns {object} - unitTests
  */
 
-unitTests.isNot = function isExactly (level, what, one, two) {
+unitTests.isNot = function isNot (level, what, one, two) {
   var typestrOne = typeStr (one);
   var typestrTwo = typeStr (two);
   var data = {
