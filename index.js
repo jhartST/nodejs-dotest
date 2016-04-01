@@ -527,6 +527,35 @@ unitTests.isFunction = function isFunction (level, what, input) {
 
 
 /**
+ * Test for Date
+ *
+ * @param level {string} - fail, warn
+ * @param input {mixed} - variable to test against
+ * @returns {object} - unitTests
+ */
+
+unitTests.isDate = function isFunction (level, what, input) {
+  var typestr = typeStr (input);
+  var data = {
+    level: level,
+    result: input instanceof Date,
+    what: what,
+    get describe () {
+      if (this.result) {
+        return 'is a Date';
+      }
+
+      counters[level]++;
+      return typestr + ' should be a Date';
+    }
+  };
+
+  output (data);
+  return unitTests;
+};
+
+
+/**
  * Check if two values are exactly the same
  *
  * @param level {string} - fail, warn

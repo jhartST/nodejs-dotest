@@ -321,6 +321,26 @@ doTest.test () .isFunction ('fail', 'My data', data);
 ```
 
 
+#### .isDate
+**( level, what, input )**
+
+Check if `input` is an instance of _Date_.
+
+
+param | type   | required | description
+:-----|:-------|:---------|:-------------------------------
+level | string | yes      | Either `fail` or `warn`
+what  | string | yes      | Text to prepend to check result
+input | mixed  | yes      | The variable to check
+
+
+```js
+var myDate = new Date ();
+
+doTest.test () .isDate ('fail', 'My data', myDate);
+```
+
+
 #### .isExactly
 **( level, what, one, two )**
 

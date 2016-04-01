@@ -26,6 +26,7 @@ doTest.add ('Methods', function (fake) {
     .isNaN ('fail', '.isNaN', NaN)
     .isBoolean ('fail', '.isBoolean', true)
     .isFunction ('fail', '.isFunction', function () {})
+    .isDate ('fail', '.isDate', new Date ())
     .isExactly ('fail', '.isExactly', ':)', ':)')
     .isNot ('fail', '.isNot', 'a', 'b')
     .isRegexp ('fail', '.isRegexp', /^\w$/)
