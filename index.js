@@ -440,6 +440,35 @@ unitTests.isNull = function isUndefined (level, what, input) {
 
 
 /**
+ * Test for NaN
+ *
+ * @param level {string} - fail, warn
+ * @param input {mixed} - variable to test against
+ * @returns {object} - unitTests
+ */
+
+unitTests.isNaN = function isUndefined (level, what, input) {
+  var typestr = typeStr (input);
+  var data = {
+    level: level,
+    result: isNaN (input),
+    what: what,
+    get describe () {
+      if (this.result) {
+        return 'is NaN';
+      }
+
+      counters[level]++;
+      return typestr + ' should be NaN';
+    }
+  };
+
+  output (data);
+  return unitTests;
+};
+
+
+/**
  * Test for Boolean
  *
  * @param level {string} - fail, warn

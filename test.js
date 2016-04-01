@@ -23,6 +23,7 @@ doTest.add ('Methods', function (fake) {
     .isNumber ('fail', '.isNumber', 1)
     .isUndefined ('fail', '.isUndefined', fake)
     .isNull ('fail', '.isNull', null)
+    .isNaN ('fail', '.isNaN', NaN)
     .isBoolean ('fail', '.isBoolean', true)
     .isFunction ('fail', '.isFunction', function () {})
     .isExactly ('fail', '.isExactly', ':)', ':)')
