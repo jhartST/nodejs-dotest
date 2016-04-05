@@ -21,6 +21,10 @@ var counters = {
   startTime: Date.now ()
 };
 
+var config = {
+  wait: 0
+};
+
 
 /**
  * ANSI colorize a string
@@ -105,12 +109,31 @@ function log (type, str) {
 /**
  * Run next test in queue
  *
+ * @param [index] {number} - queue[] index
+ * @returns {void}
+ */
+
+function doNext (index) {
+  console.log (
+    '\n'
+    + colorStr ('cyan', (index + 1) + '/' + queue.length)
+    + '  '
+    + colorStr ('bold', queue [index] .label)
+  );
+
+  queue [index] .runner ();
+}
+
+
+/**
+ * Run callback, optional wait time, run next test in queue
+ *
  * @callback callback
  * @param [callback] {function} - Run callback before next test
  * @returns {void}
  */
 
-function doNext (callback) {
+function done (callback) {
   if (callback instanceof Function) {
     callback (next);
   }
@@ -118,13 +141,14 @@ function doNext (callback) {
   next++;
 
   if (queue [next]) {
-    console.log (
-      '\n'
-      + colorStr ('cyan', (next + 1) + '/' + queue.length)
-      + '  '
-      + colorStr ('bold', queue [next] .label)
-    );
-    queue [next] .runner ();
+    if (next && config.wait) {
+      setTimeout (function () {
+        doNext (next);
+      }, config.wait);
+      return;
+    }
+
+    doNext (next);
   }
 }
 
@@ -222,7 +246,7 @@ function typeStr (str) {
 
 
 unitTests = {
-  done: doNext,
+  done: done,
   info: function info (str) {
     if (typeof str === 'string') {
       log ('info', str);
@@ -835,9 +859,14 @@ function test (err) {
 
 /**
  * Start tests
+ *
+ * @param wait {number=0} - Wait time between tests, in ms (1000 = 1 sec)
+ * @returns {void}
  */
 
-function run () {
+function run (wait) {
+  config.wait = wait || 0;
+
   if (next === -1) {
     log ('note', 'Running tests...\n');
     log ('note', 'Module name:      ' + colorStr ('yellow', pkg.name));
@@ -846,7 +875,7 @@ function run () {
     log ('note', 'dotest version:   ' + colorStr ('yellow', lib.version));
   }
 
-  doNext ();
+  done ();
 }
 
 
