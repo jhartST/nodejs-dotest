@@ -67,7 +67,7 @@ wait  | number | no       | 0       | Wait time between tests in ms (1000 = 1 se
 
 
 ```js
-// Normal, with pause between tests
+// Normal, without pause between tests
 doTest.run ();
 
 // Or wait 2 seconds
