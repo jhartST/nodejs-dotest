@@ -56,12 +56,22 @@ doTest.add ('App interface', function () {
 
 
 ### .run
-**()**
+**( wait )**
 
 Run the tests from the queue, one by one.
 
+
+param | type   | required | default | description
+:-----|:-------|:---------|:--------|:--------------------------------------------
+wait  | number | no       | 0       | Wait time between tests in ms (1000 = 1 sec)
+
+
 ```js
+// Normal, with pause between tests
 doTest.run ();
+
+// Or wait 2 seconds
+doTest.run (2000);
 ```
 
 
