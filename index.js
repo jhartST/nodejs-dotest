@@ -895,15 +895,17 @@ function add (label, runner) {
  * Handle process exit
  */
 
-function processExit () {
+function processExit (fromMethod) {
   var timing = (Date.now () - counters.startTime) / 1000;
 
-  console.log ();
-  log ('info', colorStr ('yellow', counters.fail) + ' errors');
-  log ('info', colorStr ('yellow', counters.warn) + ' warnings');
-  console.log ();
-  log ('info', colorStr ('yellow', timing) + ' seconds');
-  console.log ();
+  if (!fromMethod) {
+    console.log ();
+    log ('info', colorStr ('yellow', counters.fail) + ' errors');
+    log ('info', colorStr ('yellow', counters.warn) + ' warnings');
+    console.log ();
+    log ('info', colorStr ('yellow', timing) + ' seconds');
+    console.log ();
+  }
 
   if (counters.fail) {
     process.exit (1);
@@ -939,5 +941,7 @@ module.exports = {
   run: run,
   log: log,
   test: test,
-  exit: processExit
+  exit: function () {
+    processExit (true);
+  }
 };
