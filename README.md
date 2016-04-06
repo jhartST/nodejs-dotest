@@ -25,7 +25,7 @@ doTest.add ('App interface', function () {
 });
 
 // Check method response
-doTest add ('App methodOne', function () {
+doTest.add ('App methodOne', function () {
   app.methodOne (function (err, data) {
     doTest.test (err)
       .isObject ('fail', 'Callback data', data)
