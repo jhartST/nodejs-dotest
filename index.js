@@ -110,7 +110,7 @@ function log (type, str) {
 /**
  * Run next test in queue
  *
- * @param [index] {number} - queue[] index
+ * @param index {number} - queue[] index
  * @returns {void}
  */
 
@@ -160,6 +160,7 @@ function done (callback) {
  * @param data {object}
  * @param data.result {boolean} - Test outcome
  * @param data.level {string} - fail, warn
+ * @param data.what {string} - describe input data, i.e. 'data.sub'
  * @param data.describe {string} - Human text to describe outcome
  * @returns {void}
  */
@@ -246,6 +247,10 @@ function typeStr (str) {
 }
 
 
+/**
+ * Methods for test()
+ */
+
 unitTests = {
   done: done,
   info: function info (str) {
@@ -265,6 +270,7 @@ unitTests = {
  * Test for Error
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -294,6 +300,7 @@ unitTests.isError = function isError (level, what, input) {
  * Test for Object
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -323,6 +330,7 @@ unitTests.isObject = function isObject (level, what, input) {
  * Test for Array
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -352,6 +360,7 @@ unitTests.isArray = function isArray (level, what, input) {
  * Test for String
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test againstuncaughtException
  * @returns {object} - unitTests
  */
@@ -381,6 +390,7 @@ unitTests.isString = function isString (level, what, input) {
  * Test for Number
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -410,6 +420,7 @@ unitTests.isNumber = function isNumber (level, what, input) {
  * Test for Undefined
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -439,6 +450,7 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
  * Test for null
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -468,6 +480,7 @@ unitTests.isNull = function isUndefined (level, what, input) {
  * Test for NaN
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -497,6 +510,7 @@ unitTests.isNaN = function isUndefined (level, what, input) {
  * Test for Boolean
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -526,6 +540,7 @@ unitTests.isBoolean = function isBoolean (level, what, input) {
  * Test for Function
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -555,6 +570,7 @@ unitTests.isFunction = function isFunction (level, what, input) {
  * Test for Date
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -584,6 +600,7 @@ unitTests.isDate = function isFunction (level, what, input) {
  * Check if two values are exactly the same
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param one {mixed} - variable to test against
  * @param two {mixed} - variable to test against
  * @returns {object} - unitTests
@@ -619,6 +636,7 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
  * Check if two values are not the same
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param one {mixed} - variable to test against
  * @param two {mixed} - variable to test against
  * @returns {object} - unitTests
@@ -654,6 +672,7 @@ unitTests.isNot = function isNot (level, what, one, two) {
  * Check if input is a RegExp
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -687,6 +706,7 @@ unitTests.isRegexp = function isRegexp (level, what, input) {
  * Check if a string matches a regex
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @param regex {mixed} - regular expression to match
  * @returns {object} - unitTests
@@ -764,6 +784,7 @@ unitTests.isCondition = function isCondition (level, what, one, operator, two) {
  * Check if input is an empty var, string, object, array, error
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -808,6 +829,7 @@ unitTests.isEmpty = function isEmpty (level, what, input) {
  * Check if input is not an empty var, string, object, array, error
  *
  * @param level {string} - fail, warn
+ * @param what {string} - describe input data, i.e. 'data.sub'
  * @param input {mixed} - variable to test against
  * @returns {object} - unitTests
  */
@@ -884,6 +906,10 @@ function run (wait) {
 
 /**
  * Add a test to the queue
+ *
+ * @param label {string} - Text to describe test
+ * @param runner {function} - The function with test code, `function (test) { test().isObject(...); }`
+ * @returns {void}
  */
 
 function add (label, runner) {
@@ -896,6 +922,9 @@ function add (label, runner) {
 
 /**
  * Handle process exit
+ *
+ * @param [fromMethod] {boolean} - Used internally to prevent double logs
+ * @returns {void}
  */
 
 function processExit (fromMethod) {
@@ -922,6 +951,9 @@ process.on ('exit', processExit);
 
 /**
  * Prevent errors from killing the process
+ *
+ * @param err {Error} - The error that occured
+ * @returns {void}
  */
 
 function uncaughtException (err) {
