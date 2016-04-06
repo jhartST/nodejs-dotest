@@ -14,7 +14,14 @@ doTest.add ('Module interface', function () {
 });
 
 
-doTest.add ('Methods', function (fake) {
+doTest.add ('test() shortcut', function (test) {
+  doTest.test ()
+    .isFunction ('fail', 'test', test)
+    .done ();
+});
+
+
+doTest.add ('Methods', function (test, fake) {
   doTest.test ()
     .isError ('fail', '.isError', new Error ())
     .isObject ('fail', '.isObject', {})

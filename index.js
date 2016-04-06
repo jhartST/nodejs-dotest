@@ -12,6 +12,7 @@ var dir = path.parse (process.mainModule.filename) .dir;
 var pkg = require (path.join (dir, 'package.json'));
 var lib = require ('./package.json');
 
+var testFunc;
 var queue = [];
 var next = -1;
 var unitTests = {};
@@ -121,7 +122,7 @@ function doNext (index) {
     + colorStr ('bold', queue [index] .label)
   );
 
-  queue [index] .runner ();
+  queue [index] .runner (testFunc);
 }
 
 
@@ -855,6 +856,8 @@ function test (err) {
 
   return unitTests;
 }
+
+testFunc = test;
 
 
 /**

@@ -48,9 +48,12 @@ Methods
 
 Add a new test to the queue.
 
+
 ```js
-doTest.add ('App interface', function () {
-  // Your code
+doTest.add ('App interface', function (test) {
+  test ()
+    .isArray ('fail', 'my array', [])
+    .done ();
 });
 ```
 
@@ -132,8 +135,16 @@ You can concat the check functions for clean code.
 
 
 ```js
+// Using the method
 doTest.add ('App interface', function () {
   doTest.test ()
+    .isObject ('fail', 'Callback data', data)
+    .done ();
+});
+
+// Or using the shortcut
+doTest.add ('App interface', function (test) {
+  test ()
     .isObject ('fail', 'Callback data', data)
     .done ();
 });
