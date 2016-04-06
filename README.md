@@ -98,6 +98,10 @@ error | `ERROR   Error.message\nError\nError.stack` with _ERROR_ in red
 plain | No styling
 
 
+The styles `error`, `fail` and `warn` add to the _errors_ and _warnings_ counters,
+where `error` and `fail` also cause the script to fail.
+
+
 ```js
 // Bold text
 doTest.log ('note', 'Hello world');
