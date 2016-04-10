@@ -16,8 +16,8 @@ var doTest = require ('dotest');
 var app = require ('./');
 
 // Check app interface
-doTest.add ('App interface', function () {
-  doTest.test ()
+doTest.add ('App interface', function (test) {
+  test ()
     .isFunction ('fail', 'methodOne', app.methodOne)
     .isObject ('fail', 'sub', app.sub)
     .isFunction ('fail', 'sub.methodTwo', app.sub.methodTwo)
@@ -25,9 +25,9 @@ doTest.add ('App interface', function () {
 });
 
 // Check method response
-doTest.add ('App methodOne', function () {
+doTest.add ('App methodOne', function (test) {
   app.methodOne (function (err, data) {
-    doTest.test (err)
+    test (err)
       .isObject ('fail', 'Callback data', data)
       .isArray ('fail', 'data.music', data.music)
       .isNotEmpty ('warn', 'data.music', data.music)
@@ -174,7 +174,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test () .isError ('fail', 'My data', data);
+doTest.test ()
+  .isError ('fail', 'My data', data)
+  .done ();
 ```
 
 
@@ -192,7 +194,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test () .isError ('fail', 'My data', data);
+doTest.test ()
+  .isObject ('fail', 'My data', data)
+  .done ();
 ```
 
 
@@ -210,7 +214,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test () .isArray ('fail', 'My data', data);
+doTest.test ()
+  .isArray ('fail', 'My data', data)
+  .done ();
 ```
 
 
@@ -228,7 +234,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test () .isString ('fail', 'My data', data);
+doTest.test ()
+  .isString ('fail', 'My data', data)
+  .done ();
 ```
 
 
@@ -246,7 +254,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test () .isNumber ('fail', 'My data', data);
+doTest.test ()
+  .isNumber ('fail', 'My data', data)
+  .done ();
 ```
 
 
@@ -265,7 +275,9 @@ input | mixed  | yes      | The variable to check
 
 ```js
 function (err, data) {
-  doTest.test () .isUndefined ('warn', 'My data', data);
+  doTest.test ()
+    .isUndefined ('warn', 'My data', data)
+    .done ();
 }
 ```
 
@@ -285,7 +297,9 @@ input | mixed  | yes      | The variable to check
 
 ```js
 function (err, data) {
-  doTest.test () .isNull ('warn', 'My data', data);
+  doTest.test ()
+    .isNull ('warn', 'My data', data)
+    .done ();
 }
 ```
 
@@ -305,7 +319,9 @@ input | mixed  | yes      | The variable to check
 
 ```js
 function (err, data) {
-  doTest.test () .isNaN ('warn', 'My data', data);
+  doTest.test ()
+    .isNaN ('warn', 'My data', data)
+    .done ();
 }
 ```
 
@@ -324,7 +340,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test () .isBoolean ('fail', 'My data', data);
+doTest.test ()
+  .isBoolean ('fail', 'My data', data)
+  .done ();
 ```
 
 
@@ -342,7 +360,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test () .isFunction ('fail', 'My data', data);
+doTest.test ()
+  .isFunction ('fail', 'My data', data)
+  .done ();
 ```
 
 
@@ -362,7 +382,9 @@ input | mixed  | yes      | The variable to check
 ```js
 var myDate = new Date ();
 
-doTest.test () .isDate ('fail', 'My data', myDate);
+doTest.test ()
+  .isDate ('fail', 'My data', myDate)
+  .done ();
 ```
 
 
@@ -381,7 +403,9 @@ two   | mixed  | yes      | The variable to check against
 
 
 ```js
-doTest.test () .isExactly ('fail', 'My data', 'foo', 'bar');
+doTest.test ()
+  .isExactly ('fail', 'My data', 'foo', 'bar')
+  .done ();
 ```
 
 
@@ -396,12 +420,14 @@ param    | type   | required | description
 level    | string | yes      | Either `fail` or `warn`
 what     | string | yes      | Text to prepend to check result
 one      | mixed  | yes      | Variable to test against
-operator | string |          | `<` `>` `<=` `>=`
+operator | string |          | `<`, `>`, `<=`, `>=`
 two      | mixed  |          | Variable to test against
 
 
 ```js
-doTest.test () .isExactly ('fail', 'My data', 1, '<', 2);
+doTest.test ()
+  .isCondition ('fail', 'My data', 1, '<', 2)
+  .done ();
 ```
 
 
@@ -420,7 +446,10 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test () .isEmpty ('fail', 'My data', data);
+// Object is empty
+doTest.test ()
+  .isEmpty ('fail', 'My data', {})
+  .done ();
 ```
 
 
@@ -439,7 +468,10 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test () .isNotEmpty ('fail', 'My data', data);
+// Object is not empty
+doTest.test ()
+  .isNotEmpty ('fail', 'My data', { foo: 'bar' })
+  .done ();
 ```
 
 
