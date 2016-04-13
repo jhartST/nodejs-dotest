@@ -12,7 +12,7 @@
     "index.js"
   ],
   "scripts": {
-    "test": "eslint . && node test.js"
+    "test": "st=0; eslint . || st=1; node test.js || st=1; exit $st"
   },
   "repository": {
     "type": "git",
