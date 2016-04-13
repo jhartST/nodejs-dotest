@@ -890,7 +890,7 @@ testFunc = test;
  */
 
 function run (wait) {
-  config.wait = wait || 0;
+  config.wait = wait || process.env.DOTEST_WAIT || 0;
 
   if (next === -1) {
     log ('note', 'Running tests...\n');
