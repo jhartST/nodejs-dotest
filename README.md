@@ -40,6 +40,15 @@ doTest.run ();
 ```
 
 
+Installation
+------------
+
+This is usually intended for CI builds,
+so best to make sure it's in your dev dependencies ;)
+
+`npm install dotest --save-dev`
+
+
 Methods
 -------
 
