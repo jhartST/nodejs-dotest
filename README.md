@@ -49,6 +49,16 @@ so best to make sure it's in your dev dependencies ;)
 `npm install dotest --save-dev`
 
 
+Configuration
+-------------
+
+The script takes these env variables.
+
+name        | default | description
+:-----------|:--------|:-----------------------------------------
+DOTEST_WAIT | 0       | Pause between tests, in ms (1000 = 1 sec)
+
+
 Methods
 -------
 
