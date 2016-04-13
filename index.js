@@ -938,10 +938,10 @@ function add (label, runner) {
  * @returns {void}
  */
 
-function processExit (fromMethod) {
+function processExit (fromProcess, code) {
   var timing = (Date.now () - counters.startTime) / 1000;
 
-  if (!fromMethod) {
+  if (fromProcess) {
     console.log ();
     log ('info', colorStr ('yellow', counters.fail) + ' errors');
     log ('info', colorStr ('yellow', counters.warn) + ' warnings');
@@ -953,11 +953,13 @@ function processExit (fromMethod) {
   if (counters.fail) {
     process.exit (1);
   } else {
-    process.exit (0);
+    process.exit (code || 0);
   }
 }
 
-process.on ('exit', processExit);
+process.on ('exit', function (code) {
+  processExit (true, code);
+});
 
 
 /**
@@ -987,7 +989,5 @@ module.exports = {
   run: run,
   log: log,
   test: test,
-  exit: function () {
-    processExit (true);
-  }
+  exit: processExit
 };
