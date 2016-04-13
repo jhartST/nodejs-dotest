@@ -251,16 +251,27 @@ function typeStr (str) {
  * Methods for test()
  */
 
+function testLog (level, str) {
+  if (typeof str === 'string') {
+    log (level, str);
+  } else {
+    log (level, typeStr (str));
+    log ('object', str);
+  }
+}
+
 unitTests = {
   done: done,
+  fail: function fail (str) {
+    testLog ('fail', str);
+    return unitTests;
+  },
+  warn: function warn (str) {
+    testLog ('warn', str);
+    return unitTests;
+  },
   info: function info (str) {
-    if (typeof str === 'string') {
-      log ('info', str);
-    } else {
-      log ('info', typeStr (str));
-      log ('object', str);
-    }
-
+    testLog ('info', str);
     return unitTests;
   }
 };
