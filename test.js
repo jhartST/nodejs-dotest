@@ -11,6 +11,8 @@ doTest.add ('Module interface', function () {
     .isFunction ('fail', '.exit', doTest.exit)
     .isFunction ('fail', '.test', doTest.test)
     .isFunction ('fail', '.test.done', test.done)
+    .isFunction ('fail', '.test.fail', test.fail)
+    .isFunction ('fail', '.test.warn', test.warn)
     .isFunction ('fail', '.test.info', test.info)
     .done ();
 });
