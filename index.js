@@ -8,9 +8,9 @@ License:        Unlicense (public domain, see LICENSE file)
 */
 
 var path = require ('path');
-var dir = path.parse (process.mainModule.filename) .dir;
+var dir = path.parse (process.mainModule.filename) .dir.replace (/\/lib$/, '');
 var pkg = require (path.join (dir, 'package.json'));
-var lib = require ('./package.json');
+var lib = require (path.join (__dirname, 'package.json'));
 
 var testFunc;
 var queue = [];
