@@ -262,6 +262,14 @@ function testLog (level, str) {
 
 unitTests = {
   done: done,
+  error: function error (str) {
+    log ('error', str);
+    return unitTests;
+  },
+  good: function good (str) {
+    testLog ('good', str);
+    return unitTests;
+  },
   fail: function fail (str) {
     testLog ('fail', str);
     return unitTests;
