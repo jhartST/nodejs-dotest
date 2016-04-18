@@ -179,6 +179,117 @@ Optionally run a `callback` function before the next test.
 See example above.
 
 
+#### test() .exit
+**( )**
+
+Alias to [dotest.exit()](#exit).
+Works similar to `.done()` where it ends the test,
+but `.exit()` also ends the whole script.
+
+```js
+test ()
+  .isArray ('fail', 'data', [])
+  .exit ();
+```
+
+
+#### test() .info
+**( message )**
+
+Output 'info' log line.
+
+The `message` can be of any type.
+When it is not a string, the type is written instead
+and the full value of `message` dumped right below.
+
+```js
+test ()
+  .info ({ hello: 'world' })
+  .done ();
+
+// Output:
+// info    Object
+// { hello: 'world' }
+```
+
+
+#### test() .good
+**( message )**
+
+Output 'good' log line.
+
+The `message` can be of any type.
+When it is not a string, the type is written instead
+and the full value of `message` dumped right below.
+
+```js
+test ()
+  .good ('It works great')
+  .done ();
+
+// Output:
+// good    It works great
+```
+
+
+#### test() .warn
+**( message )**
+
+Output 'warn' log line.
+
+The `message` can be of any type.
+When it is not a string, the type is written instead
+and the full value of `message` dumped right below.
+
+```js
+test ()
+  .warn ('Hmm something odd happened')
+  .done ();
+
+// Output:
+// warn    Hmm something odd happend
+```
+
+
+#### test() .fail
+**( message )**
+
+Output 'FAIL' log line.
+
+The `message` can be of any type.
+When it is not a string, the type is written instead
+and the full value of `message` dumped right below.
+
+```js
+test ()
+  .fail ('We have a problem')
+  .done ();
+
+// Output:
+// FAIL    We have a problem
+```
+
+
+#### test() .error
+**( err )**
+
+Output 'ERROR' log line with dump and stack trace.
+
+```js
+var err = new Error ('Oops');
+
+test ()
+  .error (err)
+  .done ();
+
+// Output:
+// ERROR   Oops
+//
+// [Error: Oops]
+// ...
+```
+
+
 #### test() .isError
 **( level, what, input )**
 
