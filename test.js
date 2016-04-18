@@ -11,10 +11,10 @@ doTest.add ('Module interface', function () {
     .isFunction ('fail', '.exit', doTest.exit)
     .isFunction ('fail', '.test', doTest.test)
     .isFunction ('fail', '.test.done', test.done)
-    .isFunction ('fail', '.test.error', test.error)
     .isFunction ('fail', '.test.good', test.good)
-    .isFunction ('fail', '.test.fail', test.fail)
     .isFunction ('fail', '.test.warn', test.warn)
+    .isFunction ('fail', '.test.fail', test.fail)
+    .isFunction ('fail', '.test.error', test.error)
     .isFunction ('fail', '.test.info', test.info)
     .done ();
 });
@@ -47,6 +47,8 @@ doTest.add ('Methods', function (test, fake) {
     .isCondition ('fail', '.isCondition', 1, '<', 2)
     .isEmpty ('fail', '.isEmpty', '')
     .isNotEmpty ('fail', '.isNotEmpty', 'text')
+    .warn ('This is a warn message')
+    .good ('This is a good message')
     .info ({ hello: 'world' })
     .done ();
 });
