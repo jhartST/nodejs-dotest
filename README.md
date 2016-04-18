@@ -140,7 +140,7 @@ doTest.exit ();
 ```
 
 
-### .test
+## .test
 **( [err] )**
 
 Returns check functions.
@@ -170,7 +170,7 @@ doTest.add ('App interface', function (test) {
 ```
 
 
-#### .done
+#### test() .done
 **( [callback] )**
 
 Run the next test from the queue.
@@ -179,7 +179,7 @@ Optionally run a `callback` function before the next test.
 See example above.
 
 
-#### .isError
+#### test() .isError
 **( level, what, input )**
 
 Check if `input` is an instance of _Error_.
@@ -199,7 +199,7 @@ doTest.test ()
 ```
 
 
-#### .isObject
+#### test() .isObject
 **( level, what, input )**
 
 Check if `input` is an instance of _Object_.
@@ -219,7 +219,7 @@ doTest.test ()
 ```
 
 
-#### .isArray
+#### test() .isArray
 **( level, what, input )**
 
 Check if `input` is an instance of _Array_.
@@ -239,7 +239,7 @@ doTest.test ()
 ```
 
 
-#### .isString
+#### test() .isString
 **( level, what, input )**
 
 Check if `input` is a _string_.
@@ -259,7 +259,7 @@ doTest.test ()
 ```
 
 
-#### .isNumber
+#### test() .isNumber
 **( level, what, input )**
 
 Check if `input` is a _number_.
@@ -279,7 +279,7 @@ doTest.test ()
 ```
 
 
-#### .isUndefined
+#### test() .isUndefined
 **( level, what, input )**
 
 Check if `input` is _undefined_.
@@ -301,7 +301,7 @@ function (err, data) {
 ```
 
 
-#### .isNull
+#### test() .isNull
 **( level, what, input )**
 
 Check if `input` is _null_.
@@ -323,7 +323,7 @@ function (err, data) {
 ```
 
 
-#### .isNaN
+#### test() .isNaN
 **( level, what, input )**
 
 Check if `input` is _NaN_.
@@ -345,7 +345,7 @@ function (err, data) {
 ```
 
 
-#### .isBoolean
+#### test() .isBoolean
 **( level, what, input )**
 
 Check if `input` is a _boolean_.
@@ -365,7 +365,7 @@ doTest.test ()
 ```
 
 
-#### .isFunction
+#### test() .isFunction
 **( level, what, input )**
 
 Check if `input` is an instance of _Function_.
@@ -385,7 +385,7 @@ doTest.test ()
 ```
 
 
-#### .isDate
+#### test() .isDate
 **( level, what, input )**
 
 Check if `input` is an instance of _Date_.
@@ -407,7 +407,7 @@ doTest.test ()
 ```
 
 
-#### .isExactly
+#### test() .isExactly
 **( level, what, one, two )**
 
 Check if `one` is exactly of the same type and value as `two`.
@@ -428,7 +428,7 @@ doTest.test ()
 ```
 
 
-#### .isCondition
+#### test() .isCondition
 **( level, what, one, operator, two )**
 
 Check if the two values meet the condition.
@@ -450,7 +450,7 @@ doTest.test ()
 ```
 
 
-#### .isEmpty
+#### test() .isEmpty
 **( level, what, input )**
 
 Check if `input` is _undefined_, _null_, or an empty _string_, _object_, _array_ or _Error_.
@@ -472,7 +472,7 @@ doTest.test ()
 ```
 
 
-#### .isNotEmpty
+#### test() .isNotEmpty
 **( level, what, input )**
 
 Check if `input` is not _undefined_, _null_, or an empty _string_, _object_, _array_ or _Error_.
