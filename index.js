@@ -969,6 +969,11 @@ process.on ('exit', function (code) {
   processExit (true, code);
 });
 
+unitTests.exit = function () {
+  processExit ();
+  return unitTests;
+});
+
 
 /**
  * Prevent errors from killing the process
