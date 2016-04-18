@@ -972,7 +972,7 @@ process.on ('exit', function (code) {
 unitTests.exit = function () {
   processExit ();
   return unitTests;
-});
+};
 
 
 /**
