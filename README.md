@@ -193,7 +193,7 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test ()
+test ()
   .isError ('fail', 'My data', data)
   .done ();
 ```
@@ -213,7 +213,7 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test ()
+test ()
   .isObject ('fail', 'My data', data)
   .done ();
 ```
@@ -233,7 +233,7 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test ()
+test ()
   .isArray ('fail', 'My data', data)
   .done ();
 ```
@@ -253,7 +253,7 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test ()
+test ()
   .isString ('fail', 'My data', data)
   .done ();
 ```
@@ -273,7 +273,7 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test ()
+test ()
   .isNumber ('fail', 'My data', data)
   .done ();
 ```
@@ -294,7 +294,7 @@ input | mixed  | yes      | The variable to check
 
 ```js
 function (err, data) {
-  doTest.test ()
+  test ()
     .isUndefined ('warn', 'My data', data)
     .done ();
 }
@@ -316,7 +316,7 @@ input | mixed  | yes      | The variable to check
 
 ```js
 function (err, data) {
-  doTest.test ()
+  test ()
     .isNull ('warn', 'My data', data)
     .done ();
 }
@@ -338,7 +338,7 @@ input | mixed  | yes      | The variable to check
 
 ```js
 function (err, data) {
-  doTest.test ()
+  test ()
     .isNaN ('warn', 'My data', data)
     .done ();
 }
@@ -359,7 +359,7 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test ()
+test ()
   .isBoolean ('fail', 'My data', data)
   .done ();
 ```
@@ -379,7 +379,7 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-doTest.test ()
+test ()
   .isFunction ('fail', 'My data', data)
   .done ();
 ```
@@ -401,7 +401,7 @@ input | mixed  | yes      | The variable to check
 ```js
 var myDate = new Date ();
 
-doTest.test ()
+test ()
   .isDate ('fail', 'My data', myDate)
   .done ();
 ```
@@ -422,7 +422,7 @@ two   | mixed  | yes      | The variable to check against
 
 
 ```js
-doTest.test ()
+test ()
   .isExactly ('fail', 'My data', 'foo', 'bar')
   .done ();
 ```
@@ -444,7 +444,7 @@ two      | mixed  |          | Variable to test against
 
 
 ```js
-doTest.test ()
+test ()
   .isCondition ('fail', 'My data', 1, '<', 2)
   .done ();
 ```
@@ -466,7 +466,7 @@ input | mixed  | yes      | The variable to check
 
 ```js
 // Object is empty
-doTest.test ()
+test ()
   .isEmpty ('fail', 'My data', {})
   .done ();
 ```
@@ -488,7 +488,7 @@ input | mixed  | yes      | The variable to check
 
 ```js
 // Object is not empty
-doTest.test ()
+test ()
   .isNotEmpty ('fail', 'My data', { foo: 'bar' })
   .done ();
 ```
