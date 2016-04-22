@@ -84,6 +84,7 @@ function log (type, str) {
       console.log (colorStr ('yellow', 'warn') + '    ' + str);
       break;
     case 'error':
+      counters.fail++;
       console.log (colorStr ('red', 'ERROR  ') + str.message + '\n');
       console.dir (str, {
         depth: null,
@@ -948,7 +949,6 @@ unitTests.isNotEmpty = function isNotEmpty (level, what, input) {
 
 function test (err) {
   if (err) {
-    counters.fail++;
     log ('error', err);
   }
 
