@@ -7,6 +7,7 @@ Yet another unit test runner for Node.js
 
 [![Console example](https://frankl.in/wp-content/uploads/2016/03/dotest_planetos-496x400.png)](https://frankl.in/micro/nodejs-dotest-console-output)
 
+
 Example
 -------
 
@@ -53,6 +54,8 @@ Configuration
 -------------
 
 The script takes these env variables.
+They override the code settings.
+
 
 name        | default | description
 :-----------|:--------|:-----------------------------------------
@@ -637,6 +640,4 @@ For more information, please refer to <http://unlicense.org>
 Author
 ------
 
-Franklin van de Meent
-| [Website](https://frankl.in)
-| [Github](https://github.com/fvdm)
+[Franklin van de Meent](https://frankl.in)
