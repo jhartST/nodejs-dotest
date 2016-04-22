@@ -255,6 +255,51 @@ function typeStr (str) {
 
 
 /**
+ * Handle process exit
+ *
+ * @param [fromMethod] {boolean} - Used internally to prevent double logs
+ * @returns {void}
+ */
+
+function processExit (fromProcess, code) {
+  var timing = (Date.now () - counters.startTime) / 1000;
+
+  if (fromProcess) {
+    console.log ();
+    log ('info', colorStr ('yellow', counters.fail) + ' errors');
+    log ('info', colorStr ('yellow', counters.warn) + ' warnings');
+    console.log ();
+    log ('info', colorStr ('yellow', timing) + ' seconds');
+    console.log ();
+  }
+
+  if (counters.fail) {
+    process.exit (1);
+  } else {
+    process.exit (code || 0);
+  }
+}
+
+process.on ('exit', function (code) {
+  processExit (true, code);
+});
+
+
+/**
+ * Prevent errors from killing the process
+ *
+ * @param err {Error} - The error that occured
+ * @returns {void}
+ */
+
+function uncaughtException (err) {
+  log ('error', err);
+}
+
+process.on ('uncaughtException', uncaughtException);
+
+
+/**
  * Methods for test()
  */
 
@@ -287,6 +332,11 @@ unitTests = {
   },
   info: function info (str) {
     testLog ('info', str);
+    return unitTests;
+  },
+  exit: function exit () {
+    testLog ('info', 'Exit process');
+    processExit (false);
     return unitTests;
   }
 };
@@ -944,60 +994,6 @@ function add (label, runner) {
     runner: runner
   });
 }
-
-
-/**
- * Handle process exit
- *
- * @param [fromMethod] {boolean} - Used internally to prevent double logs
- * @returns {void}
- */
-
-function processExit (fromProcess, code) {
-  var timing = (Date.now () - counters.startTime) / 1000;
-
-  if (fromProcess) {
-    console.log ();
-    log ('info', colorStr ('yellow', counters.fail) + ' errors');
-    log ('info', colorStr ('yellow', counters.warn) + ' warnings');
-    console.log ();
-    log ('info', colorStr ('yellow', timing) + ' seconds');
-    console.log ();
-  }
-
-  if (counters.fail) {
-    process.exit (1);
-  } else {
-    process.exit (code || 0);
-  }
-}
-
-process.on ('exit', function (code) {
-  processExit (true, code);
-});
-
-unitTests.exit = function () {
-  processExit ();
-  return unitTests;
-};
-
-
-/**
- * Prevent errors from killing the process
- *
- * @param err {Error} - The error that occured
- * @returns {void}
- */
-
-function uncaughtException (err) {
-  console.log (err);
-  console.log ();
-  console.log (err.stack);
-  console.log ();
-  counters.fail++;
-}
-
-process.on ('uncaughtException', uncaughtException);
 
 
 /**
