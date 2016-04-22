@@ -1005,5 +1005,5 @@ module.exports = {
   run: run,
   log: log,
   test: test,
-  exit: processExit
+  exit: unitTests.exit
 };
