@@ -78,7 +78,7 @@ doTest.add ('App interface', function (test) {
 
 
 ### .run
-**( wait )**
+**( [wait] )**
 
 Run the tests from the queue, one by one.
 
@@ -131,7 +131,7 @@ doTest.log ('note', 'Hello world');
 
 
 ### .exit
-**()**
+**( )**
 
 Force exit the process, after writing statistics to the console.
 
