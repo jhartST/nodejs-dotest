@@ -143,9 +143,13 @@ function done (callback) {
 
   if (queue [next]) {
     if (next && config.wait) {
-      setTimeout (function () {
-        doNext (next);
-      }, config.wait);
+      setTimeout (
+        function () {
+          doNext (next);
+        },
+        config.wait
+      );
+
       return;
     }
 
@@ -173,7 +177,9 @@ function output (data) {
     case 'good': str = colorStr ('green', 'good'); break;
     case 'fail': str = colorStr ('red', 'FAIL'); break;
     case 'warn': str = colorStr ('yellow', 'warn'); break;
-    default: str = str; break;
+    default:
+      // skip
+      break;
   }
 
   str += '    ' + colorStr ('blue', data.what) + ' ' + data.describe;
@@ -183,9 +189,10 @@ function output (data) {
 
 /**
  * Get any var type
+ * The order of if's is important
  *
  * @param input {mixed} - The value to check
- * @returns {string}
+ * @returns {string} - Lowercase type
  */
 
 function getType (input) {
@@ -228,12 +235,12 @@ function typeStr (str) {
   var type = getType (str);
 
   if (type === 'string' && str.length < 20) {
-    str = '"' + str + '"';
+    // leave as is
   } else if (type === 'regexp') {
     str = str.toString ();
   } else if (type === 'string') {
     str = 'string';
-  } else if (str === null) {
+  } else if (type === 'null') {
     str = 'null';
   } else if (type === 'object') {
     str = 'object';
