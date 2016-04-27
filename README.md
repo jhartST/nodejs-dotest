@@ -4,6 +4,7 @@ dotest
 Yet another unit test runner for Node.js
 
 [![Build Status](https://travis-ci.org/fvdm/nodejs-dotest.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-dotest)
+[![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-dotest.svg)](https://gemnasium.com/github.com/fvdm/nodejs-dotest)
 
 [![Console example](https://frankl.in/wp-content/uploads/2016/03/dotest_planetos-496x400.png)](https://frankl.in/micro/nodejs-dotest-console-output)
 
