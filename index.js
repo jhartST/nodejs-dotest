@@ -233,7 +233,7 @@ function typeStr (str) {
 
 function output (level, what, result, describe) {
   var state = (result.state === true) ? 'good' : level;
-  var typeStr = typeStr (result.data);
+  var typestr = typeStr (result.data);
   var str = '';
 
   // track script result
@@ -259,9 +259,9 @@ function output (level, what, result, describe) {
   } else if (!result.state && describe.false) {
     str += describe.false;
   } else if (result.state) {
-    str += typeStr + ' is ' + describe;
+    str += typestr + ' is ' + describe;
   } else {
-    str += typeStr + ' should be ' + describe;
+    str += typestr + ' should be ' + describe;
   }
 
   // output
