@@ -8,6 +8,7 @@ License:        Unlicense (public domain, see LICENSE file)
 */
 
 var path = require ('path');
+var util = require ('util');
 var dir = path.parse (process.mainModule.filename) .dir.replace (/\/lib$/, '');
 var pkg = require (path.join (dir, 'package.json'));
 var lib = require (path.join (__dirname, 'package.json'));
@@ -211,13 +212,32 @@ function typeStr (str) {
   var type = getType (str);
   var typeMatch = type.match (/(string|boolean|number|date|regexp|array)/);
 
+  // parse special
+  if (type.match (/(object|array)/)) {
+    str = util.inspect (str, {
+      depth: null,
+      colors: true
+    });
+    str = str.replace ('\n', ' ');
+
+    if (str.length <= 50) {
+      str = colorStr ('magenta', str[0])
+        + str.slice (1, -1)
+        + colorStr ('magenta', str.slice (-1));
+        + ' (' + type + ')';
+
+      return str;
+    }
+  }
+
+  // parse rest
   str = str && str.toString () || str;
 
   if (type === 'boolean') {
     str = str ? 'true' : 'false';
   }
 
-  if (typeMatch && str.length && str.length < 50) {
+  if (typeMatch && str.length && str.length <= 50) {
     return colorStr ('magenta', str) + ' (' + type + ')';
   }
 
