@@ -264,11 +264,6 @@ function output (level, what, result, describe) {
   var typestr = typeStr (result.data);
   var str = '';
 
-  // track script result
-  if (!result.state) {
-    counters[level]++;
-  }
-
   // log line
   switch (state) {
     case 'good': str = colorStr ('green', 'good'); break;
@@ -285,6 +280,7 @@ function output (level, what, result, describe) {
   if (result.state) {
     str += describe.true || typestr + ' is ' + describe;
   } else {
+    counters[level]++;
     str += describe.false || typestr + ' should be ' + describe;
   }
 
