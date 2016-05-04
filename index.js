@@ -347,10 +347,16 @@ process.on ('uncaughtException', uncaughtException);
  */
 
 function testLog (level, str) {
+  var typestr = typeStr (str);
+
   if (typeof str === 'string') {
     log (level, str);
-  } else {
-    log (level, typeStr (str));
+    return;
+  }
+
+  log (level, typestr);
+
+  if (typestr.length >= 60) {
     log ('object', str);
   }
 }
