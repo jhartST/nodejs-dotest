@@ -213,9 +213,13 @@ function getType (input) {
 
 function typeStr (str) {
   var type = getType (str);
-  var typeMatch = type.match (/(string|number|date|regexp|array)/);
+  var typeMatch = type.match (/(string|boolean|number|date|regexp|array)/);
 
   str = str && str.toString () || str;
+
+  if (type === 'boolean') {
+    str = str ? 'true' : 'false';
+  }
 
   if (typeMatch && str.length && str.length < 20) {
     return colorStr ('magenta', str) + ' (' + type + ')';
