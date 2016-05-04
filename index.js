@@ -205,6 +205,7 @@ function getType (input) {
  * Get formatted var type for console
  *
  * @param str {string} - The var to convert
+ * @param [noType = false] {boolean} - Don't append ' (type)'
  * @returns {string} - i.e. hello (string)
  */
 
@@ -295,6 +296,7 @@ function output (level, what, result, describe) {
  * Handle process exit
  *
  * @param [fromMethod] {boolean} - Used internally to prevent double logs
+ * @param [code] {number} - Enforce exit status code if not fail
  * @returns {void}
  */
 
