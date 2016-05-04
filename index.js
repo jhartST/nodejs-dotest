@@ -229,15 +229,16 @@ function getType (input) {
  * Get formatted var type for console
  *
  * @param str {string} - The var to convert
- * @returns {string}
+ * @returns {string} - i.e. hello (string)
  */
 
 function typeStr (str) {
   var type = getType (str);
+  var typeMatch = type.match (/(string|date|regexp|array)/);
 
   str = str && str.toString () || str;
 
-  if (typeof str === 'string' && str.length > 0 && str.length < 20) {
+  if (typeMatch && str.length && str.length < 20) {
     return colorStr ('magenta', str) + ' (' + type + ')';
   }
 
