@@ -160,35 +160,6 @@ function done (callback) {
 
 
 /**
- * Write test result to console
- *
- * @param data {object}
- * @param data.result {boolean} - Test outcome
- * @param data.level {string} - fail, warn
- * @param data.what {string} - describe input data, i.e. 'data.sub'
- * @param data.describe {string} - Human text to describe outcome
- * @returns {void}
- */
-
-function output (data) {
-  var state = (data.result === true) ? 'good' : data.level;
-  var str = '';
-
-  switch (state) {
-    case 'good': str = colorStr ('green', 'good'); break;
-    case 'fail': str = colorStr ('red', 'FAIL'); break;
-    case 'warn': str = colorStr ('yellow', 'warn'); break;
-    default:
-      // skip
-      break;
-  }
-
-  str += '    ' + colorStr ('blue', data.what) + ' ' + data.describe;
-  console.log (str);
-}
-
-
-/**
  * Get any var type
  * The order of if's is important
  *
@@ -243,6 +214,58 @@ function typeStr (str) {
   }
 
   return colorStr ('magenta', type);
+}
+
+
+/**
+ * Write test result to console
+ *
+ * @param level {string} - fail, warn
+ * @param what {string} - Text to prepend in blue
+ * @param result {object}
+ * @param result.state {boolean} - Check result
+ * @param result.data {mixed} - Check input
+ * @param describe {string, object} - Describe result, i.e. 'an Array'
+ * @param describe.true {string} - Override default describe if true
+ * @param describe.false {string} - Override default describe if false
+ * @returns {void}
+ */
+
+function output (level, what, result, describe) {
+  var state = (result.state === true) ? 'good' : level;
+  var typeStr = typeStr (result.data);
+  var str = '';
+
+  // track script result
+  if (!result.state) {
+    counters [level]++;
+  }
+
+  // log line
+  switch (state) {
+    case 'good': str = colorStr ('green', 'good'); break;
+    case 'fail': str = colorStr ('red', 'FAIL'); break;
+    case 'warn': str = colorStr ('yellow', 'warn'); break;
+    default:
+      // skip
+      break;
+  }
+
+  str += '    ' + colorStr ('blue', what) + ' ';
+
+  // describe result
+  if (result.state && describe.true) {
+    str += describe.true;
+  } else if (!result.state && describe.false) {
+    str += describe.false;
+  } else if (result.state) {
+    str += typeStr + ' is ' + describe;
+  } else {
+    str += typeStr + ' should be ' + describe;
+  }
+
+  // output
+  console.log (str);
 }
 
 
@@ -344,22 +367,12 @@ unitTests = {
  */
 
 unitTests.isError = function isError (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: getType (input) === 'error',
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is an Error';
-      }
-
-      counters[level]++;
-      return typestr + ' is not an Error';
-    }
+  var result = {
+    state: input instanceof Error,
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'an Error');
   return unitTests;
 };
 
@@ -374,22 +387,12 @@ unitTests.isError = function isError (level, what, input) {
  */
 
 unitTests.isObject = function isObject (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: getType (input) === 'object',
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is an Object';
-      }
-
-      counters[level]++;
-      return typestr + ' is not an Object';
-    }
+  var result = {
+    state: input instanceof Object,
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'an Object');
   return unitTests;
 };
 
@@ -404,22 +407,12 @@ unitTests.isObject = function isObject (level, what, input) {
  */
 
 unitTests.isArray = function isArray (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: getType (input) === 'array',
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is an Array';
-      }
-
-      counters[level]++;
-      return typestr + ' is not an Array';
-    }
+  var redukt = {
+    state: input instanceof Array,
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'an Array');
   return unitTests;
 };
 
@@ -434,22 +427,12 @@ unitTests.isArray = function isArray (level, what, input) {
  */
 
 unitTests.isString = function isString (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: getType (input) === 'string',
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is a String';
-      }
-
-      counters[level]++;
-      return typestr + ' is not a String';
-    }
+  var result = {
+    state: typeof input === 'string',
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'a String');
   return unitTests;
 };
 
@@ -464,22 +447,12 @@ unitTests.isString = function isString (level, what, input) {
  */
 
 unitTests.isNumber = function isNumber (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: getType (input) === 'number',
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is a Number';
-      }
-
-      counters[level]++;
-      return typestr + ' is not a Number';
-    }
+  var result = {
+    state: typeof input === 'number',
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'a Number');
   return unitTests;
 };
 
@@ -494,22 +467,12 @@ unitTests.isNumber = function isNumber (level, what, input) {
  */
 
 unitTests.isUndefined = function isUndefined (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: getType (input) === 'undefined',
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is Undefined';
-      }
-
-      counters[level]++;
-      return typestr + ' is not Undefined';
-    }
+  var result = {
+    state: typeof input === 'undefined',
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'Undefined');
   return unitTests;
 };
 
@@ -524,22 +487,12 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
  */
 
 unitTests.isNull = function isUndefined (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: getType (input) === 'null',
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is Null';
-      }
-
-      counters[level]++;
-      return typestr + ' is not Null';
-    }
+  var result = {
+    state: input === null,
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'Null');
   return unitTests;
 };
 
@@ -554,22 +507,12 @@ unitTests.isNull = function isUndefined (level, what, input) {
  */
 
 unitTests.isNaN = function isUndefined (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: isNaN (input),
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is NaN';
-      }
-
-      counters[level]++;
-      return typestr + ' should be NaN';
-    }
+  var result = {
+    state: isNaN (input),
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'NaN');
   return unitTests;
 };
 
@@ -584,22 +527,12 @@ unitTests.isNaN = function isUndefined (level, what, input) {
  */
 
 unitTests.isBoolean = function isBoolean (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: getType (input) === 'boolean',
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is a Boolean';
-      }
-
-      counters[level]++;
-      return typestr + ' is not a Boolean';
-    }
+  var result = {
+    state: typeof input === 'boolean',
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'a Boolean');
   return unitTests;
 };
 
@@ -614,22 +547,12 @@ unitTests.isBoolean = function isBoolean (level, what, input) {
  */
 
 unitTests.isFunction = function isFunction (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: getType (input) === 'function',
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is a Function';
-      }
-
-      counters[level]++;
-      return typestr + ' is not a Function';
-    }
+  var result = {
+    state: typeof input === 'function',
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'a Function');
   return unitTests;
 };
 
@@ -644,22 +567,12 @@ unitTests.isFunction = function isFunction (level, what, input) {
  */
 
 unitTests.isDate = function isFunction (level, what, input) {
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: input instanceof Date,
-    what: what,
-    get describe () {
-      if (this.result) {
-        return 'is a Date';
-      }
-
-      counters[level]++;
-      return typestr + ' should be a Date';
-    }
+  var result = {
+    state: input instanceof Date,
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'a Date');
   return unitTests;
 };
 
@@ -677,25 +590,17 @@ unitTests.isDate = function isFunction (level, what, input) {
 unitTests.isExactly = function isExactly (level, what, one, two) {
   var typestrOne = typeStr (one);
   var typestrTwo = typeStr (two);
-  var data = {
-    level: level,
-    result: one === two,
-    what: what,
-    get describe () {
-      var str = '';
-
-      if (this.result) {
-        return 'is exactly ' + typestrTwo;
-      }
-
-      str += typestrOne + ' should be exactly ' + typestrTwo;
-
-      counters[level]++;
-      return str;
-    }
+  var result = {
+    state: one === two,
+    data: input
   };
 
-  output (data);
+  var describe = {
+    true: 'is exactly ' + typestrTwo,
+    false: typestrOne + ' should be exactly ' + typestrTwo
+  };
+
+  output (level, what, result, describe);
   return unitTests;
 };
 
@@ -713,25 +618,17 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
 unitTests.isNot = function isNot (level, what, one, two) {
   var typestrOne = typeStr (one);
   var typestrTwo = typeStr (two);
-  var data = {
-    level: level,
-    result: one !== two,
-    what: what,
-    get describe () {
-      var str = '';
-
-      if (this.result) {
-        return 'is not equal to ' + typestrTwo;
-      }
-
-      str += typestrOne + ' should not be equal to ' + typestrTwo;
-
-      counters[level]++;
-      return str;
-    }
+  var result = {
+    state: one !== two,
+    data: input
   };
 
-  output (data);
+  var describe = {
+    true: 'is not equal to ' + typestrTwo,
+    false: typestrOne + ' should not be equal to ' + typestrTwo
+  };
+
+  output (level, what, result, describe);
   return unitTests;
 };
 
@@ -746,26 +643,12 @@ unitTests.isNot = function isNot (level, what, one, two) {
  */
 
 unitTests.isRegexp = function isRegexp (level, what, input) {
-  var typestrOne = typeStr (input);
-  var data = {
-    level: level,
-    result: input instanceof RegExp,
-    what: what,
-    get describe () {
-      var str = '';
-
-      if (this.result) {
-        return 'is a RegExp';
-      }
-
-      str += typestrOne + ' should be a RegExp';
-
-      counters[level]++;
-      return str;
-    }
+  var result = {
+    state: input instanceof RegExp,
+    data: input
   };
 
-  output (data);
+  output (level, what, result, 'a RegExp');
   return unitTests;
 };
 
@@ -781,27 +664,19 @@ unitTests.isRegexp = function isRegexp (level, what, input) {
  */
 
 unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
-  var typestrOne = typeStr (input);
-  var typestrTwo = typeStr (regex);
-  var data = {
-    level: level,
-    result: !!~input.match (regex),
-    what: what,
-    get describe () {
-      var str = '';
-
-      if (this.result) {
-        return 'is matching ' + typestrTwo;
-      }
-
-      str += typestrOne + ' should be exactly ' + typestrTwo;
-
-      counters[level]++;
-      return str;
-    }
+  var typestrOne = typeStr (one);
+  var typestrTwo = typeStr (two);
+  var result = {
+    state: !!~input.match (regex),
+    data: input
   };
 
-  output (data);
+  var describe = {
+    true: 'is matching ' + typestrTwo,
+    false: typestrOne + ' should be matching ' + typestrTwo
+  };
+
+  output (level, what, result, describe);
   return unitTests;
 };
 
@@ -820,30 +695,27 @@ unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
 unitTests.isCondition = function isCondition (level, what, one, operator, two) {
   var typestrOne = typeStr (one);
   var typestrTwo = typeStr (two);
-  var data = {
-    level: level,
-    result: false,
-    what: what,
-    get describe () {
-      var str = typestrOne + ' ' + operator + ' ' + typestrTwo;
+  var result = {
+    state: input instanceof Date,
+    data: input
+  };
 
-      if (!this.result) {
-        counters[level]++;
-      }
+  var str = typestrOne + ' ' + colorStr ('yellow', operator) + ' ' + typestrTwo;
 
-      return str;
-    }
+  var describe = {
+    true: str,
+    false: str
   };
 
   switch (operator) {
-    case '<': data.result = one < two; break;
-    case '>': data.result = one > two; break;
-    case '<=': data.result = one <= two; break;
-    case '>=': data.result = one >= two; break;
-    default: data.result = false; break;
+    case '<': result.state = one < two; break;
+    case '>': result.state = one > two; break;
+    case '<=': result.state = one <= two; break;
+    case '>=': result.state = one >= two; break;
+    default: result.state = false; break;
   }
 
-  output (data);
+  output (level, what, result, describe);
   return unitTests;
 };
 
@@ -859,36 +731,26 @@ unitTests.isCondition = function isCondition (level, what, one, operator, two) {
 
 unitTests.isEmpty = function isEmpty (level, what, input) {
   var type = getType (input);
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: false,
-    what: what,
-    get describe () {
-      if (this.result) {
-        return typestr + ' is empty';
-      }
-
-      counters[level]++;
-      return typestr + ' should be empty';
-    }
+  var result = {
+    state: false,
+    data: input
   };
 
   if (type === 'undefined') {
-    data.result = true;
+    result.state = true;
   } else if (input === null) {
-    data.result = true;
+    result.state = true;
   } else if (type === 'string' && !input) {
-    data.result = true;
+    result.state = true;
   } else if (type === 'object' && !Object.keys (input).length) {
-    data.result = true;
+    result.state = true;
   } else if (type === 'array' && !input.length) {
-    data.result = true;
+    result.state = true;
   } else if (type === 'error' && !Object.keys (input).length && !input.message) {
-    data.result = true;
+    result.state = true;
   }
 
-  output (data);
+  output (level, what, result, 'Empty');
   return unitTests;
 };
 
@@ -904,36 +766,26 @@ unitTests.isEmpty = function isEmpty (level, what, input) {
 
 unitTests.isNotEmpty = function isNotEmpty (level, what, input) {
   var type = getType (input);
-  var typestr = typeStr (input);
-  var data = {
-    level: level,
-    result: true,
-    what: what,
-    get describe () {
-      if (this.result) {
-        return typestr + ' is not empty';
-      }
-
-      counters[level]++;
-      return typestr + ' should not be empty';
-    }
+  var result = {
+    state: true,
+    data: input
   };
 
   if (type === 'undefined') {
-    data.result = false;
+    result.state = false;
   } else if (input === null) {
-    data.result = false;
+    result.state = false;
   } else if (type === 'string' && !input) {
-    data.result = false;
+    result.state = false;
   } else if (type === 'object' && !Object.keys (input).length) {
-    data.result = false;
+    result.state = false;
   } else if (type === 'array' && !input.length) {
-    data.result = false;
+    result.state = false;
   } else if (type === 'error' && !Object.keys (input).length && !input.message) {
-    data.result = false;
+    result.state = false;
   }
 
-  output (data);
+  output (level, what, result, 'not Empty');
   return unitTests;
 };
 
