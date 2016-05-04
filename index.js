@@ -235,23 +235,13 @@ function getType (input) {
 function typeStr (str) {
   var type = getType (str);
 
-  if (type === 'string' && str.length < 20) {
-    // leave as is
-  } else if (type === 'regexp') {
-    str = str.toString ();
-  } else if (type === 'string') {
-    str = 'string';
-  } else if (type === 'null') {
-    str = 'null';
-  } else if (type === 'object') {
-    str = 'object';
-  } else if (type === 'array') {
-    str = 'array';
-  } else if (type === 'error') {
-    str = 'error';
+  str = str && str.toString () || str;
+
+  if (typeof str === 'string' && str.length < 20) {
+    return colorStr ('magenta', str) + ' (' + type + ')';
   }
 
-  return colorStr ('magenta', str);
+  return colorStr ('magenta', type);
 }
 
 
@@ -694,7 +684,7 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
       var str = '';
 
       if (this.result) {
-        return 'is exactly ' + typestrTwo + ' (' + getType (two) + ')';
+        return 'is exactly ' + typestrTwo;
       }
 
       str += typestrOne + ' should be exactly ' + typestrTwo;
@@ -730,7 +720,7 @@ unitTests.isNot = function isNot (level, what, one, two) {
       var str = '';
 
       if (this.result) {
-        return 'is not equal to ' + typestrTwo + ' (' + getType (two) + ')';
+        return 'is not equal to ' + typestrTwo;
       }
 
       str += typestrOne + ' should not be equal to ' + typestrTwo;
@@ -800,7 +790,7 @@ unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
       var str = '';
 
       if (this.result) {
-        return 'is matching ' + typestrTwo + ' (' + getType (regex) + ')';
+        return 'is matching ' + typestrTwo;
       }
 
       str += typestrOne + ' should be exactly ' + typestrTwo;
@@ -827,8 +817,8 @@ unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
  */
 
 unitTests.isCondition = function isCondition (level, what, one, operator, two) {
-  var typestrOne = typeStr (one) + ' (' + getType (one) + ')';
-  var typestrTwo = typeStr (two) + ' (' + getType (two) + ')';
+  var typestrOne = typeStr (one);
+  var typestrTwo = typeStr (two);
   var data = {
     level: level,
     result: false,
