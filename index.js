@@ -223,7 +223,7 @@ function typeStr (str) {
     if (str.length <= 50) {
       str = colorStr ('magenta', str[0])
         + str.slice (1, -1)
-        + colorStr ('magenta', str.slice (-1));
+        + colorStr ('magenta', str.slice (-1))
         + ' (' + type + ')';
 
       return str;
