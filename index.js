@@ -208,7 +208,7 @@ function getType (input) {
  * @returns {string} - i.e. hello (string)
  */
 
-function typeStr (str) {
+function typeStr (str, noType) {
   var type = getType (str);
   var typeMatch = type.match (/(string|boolean|number|date|regexp|array)/);
 
@@ -224,7 +224,7 @@ function typeStr (str) {
       str = colorStr ('magenta', str[0])
         + str.slice (1, -1)
         + colorStr ('magenta', str.slice (-1))
-        + ' (' + type + ')';
+        + !noType && ' (' + type + ')';
 
       return str;
     }
@@ -238,7 +238,8 @@ function typeStr (str) {
   }
 
   if (typeMatch && str.length && str.length <= 50) {
-    return colorStr ('magenta', str) + ' (' + type + ')';
+    return colorStr ('magenta', str)
+      + !noType && ' (' + type + ')';
   }
 
   return colorStr ('magenta', type);
@@ -261,7 +262,8 @@ function typeStr (str) {
 
 function output (level, what, result, describe) {
   var state = (result.state === true) ? 'good' : level;
-  var typestr = typeStr (result.data);
+  var typestrGood = typeStr (result.data, true);
+  var typestrFail = typeStr (result.data);
   var str = '';
 
   // log line
@@ -278,10 +280,10 @@ function output (level, what, result, describe) {
 
   // describe result
   if (result.state) {
-    str += describe.true || typestr + ' is ' + describe;
+    str += describe.true || typestrGood + ' is ' + describe;
   } else {
     counters[level]++;
-    str += describe.false || typestr + ' should be ' + describe;
+    str += describe.false || typestrFail + ' should be ' + describe;
   }
 
   // output
