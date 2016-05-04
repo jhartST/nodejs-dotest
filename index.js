@@ -282,14 +282,10 @@ function output (level, what, result, describe) {
   str += '    ' + colorStr ('blue', what) + ' ';
 
   // describe result
-  if (result.state && describe.true) {
-    str += describe.true;
-  } else if (!result.state && describe.false) {
-    str += describe.false;
-  } else if (result.state) {
-    str += typestr + ' is ' + describe;
+  if (result.state) {
+    str += describe.true || typestr + ' is ' + describe;
   } else {
-    str += typestr + ' should be ' + describe;
+    str += describe.false || typestr + ' should be ' + describe;
   }
 
   // output
