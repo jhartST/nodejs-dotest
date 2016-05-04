@@ -192,6 +192,10 @@ function getType (input) {
     return 'null';
   }
 
+  if (isNaN (input)) {
+    return 'NaN';
+  }
+
   return (typeof input);
 }
 
