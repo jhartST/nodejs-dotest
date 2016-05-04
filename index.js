@@ -238,7 +238,7 @@ function output (level, what, result, describe) {
 
   // track script result
   if (!result.state) {
-    counters [level]++;
+    counters[level]++;
   }
 
   // log line
@@ -407,7 +407,7 @@ unitTests.isObject = function isObject (level, what, input) {
  */
 
 unitTests.isArray = function isArray (level, what, input) {
-  var redukt = {
+  var result = {
     state: input instanceof Array,
     data: input
   };
@@ -592,7 +592,7 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
   var typestrTwo = typeStr (two);
   var result = {
     state: one === two,
-    data: input
+    data: two
   };
 
   var describe = {
@@ -620,7 +620,7 @@ unitTests.isNot = function isNot (level, what, one, two) {
   var typestrTwo = typeStr (two);
   var result = {
     state: one !== two,
-    data: input
+    data: two
   };
 
   var describe = {
@@ -664,8 +664,8 @@ unitTests.isRegexp = function isRegexp (level, what, input) {
  */
 
 unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
-  var typestrOne = typeStr (one);
-  var typestrTwo = typeStr (two);
+  var typestrOne = typeStr (input);
+  var typestrTwo = typeStr (regex);
   var result = {
     state: !!~input.match (regex),
     data: input
@@ -696,8 +696,8 @@ unitTests.isCondition = function isCondition (level, what, one, operator, two) {
   var typestrOne = typeStr (one);
   var typestrTwo = typeStr (two);
   var result = {
-    state: input instanceof Date,
-    data: input
+    state: false,
+    data: two
   };
 
   var str = typestrOne + ' ' + colorStr ('yellow', operator) + ' ' + typestrTwo;
