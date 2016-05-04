@@ -33,7 +33,7 @@ doTest.add ('Methods', function (test, fake) {
     .isError ('fail', '.isError', new Error ())
     .isObject ('fail', '.isObject', {})
     .isArray ('fail', '.isArray', [])
-    .isString ('fail', '.isString', '')
+    .isString ('fail', '.isString', 'hello')
     .isNumber ('fail', '.isNumber', 1)
     .isUndefined ('fail', '.isUndefined', fake)
     .isNull ('fail', '.isNull', null)
