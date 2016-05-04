@@ -168,6 +168,10 @@ function done (callback) {
  */
 
 function getType (input) {
+  if (input instanceof Date) {
+    return 'date';
+  }
+
   if (input instanceof RegExp) {
     return 'regexp';
   }
