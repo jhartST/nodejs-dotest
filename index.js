@@ -221,7 +221,7 @@ function typeStr (str) {
     str = str ? 'true' : 'false';
   }
 
-  if (typeMatch && str.length && str.length < 20) {
+  if (typeMatch && str.length && str.length < 50) {
     return colorStr ('magenta', str) + ' (' + type + ')';
   }
 
