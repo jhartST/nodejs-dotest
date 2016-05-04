@@ -237,7 +237,7 @@ function typeStr (str) {
 
   str = str && str.toString () || str;
 
-  if (typeof str === 'string' && str.length < 20) {
+  if (typeof str === 'string' && str.length > 0 && str.length < 20) {
     return colorStr ('magenta', str) + ' (' + type + ')';
   }
 
