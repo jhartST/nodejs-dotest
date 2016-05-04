@@ -632,7 +632,7 @@ unitTests.isNot = function isNot (level, what, one, two) {
   };
 
   var describe = {
-    true: 'is not equal to ' + typestrTwo,
+    true: typestrOne + ' is not equal to ' + typestrTwo,
     false: typestrOne + ' should not be equal to ' + typestrTwo
   };
 
