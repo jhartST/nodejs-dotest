@@ -680,7 +680,7 @@ unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
   };
 
   var describe = {
-    true: 'is matching ' + typestrTwo,
+    true: typestrOne + ' is matching ' + typestrTwo,
     false: typestrOne + ' should be matching ' + typestrTwo
   };
 
