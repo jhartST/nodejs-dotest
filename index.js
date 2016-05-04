@@ -225,7 +225,7 @@ function typeStr (str, noType) {
       str = colorStr ('magenta', str[0])
         + str.slice (1, -1)
         + colorStr ('magenta', str.slice (-1))
-        + (!noType && ' (' + type + ')');
+        + (!noType ? ' (' + type + ')' : '');
 
       return str;
     }
@@ -240,7 +240,7 @@ function typeStr (str, noType) {
 
   if (typeMatch && str.length && str.length <= 50) {
     return colorStr ('magenta', str)
-      + (!noType && ' (' + type + ')');
+      + (!noType ? ' (' + type + ')' : '');
   }
 
   return colorStr ('magenta', type);
