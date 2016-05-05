@@ -67,6 +67,8 @@ doTest.add ('Methods', function (test, fake) {
 
 
 doTest.add ('onExit', function (test) {
+  testsDone++;
+
   doTest.onExit (function (code) {
     test ()
       .info ('This is the onExit() callback')
