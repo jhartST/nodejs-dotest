@@ -17,6 +17,7 @@ var testFunc;
 var queue = [];
 var next = -1;
 var unitTests = {};
+var onExitCallback;
 var counters = {
   fail: 0,
   warn: 0,
@@ -320,6 +321,10 @@ function processExit (fromProcess, code) {
 }
 
 process.on ('exit', function (code) {
+  if (typeof onExitCallback === 'function') {
+    onExitCallback (testFunc, code);
+  }
+
   processExit (true, code);
 });
 
@@ -869,6 +874,11 @@ function add (label, runner) {
 }
 
 
+function onExit (callback) {
+  onExitCallback = callback;
+}
+
+
 /**
  * Module interface
  */
@@ -878,5 +888,6 @@ module.exports = {
   run: run,
   log: log,
   test: test,
-  exit: unitTests.exit
+  exit: unitTests.exit,
+  onExit: onExit
 };
