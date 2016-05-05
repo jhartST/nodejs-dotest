@@ -890,7 +890,7 @@ module.exports = {
   test: test,
   exit: unitTests.exit,
   onExit: onExit,
-  get length() {
+  get length () {
     return queue.length;
   }
 };
