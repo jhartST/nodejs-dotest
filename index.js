@@ -898,6 +898,8 @@ module.exports = {
   test: test,
   exit: unitTests.exit,
   onExit: onExit,
+  colorStr: colorStr,
+  getType: getType,
   get length () {
     return queue.length;
   }
