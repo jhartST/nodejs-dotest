@@ -322,7 +322,7 @@ function processExit (fromProcess, code) {
 
 process.on ('exit', function (code) {
   if (typeof onExitCallback === 'function') {
-    onExitCallback (testFunc, code);
+    onExitCallback (code);
   }
 
   processExit (true, code);
