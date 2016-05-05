@@ -889,5 +889,8 @@ module.exports = {
   log: log,
   test: test,
   exit: unitTests.exit,
-  onExit: onExit
+  onExit: onExit,
+  get length() {
+    return queue.length;
+  }
 };
