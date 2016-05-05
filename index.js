@@ -92,9 +92,13 @@ function log (type, str) {
         depth: null,
         colors: true
       });
-      console.log ();
-      console.log (str.stack);
-      console.log ();
+
+      // node v6 includes stack trace in the Error
+      if (process.versions.node < '6.0.0') {
+        console.log ();
+        console.log (str.stack);
+        console.log ();
+      }
       break;
     case 'object':
       console.dir (str, {
