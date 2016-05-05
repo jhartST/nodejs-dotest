@@ -874,6 +874,14 @@ function add (label, runner) {
 }
 
 
+/**
+ * Set callback that runs when process exits
+ *
+ * @callcack callback
+ * @param callback {function} - `function (code) {}`
+ * @returns {void}
+ */
+
 function onExit (callback) {
   onExitCallback = callback;
 }
