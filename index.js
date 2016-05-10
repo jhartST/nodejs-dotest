@@ -123,11 +123,13 @@ function log (type, str) {
 
 function doNext (index) {
   console.log (
-    '\n'
+    '\n\n'
     + colorStr ('cyan', (index + 1) + '/' + queue.length)
     + '  '
     + colorStr ('bold', queue [index] .label)
   );
+
+  console.log ();
 
   queue [index] .runner (testFunc);
 }
@@ -309,7 +311,7 @@ function processExit (fromProcess, code) {
   var timing = (Date.now () - counters.startTime) / 1000;
 
   if (fromProcess) {
-    console.log ();
+    console.log ('\n');
     log ('info', colorStr ('yellow', counters.fail) + ' errors');
     log ('info', colorStr ('yellow', counters.warn) + ' warnings');
     console.log ();
