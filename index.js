@@ -355,7 +355,7 @@ process.on ('uncaughtException', uncaughtException);
 
 function testLog (level, str) {
   var typestr = typeStr (str);
-  var doDump = !!~typestr.match (/(array|object)/);
+  var doDump = typestr === colorStr ('magenta', 'object') || typestr === colorStr ('magenta', 'array');
 
   if (typeof str === 'string') {
     log (level, str);
