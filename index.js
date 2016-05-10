@@ -355,6 +355,7 @@ process.on ('uncaughtException', uncaughtException);
 
 function testLog (level, str) {
   var typestr = typeStr (str);
+  var doDump = !!~typestr.match (/(array|object)/);
 
   if (typeof str === 'string') {
     log (level, str);
@@ -363,7 +364,7 @@ function testLog (level, str) {
 
   log (level, typestr);
 
-  if (typestr.length >= 60) {
+  if (doDump) {
     log ('object', str);
   }
 }
