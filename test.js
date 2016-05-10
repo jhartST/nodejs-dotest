@@ -62,11 +62,28 @@ doTest.add ('Methods', function (test, fake) {
     .isCondition ('fail', 'test() .isCondition', 1, '<', 2)
     .isEmpty ('fail', 'test() .isEmpty', '')
     .isNotEmpty ('fail', 'test() .isNotEmpty', 'text')
-    .warn ('This is a warn message')
-    .good ('This is a good message')
-    .info ({ hello: 'world' })
     .isExactly ('fail', '.getType', doTest.getType ([]), 'array')
     .isExactly ('fail', '.colorStr', colorTest, colorMatch)
+    .warn ('This is a warn message')
+    .good ('This is a good message')
+    .done ();
+
+  testsDone++;
+});
+
+
+doTest.add ('Method test.info', function (test) {
+  doTest.test ()
+    .info ('-- Short object:')
+    .info ({ hello: 'world' })
+    .info ('-- Long object:')
+    .info (test ())
+
+    .info ('-- Short array:')
+    .info (['one', 'two'])
+    .info ('-- Long array:')
+    .info (process.mainModule.paths)
+
     .done ();
 
   testsDone++;
