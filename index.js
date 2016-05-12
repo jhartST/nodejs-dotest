@@ -859,6 +859,11 @@ function run (wait) {
     log ('note', 'Module version:   ' + colorStr ('yellow', pkg.version));
     log ('note', 'Node.js version:  ' + colorStr ('yellow', process.versions.node));
     log ('note', 'dotest version:   ' + colorStr ('yellow', lib.version));
+
+    if (pkg.bugs && pkg.bugs.url) {
+      console.log ();
+      log ('note', 'Module issues:    ' + colorStr ('yellow', pkg.bugs.url));
+    }
   }
 
   done ();
