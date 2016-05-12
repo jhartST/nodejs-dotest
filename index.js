@@ -240,11 +240,7 @@ function typeStr (str, noType) {
   }
 
   // parse rest
-  str = str && str.toString () || str;
-
-  if (type === 'boolean') {
-    str = str ? 'true' : 'false';
-  }
+  str = String (str);
 
   if (typeMatch && str.length && str.length <= 50) {
     return colorStr ('magenta', str) + doType;
