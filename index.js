@@ -899,6 +899,7 @@ function onExit (callback) {
  */
 
 module.exports = {
+  package: pkg,
   add: add,
   run: run,
   log: log,
