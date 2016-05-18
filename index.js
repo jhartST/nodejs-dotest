@@ -577,7 +577,7 @@ unitTests.isNull = function isNull (level, what, input) {
  * @returns {object} - unitTests
  */
 
-unitTests.isNaN = function isNaN (level, what, input) {
+unitTests.isNaN = function isNan (level, what, input) {
   var result = {
     state: isNaN (input),
     data: input
