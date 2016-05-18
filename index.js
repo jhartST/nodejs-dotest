@@ -25,7 +25,8 @@ var counters = {
 };
 
 var config = {
-  wait: 0
+  wait: 0,
+  noConsole: false
 };
 
 
@@ -322,6 +323,12 @@ function output (level, what, result, describe) {
 function processExit (fromProcess, code) {
   var timing = (Date.now () - counters.startTime) / 1000;
 
+  // library mode
+  if (config.noConsole) {
+    return;
+  }
+
+  // tester mode
   if (fromProcess) {
     console.log ('\n');
     log ('info', colorStr ('yellow', counters.fail) + ' errors');
@@ -865,7 +872,7 @@ testFunc = test;
 function run (wait) {
   config.wait = process.env.DOTEST_WAIT || wait || 0;
 
-  if (next === -1) {
+  if (!config.noConsole && next === -1) {
     log ('note', 'Running tests...\n');
     log ('note', 'Module name:      ' + colorStr ('yellow', pkg.name));
     log ('note', 'Module version:   ' + colorStr ('yellow', pkg.version));
@@ -915,6 +922,7 @@ function onExit (callback) {
  * Change configuration
  *
  * @param name {object, string) - Config param or object
+ * @param [name.noConsole = false] {boolean} - Don't console.log anything
  * @param [value] {string) - Param value if name is a string
  */
 
