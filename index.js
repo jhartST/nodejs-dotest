@@ -184,7 +184,7 @@ function getType (input) {
     return 'regexp';
   }
 
-  if input instanceof Error) {
+  if (input instanceof Error) {
     return 'error';
   }
 
