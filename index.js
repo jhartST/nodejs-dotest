@@ -256,6 +256,15 @@ function typeStr (str, noType) {
     }
   }
 
+  // parse function
+  if (type === 'function') {
+    str = util.inspect (str, {
+      colors: true
+    });
+
+    return str;
+  }
+
   // parse rest
   str = String (str);
 
