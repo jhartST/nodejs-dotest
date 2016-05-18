@@ -386,7 +386,7 @@ process.on ('uncaughtException', uncaughtException);
 
 function testLog (level, str) {
   var typestr = typeStr (str);
-  var doDump = typestr.match (/(object|array)/) && !typestr.match (/ \(\d+\)/);
+  var doDump = typestr.match (/(object|array)/) && typestr.match (/ \(\d+\)/);
 
   if (typeof str === 'string') {
     log (level, str);
