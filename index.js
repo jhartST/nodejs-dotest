@@ -912,6 +912,28 @@ function onExit (callback) {
 
 
 /**
+ * Change configuration
+ *
+ * @param name {object, string) - Config param or object
+ * @param [value] {string) - Param value if name is a string
+ */
+
+function setConfig (name, value) {
+  var key;
+
+  if (name instanceof Object) {
+    for (key in name) {
+      config [key] = name [key];
+    }
+
+    return;
+  }
+
+  config [name] = value;
+};
+
+
+/**
  * Module interface
  */
 
@@ -925,6 +947,7 @@ module.exports = {
   onExit: onExit,
   colorStr: colorStr,
   getType: getType,
+  config: setConfig,
   get length () {
     return queue.length;
   }
