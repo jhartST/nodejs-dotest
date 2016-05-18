@@ -269,7 +269,7 @@ function typeStr (str, noType) {
   // parse rest
   str = String (str);
 
-  if (typeMatch && str.length && str.length <= 50) {
+  if (typeMatch && str.length && str.length <= (50 + length.length)) {
     return colorStr ('magenta', str) + doType;
   }
 
