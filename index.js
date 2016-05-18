@@ -245,7 +245,6 @@ function typeStr (str, noType) {
       colors: true
     });
     str = str.replace ('\n', ' ');
-    str += '\u001b[0m';
 
     if (str.length <= 50) {
       str = colorStr ('magenta', str[0])
@@ -255,6 +254,8 @@ function typeStr (str, noType) {
 
       return str;
     }
+
+    str += '\u001b[0m';
   }
 
   // parse function
@@ -270,7 +271,7 @@ function typeStr (str, noType) {
   // parse rest
   str = String (str);
 
-  if (typeMatch && str.length && str.length <= (50 + length.length)) {
+  if (typeMatch && str.length && str.length <= 50) {
     return colorStr ('magenta', str) + doType;
   }
 
@@ -385,7 +386,7 @@ process.on ('uncaughtException', uncaughtException);
 
 function testLog (level, str) {
   var typestr = typeStr (str);
-  var doDump = typestr.match (/(object|array)/);
+  var doDump = typestr.match (/(object|array)/) && !typestr.match (/ \(\d+\)/);
 
   if (typeof str === 'string') {
     log (level, str);
