@@ -33,6 +33,7 @@ doTest.add ('Module interface', function () {
 doTest.add ('test() shortcut', function (test) {
   doTest.test ()
     .isFunction ('fail', 'test', test)
+    .isObject ('fail', 'test() return', test ())
     .done ();
 
   testsDone++;
