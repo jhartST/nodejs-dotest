@@ -938,7 +938,7 @@ function setConfig (name, value) {
   }
 
   config [name] = value;
-};
+}
 
 
 /**
