@@ -244,6 +244,7 @@ function typeStr (str, noType) {
       depth: null,
       colors: true
     });
+    str += '\u001b[0m';
     str = str.replace ('\n', ' ');
 
     if (str.length <= 50) {
