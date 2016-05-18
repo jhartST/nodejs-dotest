@@ -223,7 +223,7 @@ function typeStr (str, noType) {
   var length = '';
 
   // length
-  switch (str) {
+  switch (type) {
     case 'string':
     case 'array':
       length = ' (' + str.length + ')';
@@ -442,7 +442,7 @@ unitTests.isError = function isError (level, what, input) {
 
 unitTests.isObject = function isObject (level, what, input) {
   var result = {
-    state: getType (input) === 'object',
+    state: input instanceof Object,
     data: input
   };
 
@@ -462,7 +462,7 @@ unitTests.isObject = function isObject (level, what, input) {
 
 unitTests.isArray = function isArray (level, what, input) {
   var result = {
-    state: getType (input) === 'array',
+    state: input instanceof Array,
     data: input
   };
 
@@ -482,7 +482,7 @@ unitTests.isArray = function isArray (level, what, input) {
 
 unitTests.isString = function isString (level, what, input) {
   var result = {
-    state: getType (input) === 'string',
+    state: typeof input === 'string',
     data: input
   };
 
@@ -502,7 +502,7 @@ unitTests.isString = function isString (level, what, input) {
 
 unitTests.isNumber = function isNumber (level, what, input) {
   var result = {
-    state: getType (input) === 'number',
+    state: typeof input === 'number',
     data: input
   };
 
@@ -522,7 +522,7 @@ unitTests.isNumber = function isNumber (level, what, input) {
 
 unitTests.isUndefined = function isUndefined (level, what, input) {
   var result = {
-    state: getType (input) === 'undefined',
+    state: typeof input === 'undefined',
     data: input
   };
 
@@ -542,7 +542,7 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
 
 unitTests.isNull = function isUndefined (level, what, input) {
   var result = {
-    state: getType (input) === 'null',
+    state: input === null,
     data: input
   };
 
@@ -582,7 +582,7 @@ unitTests.isNaN = function isUndefined (level, what, input) {
 
 unitTests.isBoolean = function isBoolean (level, what, input) {
   var result = {
-    state: getType (input) === 'boolean',
+    state: typeof input === 'boolean',
     data: input
   };
 
@@ -602,7 +602,7 @@ unitTests.isBoolean = function isBoolean (level, what, input) {
 
 unitTests.isFunction = function isFunction (level, what, input) {
   var result = {
-    state: getType (input) === 'function',
+    state: typeof input === 'function',
     data: input
   };
 
@@ -622,7 +622,7 @@ unitTests.isFunction = function isFunction (level, what, input) {
 
 unitTests.isDate = function isFunction (level, what, input) {
   var result = {
-    state: getType (input) === 'date',
+    state: input instanceof Date,
     data: input
   };
 
@@ -698,7 +698,7 @@ unitTests.isNot = function isNot (level, what, one, two) {
 
 unitTests.isRegexp = function isRegexp (level, what, input) {
   var result = {
-    state: getType (input) === 'regexp',
+    state: input instanceof RegExp,
     data: input
   };
 
