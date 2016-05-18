@@ -184,7 +184,7 @@ function getType (input) {
     return 'regexp';
   }
 
-  if (getType (input) === 'error') {
+  if input instanceof Error) {
     return 'error';
   }
 
@@ -192,11 +192,11 @@ function getType (input) {
     return 'function';
   }
 
-  if (getType (input) === 'array') {
+  if (input instanceof Array) {
     return 'array';
   }
 
-  if (getType (input) === 'object') {
+  if (input instanceof Object) {
     return 'object';
   }
 
