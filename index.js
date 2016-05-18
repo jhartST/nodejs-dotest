@@ -557,7 +557,7 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
  * @returns {object} - unitTests
  */
 
-unitTests.isNull = function isUndefined (level, what, input) {
+unitTests.isNull = function isNull (level, what, input) {
   var result = {
     state: input === null,
     data: input
@@ -577,7 +577,7 @@ unitTests.isNull = function isUndefined (level, what, input) {
  * @returns {object} - unitTests
  */
 
-unitTests.isNaN = function isUndefined (level, what, input) {
+unitTests.isNaN = function isNaN (level, what, input) {
   var result = {
     state: isNaN (input),
     data: input
@@ -637,7 +637,7 @@ unitTests.isFunction = function isFunction (level, what, input) {
  * @returns {object} - unitTests
  */
 
-unitTests.isDate = function isFunction (level, what, input) {
+unitTests.isDate = function isDate (level, what, input) {
   var result = {
     state: getType (input) === 'date',
     data: input
