@@ -244,8 +244,8 @@ function typeStr (str, noType) {
       depth: null,
       colors: true
     });
-    str += '\u001b[0m';
     str = str.replace ('\n', ' ');
+    str += '\u001b[0m';
 
     if (str.length <= 50) {
       str = colorStr ('magenta', str[0])
