@@ -261,6 +261,7 @@ function typeStr (str, noType) {
     str = util.inspect (str, {
       colors: true
     });
+    str += '\u001b[0m';
 
     return str;
   }
