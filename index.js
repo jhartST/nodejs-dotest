@@ -220,6 +220,22 @@ function typeStr (str, noType) {
   var type = getType (str);
   var doType = !noType ? ' (' + type + ')' : '';
   var typeMatch = type.match (/(string|boolean|number|date|regexp|array)/);
+  var length = '';
+
+  // length
+  switch (str) {
+    case 'string':
+    case 'array':
+      length = ' (' + str.length + ')';
+      break;
+    case 'object':
+    case 'error':
+      length = ' (' + Object.keys (str).length + ')';
+      break;
+    default:
+      length = '';
+      break;
+  }
 
   // parse special
   if (type.match (/(object|array)/)) {
@@ -246,7 +262,7 @@ function typeStr (str, noType) {
     return colorStr ('magenta', str) + doType;
   }
 
-  return colorStr ('magenta', type);
+  return colorStr ('magenta', type) + length;
 }
 
 
