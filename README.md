@@ -63,10 +63,8 @@ name        | default | description
 DOTEST_WAIT | 0       | Pause between tests, in ms (1000 = 1 sec)
 
 
-Methods
--------
-
-### .add
+.add
+----
 **( label, testFunction )**
 
 Add a new test to the queue.
@@ -81,7 +79,8 @@ doTest.add ('App interface', function (test) {
 ```
 
 
-### .run
+.run
+----
 **( [wait] )**
 
 Run the tests from the queue, one by one.
@@ -101,7 +100,8 @@ doTest.run (2000);
 ```
 
 
-### .log
+.log
+----
 **( [type], str )**
 
 Fancy `console.log` with style.
@@ -134,7 +134,8 @@ doTest.log ('note', 'Hello world');
 ```
 
 
-### .exit
+.exit
+-----
 **( )**
 
 Force exit the process, after writing statistics to the console.
@@ -144,7 +145,8 @@ doTest.exit ();
 ```
 
 
-## .test
+.test
+-----
 **( [err] )**
 
 Returns check functions.
@@ -174,7 +176,8 @@ doTest.add ('App interface', function (test) {
 ```
 
 
-#### test() .done
+test() .done
+------------
 **( [callback] )**
 
 Run the next test from the queue.
@@ -183,7 +186,8 @@ Optionally run a `callback` function before the next test.
 See example above.
 
 
-#### test() .exit
+test() .exit
+------------
 **( )**
 
 Alias to [dotest.exit()](#exit).
@@ -197,7 +201,8 @@ test ()
 ```
 
 
-#### test() .info
+test() .info
+------------
 **( message )**
 
 Output 'info' log line.
@@ -217,7 +222,8 @@ test ()
 ```
 
 
-#### test() .good
+test() .good
+------------
 **( message )**
 
 Output 'good' log line.
@@ -236,7 +242,8 @@ test ()
 ```
 
 
-#### test() .warn
+test() .warn
+------------
 **( message )**
 
 Output 'warn' log line.
@@ -255,7 +262,8 @@ test ()
 ```
 
 
-#### test() .fail
+test() .fail
+------------
 **( message )**
 
 Output 'FAIL' log line.
@@ -274,7 +282,8 @@ test ()
 ```
 
 
-#### test() .error
+test() .error
+-------------
 **( err )**
 
 Output 'ERROR' log line with dump and stack trace.
@@ -294,7 +303,8 @@ test ()
 ```
 
 
-#### test() .isError
+test() .isError
+---------------
 **( level, what, input )**
 
 Check if `input` is an instance of _Error_.
@@ -314,7 +324,8 @@ test ()
 ```
 
 
-#### test() .isObject
+test() .isObject
+----------------
 **( level, what, input )**
 
 Check if `input` is an instance of _Object_.
@@ -334,7 +345,8 @@ test ()
 ```
 
 
-#### test() .isArray
+test() .isArray
+---------------
 **( level, what, input )**
 
 Check if `input` is an instance of _Array_.
@@ -354,7 +366,8 @@ test ()
 ```
 
 
-#### test() .isString
+test() .isString
+----------------
 **( level, what, input )**
 
 Check if `input` is a _string_.
@@ -374,7 +387,8 @@ test ()
 ```
 
 
-#### test() .isNumber
+test() .isNumber
+----------------
 **( level, what, input )**
 
 Check if `input` is a _number_.
@@ -394,7 +408,8 @@ test ()
 ```
 
 
-#### test() .isUndefined
+test() .isUndefined
+-------------------
 **( level, what, input )**
 
 Check if `input` is _undefined_.
@@ -416,7 +431,8 @@ function (err, data) {
 ```
 
 
-#### test() .isNull
+test() .isNull
+--------------
 **( level, what, input )**
 
 Check if `input` is _null_.
@@ -438,7 +454,8 @@ function (err, data) {
 ```
 
 
-#### test() .isNaN
+test() .isNaN
+-------------
 **( level, what, input )**
 
 Check if `input` is _NaN_.
@@ -460,7 +477,8 @@ function (err, data) {
 ```
 
 
-#### test() .isBoolean
+test() .isBoolean
+-----------------
 **( level, what, input )**
 
 Check if `input` is a _boolean_.
@@ -480,7 +498,8 @@ test ()
 ```
 
 
-#### test() .isFunction
+test() .isFunction
+------------------
 **( level, what, input )**
 
 Check if `input` is an instance of _Function_.
@@ -500,7 +519,8 @@ test ()
 ```
 
 
-#### test() .isDate
+test() .isDate
+--------------
 **( level, what, input )**
 
 Check if `input` is an instance of _Date_.
@@ -522,7 +542,8 @@ test ()
 ```
 
 
-#### test() .isExactly
+test() .isExactly
+-----------------
 **( level, what, one, two )**
 
 Check if `one` is exactly of the same type and value as `two`.
@@ -543,7 +564,8 @@ test ()
 ```
 
 
-#### test() .isCondition
+test() .isCondition
+-------------------
 **( level, what, one, operator, two )**
 
 Check if the two values meet the condition.
@@ -565,7 +587,8 @@ test ()
 ```
 
 
-#### test() .isEmpty
+test() .isEmpty
+---------------
 **( level, what, input )**
 
 Check if `input` is _undefined_, _null_, or an empty _string_, _object_, _array_ or _Error_.
@@ -587,7 +610,8 @@ test ()
 ```
 
 
-#### test() .isNotEmpty
+test() .isNotEmpty
+------------------
 **( level, what, input )**
 
 Check if `input` is not _undefined_, _null_, or an empty _string_, _object_, _array_ or _Error_.
