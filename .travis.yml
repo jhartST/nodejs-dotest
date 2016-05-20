@@ -5,6 +5,3 @@ node_js:
  - '5'
  - '4'
  - '0.12'
-addons:
-  code_climate:
-    repo_token: f23160d0cc2c1e55f19a1696ba603004f7fb9e5e1db219bc89739ec190259f41
