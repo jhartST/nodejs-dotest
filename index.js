@@ -936,6 +936,7 @@ function onExit (callback) {
  * @param name {object, string) - Config param or object
  * @param [name.noConsole = false] {boolean} - Don't console.log anything
  * @param [value] {string) - Param value if name is a string
+ * @returns config {object} - Current settings
  */
 
 function setConfig (name, value) {
@@ -946,10 +947,11 @@ function setConfig (name, value) {
       config [key] = name [key];
     }
 
-    return;
+    return config;
   }
 
   config [name] = value;
+  return config;
 }
 
 
