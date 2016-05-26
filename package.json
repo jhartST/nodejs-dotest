@@ -8,7 +8,9 @@
   "version": "1.11.0",
   "description": "Yet another unit test runner",
   "main": "index.js",
+  "tonicExampleFilename": "example.js",
   "files": [
+    "example.js",
     "index.js"
   ],
   "scripts": {
