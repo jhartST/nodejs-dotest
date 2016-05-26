@@ -3,6 +3,7 @@ dotest
 
 Yet another unit test runner for Node.js
 
+[![npm](https://img.shields.io/npm/v/dotest.svg?maxAge=3600)](https://github.com/fvdm/nodejs-dotest/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-dotest.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-dotest)
 [![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-dotest.svg)](https://gemnasium.com/github.com/fvdm/nodejs-dotest#development-dependencies)
 
