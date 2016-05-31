@@ -14,7 +14,7 @@
     "index.js"
   ],
   "scripts": {
-    "test": "st=0; bithound check || st=1; eslint . || st=1; node test.js || st=1; exit $st"
+    "test": "st=0; eslint . || st=1; node test.js || st=1; exit $st"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "bithound": "^1.3.0",
     "eslint": "^2.10.2"
   },
   "optionalDependencies": {},
