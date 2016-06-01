@@ -91,7 +91,7 @@ doTest.add ('Method test.info', function (test) {
 });
 
 
-doTest.add ('onExit', function (test) {
+doTest.add ('onExit', function () {
   testsDone++;
 
   doTest.onExit (function (code) {
