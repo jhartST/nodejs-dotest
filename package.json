@@ -5,7 +5,7 @@
     "url": "https://frankl.in"
   },
   "name": "dotest",
-  "version": "1.12.1",
+  "version": "1.12.2",
   "description": "Yet another unit test runner",
   "main": "index.js",
   "tonicExampleFilename": "example.js",
@@ -14,8 +14,7 @@
     "index.js"
   ],
   "scripts": {
-    "test": "st=0; eslint . || st=1; node test.js || st=1; exit $st",
-    "ci-test": "st=0; eslint . || st=1; istanbul cover test.js --report lcovonly --print none || st=1; codeclimate-test-reporter < ./coverage/lcov.info; exit $st"
+    "test": "sh ./test.sh"
   },
   "repository": {
     "type": "git",
