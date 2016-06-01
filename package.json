@@ -14,7 +14,8 @@
     "index.js"
   ],
   "scripts": {
-    "test": "st=0; eslint . || st=1; node test.js || st=1; exit $st"
+    "test": "st=0; eslint . || st=1; node test.js || st=1; exit $st",
+    "ci-test": "st=0; eslint . || st=1; istanbul cover test.js --report lcovonly --print none || st=1; codeclimate-test-reporter < ./coverage/lcov.info; exit $st"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^2.10.2"
+    "codeclimate-test-reporter": "^0.3.1",
+    "eslint": "^2.10.2",
+    "istanbul": "^0.4.3"
   },
   "optionalDependencies": {},
   "engines": {
