@@ -14,7 +14,7 @@
     "index.js"
   ],
   "scripts": {
-    "test": "sh ./test.sh"
+    "test": "bash ./test.sh"
   },
   "repository": {
     "type": "git",
