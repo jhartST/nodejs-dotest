@@ -6,6 +6,7 @@ Yet another unit test runner for Node.js
 [![npm](https://img.shields.io/npm/v/dotest.svg?maxAge=3600)](https://github.com/fvdm/nodejs-dotest/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-dotest.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-dotest)
 [![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-dotest.svg)](https://gemnasium.com/github.com/fvdm/nodejs-dotest#development-dependencies)
+[![Test Coverage](https://codeclimate.com/github/fvdm/nodejs-dotest/badges/coverage.svg)](https://codeclimate.com/github/fvdm/nodejs-dotest/coverage)
 
 [![Console example](https://frankl.in/wp-content/uploads/2016/05/nodejs_dotest_example-340x400.png)](https://frankl.in/micro/nodejs-dotest-console-output)
 
