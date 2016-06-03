@@ -145,6 +145,8 @@ function doNext (index) {
  */
 
 function done (callback) {
+  var timing = (Date.now () - counters.startTime) / 1000;
+
   if (callback instanceof Function) {
     callback (next);
   }
@@ -164,6 +166,21 @@ function done (callback) {
     }
 
     doNext (next);
+    return;
+  }
+
+  // That was the last one
+  console.log ('\n');
+  log ('info', colorStr ('yellow', counters.fail) + ' errors');
+  log ('info', colorStr ('yellow', counters.warn) + ' warnings');
+  console.log ();
+  log ('info', colorStr ('yellow', timing) + ' seconds');
+  console.log ();
+
+  if (counters.fail) {
+    process.exit (1);
+  } else {
+    process.exit (0);
   }
 }
 
@@ -333,23 +350,6 @@ function output (level, what, result, describe) {
  */
 
 function processExit (fromProcess, code) {
-  var timing = (Date.now () - counters.startTime) / 1000;
-
-  // library mode
-  if (config.noConsole) {
-    return;
-  }
-
-  // tester mode
-  if (fromProcess) {
-    console.log ('\n');
-    log ('info', colorStr ('yellow', counters.fail) + ' errors');
-    log ('info', colorStr ('yellow', counters.warn) + ' warnings');
-    console.log ();
-    log ('info', colorStr ('yellow', timing) + ' seconds');
-    console.log ();
-  }
-
   if (counters.fail) {
     process.exit (1);
   } else {
