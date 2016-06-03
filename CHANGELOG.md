@@ -1,3 +1,24 @@
+#### 1.12.3 (2016-6-3)
+
+##### Chores
+
+* **package:** Update eslint version ([3ddbf84a](https://github.com/fvdm/nodejs-dotest/commit/3ddbf84a6b919a4847dec53d0c8083c68a7c0185))
+
+##### Refactors
+
+* **stats:** Moved end stats to done() ([cc0576a7](https://github.com/fvdm/nodejs-dotest/commit/cc0576a70b894c577111b8f93bab798b53e1515c))
+
+##### Tests
+
+* **script:**
+  * Fail when lcov.info submit fails ([ea3060bf](https://github.com/fvdm/nodejs-dotest/commit/ea3060bf76108eaff528fc3691c19dc74646b822))
+  * Removed eslint duplicity ([01db72c7](https://github.com/fvdm/nodejs-dotest/commit/01db72c7c0f1bba2f63909dc7c9d25595155d3df))
+  * Rewrite test.sh ([d43d588f](https://github.com/fvdm/nodejs-dotest/commit/d43d588f0603c729d83fc6c45516e2ee266d8c0f))
+  * Fix codeclimate command, check token ([fde515df](https://github.com/fvdm/nodejs-dotest/commit/fde515dfa8a585c67007aff9d17ccdac8566db7e))
+  * Use bash instead of sh ([d5969db8](https://github.com/fvdm/nodejs-dotest/commit/d5969db81bed3bc91984ddc60447238e3aa32470))
+  * Removed repo check ([f27985e9](https://github.com/fvdm/nodejs-dotest/commit/f27985e92961fa06711c082c7e39cf950edb69ef))
+* **runner:** Use absolute test() instead of alias (#17) ([478c97f4](https://github.com/fvdm/nodejs-dotest/commit/478c97f4c24c9e2361c4383d1e3642b0011cdcce))
+
 #### 1.12.2 (2016-6-1)
 
 ##### Bug Fixes
