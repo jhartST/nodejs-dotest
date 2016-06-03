@@ -9,7 +9,7 @@ doTest.add ('Module interface', function () {
 
   test
     .isObject ('fail', 'exports', doTest)
-    .isFunction ('fail', '.setConfig', doTest.setConfig)
+    .isFunction ('fail', '.config', doTest.config)
     .isFunction ('fail', '.add', doTest.add)
     .isFunction ('fail', '.run', doTest.run)
     .isFunction ('fail', '.log', doTest.log)
@@ -31,19 +31,19 @@ doTest.add ('Module interface', function () {
 });
 
 
-doTest.add ('.setConfig()', function (test) {
-  var arg = doTest.setConfig ('first', true);
-  var obj = doTest.setConfig ({
+doTest.add ('.config()', function (test) {
+  var arg = doTest.config ('first', true);
+  var obj = doTest.config ({
     second: true
   });
 
   test ()
-    .isObject ('fail', '.setConfig argument return', arg)
-    .isExactly ('fail', '.setConfig argument first', arg && arg.first, true)
-    .isUndefined ('fail', '.setConfig argument second', arg && arg.second)
-    .isObject ('fail', '.setConfig object return', obj)
-    .isExactly ('fail', '.setConfig object first', obj && obj.first, true)
-    .isExactly ('fail', '.setConfig object second', obj && obj.second, true)
+    .isObject ('fail', 'argument return', arg)
+    .isExactly ('fail', 'argument first', arg && arg.first, true)
+    .isUndefined ('fail', 'argument second', arg && arg.second)
+    .isObject ('fail', 'object return', obj)
+    .isExactly ('fail', 'object first', obj && obj.first, true)
+    .isExactly ('fail', 'object second', obj && obj.second, true)
     .done ();
 });
 
