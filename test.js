@@ -57,6 +57,24 @@ doTest.add ('test() shortcut', function (test) {
 });
 
 
+doTest.add ('test() .info()', function (test) {
+  doTest.test ()
+    .info ('-- Short object:')
+    .info ({ hello: 'world' })
+    .info ('-- Long object:')
+    .info (test ())
+
+    .info ('-- Short array:')
+    .info (['one', 'two'])
+    .info ('-- Long array:')
+    .info (process.mainModule.paths)
+
+    .done ();
+
+  testsDone++;
+});
+
+
 doTest.add ('Methods', function (test, fake) {
   var colorTest = doTest.colorStr ('magenta', 'magenta');
   var colorMatch = '\u001b[35mmagenta\u001b[0m';
@@ -65,7 +83,7 @@ doTest.add ('Methods', function (test, fake) {
   doTest.log ('.log() This is a plain (preset) message');
 
   doTest.test ()
-    .info ('queue.length: ' + doTest.length)
+    .info ('.length: ' + doTest.length)
     .isError ('fail', 'test() .isError', new Error ())
     .isObject ('fail', 'test() .isObject', {})
     .isArray ('fail', 'test() .isArray', [])
@@ -105,25 +123,8 @@ doTest.add ('Methods', function (test, fake) {
     .good ('This is a good message')
     .done (function () {
       doTest.log ('info', 'test() .done() callback');
+      doTest.log ('info', testsDone + ' of ' + doTest.length + ' tests done');
     });
-
-  testsDone++;
-});
-
-
-doTest.add ('Method test.info', function (test) {
-  doTest.test ()
-    .info ('-- Short object:')
-    .info ({ hello: 'world' })
-    .info ('-- Long object:')
-    .info (test ())
-
-    .info ('-- Short array:')
-    .info (['one', 'two'])
-    .info ('-- Long array:')
-    .info (process.mainModule.paths)
-
-    .done ();
 
   testsDone++;
 });
