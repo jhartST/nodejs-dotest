@@ -40,7 +40,6 @@ doTest.add ('.config()', function (test) {
   test ()
     .isObject ('fail', 'argument return', arg)
     .isExactly ('fail', 'argument first', arg && arg.first, true)
-    .isUndefined ('fail', 'argument second', arg && arg.second)
     .isObject ('fail', 'object return', obj)
     .isExactly ('fail', 'object first', obj && obj.first, true)
     .isExactly ('fail', 'object second', obj && obj.second, true)
