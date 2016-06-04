@@ -1,3 +1,33 @@
+#### 1.12.4 (2016-6-4)
+
+##### Documentation Changes
+
+* **badges:** Replace CodeClimate with Coveralls ([eda18174](https://github.com/fvdm/nodejs-dotest/commit/eda18174511eef0f3ecdb4002a6d7153d9f8fb6d))
+
+##### Refactors
+
+* **package:** Replace CodeClimate with Coveralls ([ce460ad9](https://github.com/fvdm/nodejs-dotest/commit/ce460ad9cbe6253d87bbff4589d2d9b8feefa7e3))
+
+##### Tests
+
+* **runner:**
+  * Add warnings for better coverage ([2eeefa87](https://github.com/fvdm/nodejs-dotest/commit/2eeefa87181c64993f34471d6cde22ca9ac3f9b0))
+  * More correct .config() test ([c1aeb531](https://github.com/fvdm/nodejs-dotest/commit/c1aeb531adca8c13b211d7707ed550714f08a2cf))
+  * Fixed missing testDone's ([9cf79d96](https://github.com/fvdm/nodejs-dotest/commit/9cf79d962192f8a0c97ad6edd01aab8607f1deb4))
+  * Check if all tests did run ([66d7352f](https://github.com/fvdm/nodejs-dotest/commit/66d7352fe0c4391f6cead609e6aabae003f9830f))
+  * Cover and log testsDone ([63a2fb0d](https://github.com/fvdm/nodejs-dotest/commit/63a2fb0d14a122a3ba49566ddb85aec1e0425ba4))
+  * Removed onExit() test ([84293ed0](https://github.com/fvdm/nodejs-dotest/commit/84293ed0f224dee5dd38d46068e505961ee1f9a5))
+  * Fixed some erros and bad refs ([80e0c510](https://github.com/fvdm/nodejs-dotest/commit/80e0c510420a4b99ebcbd79713994a221b45c510))
+  * No need to check .config() second prop on argument ([0b4f5353](https://github.com/fvdm/nodejs-dotest/commit/0b4f535349a1021f9d7b50c6f69cc87685a2be44))
+  * Fixed isNotEmpty's being empty ([0741408c](https://github.com/fvdm/nodejs-dotest/commit/0741408c01ce33e0fe10aacbedc3695d13eb543f))
+  * Fixed setConfig() is config() ([52eb69ff](https://github.com/fvdm/nodejs-dotest/commit/52eb69ff747cf5668555c261d1b2de9f8ea076b8))
+  * Add .setConfig() and argument tests ([c9102d44](https://github.com/fvdm/nodejs-dotest/commit/c9102d44d7da71289171edcf7a007b587eb644f0))
+* **config:** Warn instead of fail on undefined ([783c2c83](https://github.com/fvdm/nodejs-dotest/commit/783c2c83dc676b009ab43fa93881c82bcabd2799))
+* **lint:** Fixed missing semicolons ([99db13ed](https://github.com/fvdm/nodejs-dotest/commit/99db13ed2fc7f34ed06ffc1d67c71bc5fa9d1671))
+* **script:**
+  * Only check we're on Travis ([3f0fb69c](https://github.com/fvdm/nodejs-dotest/commit/3f0fb69ce4abb5a95237cd575b207bb19af72620))
+  * Replace CodeClimate with Coveralls ([c1ed3347](https://github.com/fvdm/nodejs-dotest/commit/c1ed33478099937f356f86a317c740860641e386))
+
 #### 1.12.3 (2016-6-3)
 
 ##### Chores
