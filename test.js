@@ -61,6 +61,9 @@ doTest.add ('Methods', function (test, fake) {
   var colorTest = doTest.colorStr ('magenta', 'magenta');
   var colorMatch = '\u001b[35mmagenta\u001b[0m';
 
+  doTest.log ('.log() This is a plain (default) message')
+  doTest.log ('.log() This is a plain (preset) message')
+
   doTest.test ()
     .info ('queue.length: ' + doTest.length)
     .isError ('fail', 'test() .isError', new Error ())
@@ -82,7 +85,7 @@ doTest.add ('Methods', function (test, fake) {
     .isCondition ('fail', 'test() .isCondition >', 2, '>', 1)
     .isCondition ('fail', 'test() .isCondition <=', 1, '<=', 2)
     .isCondition ('fail', 'test() .isCondition >=', 2, '>=', 2)
-    .isCondition ('fail', 'test() .isCondition invalid', 1, '', 2)
+    .isCondition ('warn', 'test() .isCondition invalid', 1, '', 2)
     .isEmpty ('fail', 'test() .isEmpty undefined', undefined)
     .isEmpty ('fail', 'test() .isEmpty null', null)
     .isEmpty ('fail', 'test() .isEmpty string', '')
@@ -98,8 +101,6 @@ doTest.add ('Methods', function (test, fake) {
     .isExactly ('fail', '.getType', doTest.getType ([]), 'array')
     .isExactly ('fail', '.colorStr', colorTest, colorMatch)
     .isEmpty ('warn', 'output() warn', 'test warning')
-    .log ('This is a plain (default) message')
-    .log ('This is a plain (preset) message')
     .warn ('This is a warn message')
     .good ('This is a good message')
     .done (function () {
