@@ -129,18 +129,4 @@ doTest.add ('Method test.info', function (test) {
 });
 
 
-doTest.add ('onExit', function () {
-  testsDone++;
-
-  doTest.onExit (function (code) {
-    doTest.test ()
-      .info ('This is the onExit() callback')
-      .isNumber ('fail', 'code', code)
-      .isExactly ('warn', 'code', code, 0)
-      .isExactly ('warn', 'testsDone', testsDone, doTest.length)
-      .done ();
-  });
-});
-
-
 doTest.run (1);
