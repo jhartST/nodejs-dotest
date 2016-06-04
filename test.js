@@ -33,13 +33,17 @@ doTest.add ('Module interface', function () {
 
 doTest.add ('.config()', function (test) {
   var arg = doTest.config ('first', true);
-  var obj = doTest.config ({
+  var obj;
+
+  test ()
+    .isObject ('fail', 'argument return', arg)
+    .isExactly ('fail', 'argument first', arg && arg.first, true);
+
+  obj = doTest.config ({
     second: true
   });
 
   test ()
-    .isObject ('fail', 'argument return', arg)
-    .isExactly ('fail', 'argument first', arg && arg.first, true)
     .isObject ('fail', 'object return', obj)
     .isExactly ('fail', 'object first', obj && obj.first, true)
     .isExactly ('fail', 'object second', obj && obj.second, true)
