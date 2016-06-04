@@ -123,10 +123,16 @@ doTest.add ('Methods', function (test, fake) {
     .good ('This is a good message')
     .done (function () {
       doTest.log ('info', 'test() .done() callback');
-      doTest.log ('info', testsDone + ' of ' + doTest.length + ' tests done');
     });
 
   testsDone++;
+});
+
+
+doTest.add ('All tests done', function (test) {
+  test ()
+    .isExactly ('fail', 'testsDone', testsDone, doTest.length - 1)
+    .done ();
 });
 
 
