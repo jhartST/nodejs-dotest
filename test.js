@@ -61,8 +61,8 @@ doTest.add ('Methods', function (test, fake) {
   var colorTest = doTest.colorStr ('magenta', 'magenta');
   var colorMatch = '\u001b[35mmagenta\u001b[0m';
 
-  doTest.log ('.log() This is a plain (default) message')
-  doTest.log ('.log() This is a plain (preset) message')
+  doTest.log ('.log() This is a plain (default) message');
+  doTest.log ('.log() This is a plain (preset) message');
 
   doTest.test ()
     .info ('queue.length: ' + doTest.length)
