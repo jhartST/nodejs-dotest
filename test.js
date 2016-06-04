@@ -44,6 +44,8 @@ doTest.add ('.config()', function (test) {
     .isExactly ('fail', 'object first', obj && obj.first, true)
     .isExactly ('fail', 'object second', obj && obj.second, true)
     .done ();
+
+  testsDone++;
 });
 
 
@@ -130,8 +132,10 @@ doTest.add ('Methods', function (test, fake) {
 
 
 doTest.add ('All tests done', function (test) {
+  testsDone++;
+
   test ()
-    .isExactly ('fail', 'testsDone', testsDone, doTest.length - 1)
+    .isExactly ('fail', 'testsDone', testsDone, doTest.length)
     .done ();
 });
 
