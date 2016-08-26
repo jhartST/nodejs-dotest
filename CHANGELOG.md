@@ -1,3 +1,9 @@
+#### 1.13.3 (2016-8-26)
+
+##### Bug Fixes
+
+* **runner:** Another attempt to fix node v4 paths ([0c550010](https://github.com/fvdm/nodejs-dotest/commit/0c5500102323dff182e8b353f2fbe8edf8c06fe0))
+
 #### 1.13.2 (2016-8-26)
 
 ##### Bug Fixes
