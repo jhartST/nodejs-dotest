@@ -15,7 +15,7 @@ echo
 echo
 
 echo "Running ESLint..."
-./node_modules/.bin/eslint . || result=1
+./node_modules/.bin/eslint *.js lib/ test/ || result=1
 echo
 
 ./node_modules/.bin/istanbul cover test.js || result=1
