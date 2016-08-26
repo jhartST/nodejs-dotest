@@ -26,8 +26,7 @@
   "bugs": {
     "url": "https://github.com/fvdm/nodejs-dotest/issues"
   },
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "coveralls": "^2.11.9",
     "eslint": "^3.0.0",
     "istanbul": "^0.4.3"
