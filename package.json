@@ -35,6 +35,11 @@
     "node": ">=4.0.0"
   },
   "keywords": [
+    "coverage",
+    "coveralls",
+    "eslint",
+    "istanbul",
+    "lint",
     "test",
     "unittest"
   ],
