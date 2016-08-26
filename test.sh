@@ -1,6 +1,19 @@
 #!/bin/bash
 result=0
 
+thisTag=`git describe --tags --abbrev=0`
+lastTag=`git describe --tags --abbrev=0 HEAD^`
+
+if [ "$thisTag" == "$lastTag" ]; then
+  thisTag="HEAD"
+fi
+
+echo "Commits since $lastTag to $thisTag"
+echo
+git log $lastTag..HEAD --oneline --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+echo
+echo
+
 echo "Running ESLint..."
 ./node_modules/.bin/eslint . || result=1
 echo
