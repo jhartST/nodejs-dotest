@@ -1,3 +1,9 @@
+#### 1.13.2 (2016-8-26)
+
+##### Bug Fixes
+
+* **compat:** Fixed global bins for node v4 ([7d3ac8aa](https://github.com/fvdm/nodejs-dotest/commit/7d3ac8aab15caaa28dbd814808950323ac0b2019))
+
 #### 1.13.1 (2016-8-26)
 
 ##### Bug Fixes
