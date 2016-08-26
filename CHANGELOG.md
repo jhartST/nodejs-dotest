@@ -1,3 +1,9 @@
+#### 1.13.1 (2016-8-26)
+
+##### Bug Fixes
+
+* **compat:** Fixed paths for node v4 ([10d61aa9](https://github.com/fvdm/nodejs-dotest/commit/10d61aa953f244c861194778369b470b9992cc10))
+
 ### 1.13.0 (2016-8-26)
 
 ##### Chores
