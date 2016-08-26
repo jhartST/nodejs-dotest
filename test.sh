@@ -4,10 +4,7 @@ nodebin=`pwd`/node_modules/.bin
 
 
 # Detect ancient npm version
-npmVersion=`npm -v`
-npmOld=`echo 'console.log ("$npmVersion" < "3");' | node`
-
-if [ $npmOld == "true" ]; then
+if [ ! -f $nodebin/coveralls ]; then
   nodebin=`pwd`/node_modules/dotest/node_modules/.bin
 fi
 
