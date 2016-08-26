@@ -6,7 +6,7 @@
   },
   "name": "dotest",
   "version": "1.12.4",
-  "description": "Yet another unit test runner",
+  "description": "One dev dependency to run ESLint, your test.js, coverage and report to Coveralls.io",
   "main": "index.js",
   "tonicExampleFilename": "example.js",
   "files": [
