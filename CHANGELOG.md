@@ -1,3 +1,45 @@
+### 1.13.0 (2016-8-26)
+
+##### Chores
+
+* **package:**
+  * Update npm keywords ([d0a6912f](https://github.com/fvdm/nodejs-dotest/commit/d0a6912f445239a5ce085e265eab71b27b298bda))
+  * Update npm description ([c62e341c](https://github.com/fvdm/nodejs-dotest/commit/c62e341cd910f0b7582b13bf0777c1a95786beea))
+  * Update dependencies ([15f1e916](https://github.com/fvdm/nodejs-dotest/commit/15f1e91682c130a4699d470b6acd11d866ae1c1d))
+  * update eslint to version 3.0.0 (#18) ([573af080](https://github.com/fvdm/nodejs-dotest/commit/573af08094a671ee3ea74bd685740a0ea99e13af))
+  * Remove obsolete Codeclimate config ([3def9bf7](https://github.com/fvdm/nodejs-dotest/commit/3def9bf79c27ba3085075da49b22486b1872f542))
+  * Update eslint version ([2c299435](https://github.com/fvdm/nodejs-dotest/commit/2c299435384a343f79ed7a3a904b1d6a0d309c10))
+  * Minor clean up ([10ac84f5](https://github.com/fvdm/nodejs-dotest/commit/10ac84f5e162f2c5eb92fb7c80e8e6d28c226a4e))
+
+##### Documentation Changes
+
+* **badges:** Added bitHound status badges ([a32eb1b1](https://github.com/fvdm/nodejs-dotest/commit/a32eb1b14c491d30b27d72bac93724642b51bde4))
+* **readme:**
+  * Fixed minor typo ([2fe25b2c](https://github.com/fvdm/nodejs-dotest/commit/2fe25b2c4a85411117fd3a83911f96adc857e5e8))
+  * Describe new test runner ([77e9aeaf](https://github.com/fvdm/nodejs-dotest/commit/77e9aeaf86565d208c52a6c5c85392f4cf38c939))
+
+##### New Features
+
+* **package:**
+  * Install global dotest command ([5f392384](https://github.com/fvdm/nodejs-dotest/commit/5f392384d7954df20153821a2bbdb30f48bb8040))
+  * Include test.sh in release ([55f31838](https://github.com/fvdm/nodejs-dotest/commit/55f31838c39d611398c6b855eb1adbe37d5e8c38))
+
+##### Refactors
+
+* **main:** Also strip test suffix from package dir ([fbdc4357](https://github.com/fvdm/nodejs-dotest/commit/fbdc4357aafbcefac7415fd4b7a28d05e49ec662))
+* **package:**
+  * Dev deps are now the main deps ([0cf24b47](https://github.com/fvdm/nodejs-dotest/commit/0cf24b4784113461938707dc9f121c9b1d8c5fa8))
+  * Minimum supported node v4.0 ([575254ed](https://github.com/fvdm/nodejs-dotest/commit/575254edef8d2e493d4491038b3884d001a43b6e))
+
+##### Tests
+
+* **eslint:** Warn on underscore dangle ([73ba0fea](https://github.com/fvdm/nodejs-dotest/commit/73ba0fea4f2a35cc1220996d36c7de2baf553542))
+* **runner:**
+  * Only lint package scripts ([84101c27](https://github.com/fvdm/nodejs-dotest/commit/84101c27c1693c9dca5dbea71e48b3541170209e))
+  * Log commits since last release ([77b4a1aa](https://github.com/fvdm/nodejs-dotest/commit/77b4a1aa3d64577a6576e7c7ec641baa45db89b2))
+  * More verbose console ([ba45f2e8](https://github.com/fvdm/nodejs-dotest/commit/ba45f2e8701ef351f43e49fa18f635265f1db5a1))
+* **lint:** Update eslint to ES6 ([242eef65](https://github.com/fvdm/nodejs-dotest/commit/242eef6591c9e2e7653cf44878b41c4560451eee))
+
 #### 1.12.4 (2016-6-4)
 
 ##### Documentation Changes
