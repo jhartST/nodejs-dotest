@@ -9,7 +9,7 @@ License:        Unlicense (public domain, see LICENSE file)
 
 var path = require ('path');
 var util = require ('util');
-var dir = path.parse (process.mainModule.filename) .dir.replace (/\/lib$/, '');
+var dir = path.parse (process.mainModule.filename) .dir.replace (/\/(lib|test)$/, '');
 var pkg = require (path.join (dir, 'package.json'));
 var lib = require (path.join (__dirname, 'package.json'));
 
