@@ -1,7 +1,7 @@
 dotest
 ======
 
-One dev dependency to run ESLint, your test.js, coverage and report to Coveralls.
+One dev dependency to run ESLint, your test.js, coverage and report to Coveralls.io
 Or only run the test.js without doing anything else.
 
 * It first lists all new commits sinces the last release (tag) without their relative date and author
