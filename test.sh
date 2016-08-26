@@ -1,6 +1,12 @@
 #!/bin/bash
 nodebin=`pwd`/node_modules/.bin
+npmVersion=`npm -v`
+npmOld=`echo 'console.log ("$npmVersion" < "3");' | node`
 result=0
+
+if [ $npmOld == "true" ]; then
+  nodebin=`pwd`/node_modules/dotest/node_modules/.bin
+fi
 
 thisTag=`git describe --tags --abbrev=0`
 lastTag=`git describe --tags --abbrev=0 HEAD^`
