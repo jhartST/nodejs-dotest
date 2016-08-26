@@ -16,6 +16,9 @@
   "scripts": {
     "test": "bash ./test.sh"
   },
+  "bin": {
+    "dotest": "./test.sh"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/fvdm/nodejs-dotest.git"
