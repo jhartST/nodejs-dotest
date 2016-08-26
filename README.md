@@ -12,8 +12,9 @@ Or only run the test.js without doing anything else.
 
 [![npm](https://img.shields.io/npm/v/dotest.svg?maxAge=3600)](https://github.com/fvdm/nodejs-dotest/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-dotest.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-dotest)
-[![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-dotest.svg)](https://gemnasium.com/github.com/fvdm/nodejs-dotest#development-dependencies)
 [![Coverage Status](https://coveralls.io/repos/github/fvdm/nodejs-dotest/badge.svg?branch=master)](https://coveralls.io/github/fvdm/nodejs-dotest?branch=master)
+[![Dependencies](https://www.bithound.io/github/fvdm/nodejs-dotest/badges/dependencies.svg)](https://www.bithound.io/github/fvdm/nodejs-dotest/develop/dependencies/npm)
+[![Code Quality](https://www.bithound.io/github/fvdm/nodejs-dotest/badges/code.svg)](https://www.bithound.io/github/fvdm/nodejs-dotest)
 
 [![Console example](https://frankl.in/wp-content/uploads/2016/05/nodejs_dotest_example-340x400.png)](https://frankl.in/micro/nodejs-dotest-console-output)
 
