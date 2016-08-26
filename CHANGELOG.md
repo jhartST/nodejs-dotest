@@ -1,3 +1,9 @@
+#### 1.13.5 (2016-8-26)
+
+##### Bug Fixes
+
+* **runner:** Yet another ancient npm fix attempt ([10a8a634](https://github.com/fvdm/nodejs-dotest/commit/10a8a63401dd72b0e062480e71bffe6555048fa0))
+
 #### 1.13.4 (2016-8-26)
 
 ##### Chores
