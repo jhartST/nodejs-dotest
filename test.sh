@@ -1,4 +1,5 @@
 #!/bin/bash
+nodebin=`pwd`/node_modules/.bin
 result=0
 
 thisTag=`git describe --tags --abbrev=0`
@@ -15,15 +16,15 @@ echo
 echo
 
 echo "Running ESLint..."
-eslint *.js lib/ test/ || result=1
+$nodebin/eslint *.js lib/ test/ || result=1
 echo
 
-istanbul cover test.js || result=1
+$nodebin/istanbul cover test.js || result=1
 
 if [ "$TRAVIS" == "true" ]; then
   echo
   echo "Sending coverage report to Coveralls..."
-  cat ./coverage/lcov.info | coveralls || result=1
+  cat `pwd`/coverage/lcov.info | $nodebin/coveralls || result=1
 fi
 
 exit $result
