@@ -27,9 +27,9 @@
     "url": "https://github.com/fvdm/nodejs-dotest/issues"
   },
   "dependencies": {
-    "coveralls": "^2.11.9",
-    "eslint": "^3.0.0",
-    "istanbul": "^0.4.3"
+    "coveralls": "^2.11.12",
+    "eslint": "^3.3.1",
+    "istanbul": "^0.4.5"
   },
   "engines": {
     "node": ">=4.0.0"
