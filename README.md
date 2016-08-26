@@ -1,7 +1,14 @@
 dotest
 ======
 
-Yet another unit test runner for Node.js
+One dev dependency to run ESLint, your test.js, coverage and report to Coveralls.
+Or only run the test.js without doing anything else.
+
+* It first lists all new commits sinces the last release (tag) without their relative date and author
+* Then runs ESLint with your package's `.eslintrc` config
+* Finally it runs your `test.js` with `istanbul` for coverage
+* When it detects Travis CI it will also submit the coverage report to Coveralls.io
+
 
 [![npm](https://img.shields.io/npm/v/dotest.svg?maxAge=3600)](https://github.com/fvdm/nodejs-dotest/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-dotest.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-dotest)
@@ -13,6 +20,8 @@ Yet another unit test runner for Node.js
 
 Example
 -------
+
+**test.js**
 
 ```js
 // Load test runner and your app
@@ -42,6 +51,27 @@ doTest.add ('App methodOne', function (test) {
 // Run the tests
 doTest.run ();
 ```
+
+**package.json**
+
+Full test including ESLint, test.js, coverage report and Coveralls.io submit.
+
+```json
+  "scripts": {
+    "test": "dotest"
+  }
+```
+
+Or just run your `test.js`
+
+```json
+  "scripts": {
+    "test": "node test.js"
+  }
+```
+  
+
+Just run `npm test`
 
 
 Installation
