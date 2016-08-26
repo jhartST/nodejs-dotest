@@ -15,15 +15,15 @@ echo
 echo
 
 echo "Running ESLint..."
-./node_modules/.bin/eslint *.js lib/ test/ || result=1
+./node_modules/eslint/bin/eslint.js *.js lib/ test/ || result=1
 echo
 
-./node_modules/.bin/istanbul cover test.js || result=1
+./node_modules/istanbul/lib/cli.js cover test.js || result=1
 
 if [ "$TRAVIS" == "true" ]; then
   echo
   echo "Sending coverage report to Coveralls..."
-  cat ./coverage/lcov.info | ./node_modules/.bin/coveralls || result=1
+  cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js || result=1
 fi
 
 exit $result
