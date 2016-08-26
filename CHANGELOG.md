@@ -1,3 +1,13 @@
+#### 1.13.4 (2016-8-26)
+
+##### Chores
+
+* **runner:** Added code comments ([1ae4f3ec](https://github.com/fvdm/nodejs-dotest/commit/1ae4f3ece72c17d0779366616d3ca3dbbbb94a31))
+
+##### Bug Fixes
+
+* **runner:** Fixed bin paths for old npm v2 ([d8c34f5d](https://github.com/fvdm/nodejs-dotest/commit/d8c34f5d289e1f5d088ea95873845f4244ff4d68))
+
 #### 1.13.3 (2016-8-26)
 
 ##### Bug Fixes
