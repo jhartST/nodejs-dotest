@@ -1,3 +1,28 @@
+#### 1.13.6 (2016-10-22)
+
+##### Chores
+
+* **runner:** Describe exit statement ([cd8d4050](https://github.com/fvdm/nodejs-dotest/commit/cd8d4050e35a276fe7503e370d30fa000181dadf))
+* **develop:** Added bitHound config ([46f7f44e](https://github.com/fvdm/nodejs-dotest/commit/46f7f44e28f66da686cb28a8ee1370e8e152e005))
+
+##### Documentation Changes
+
+* **badges:** Moved just below intro ([9148a1ac](https://github.com/fvdm/nodejs-dotest/commit/9148a1ac83febb85890b05c6dcf31aa1132a3382))
+
+##### Code Style Changes
+
+* **eslint:**
+  * Ignore complexity on typeStr() (#14) ([8e6b5e6c](https://github.com/fvdm/nodejs-dotest/commit/8e6b5e6c21ef14cbec61c75268374b79ed1d12d5))
+  * Ignore complexity on log() (#15) ([5a485d13](https://github.com/fvdm/nodejs-dotest/commit/5a485d139b76f0f9a08f8d4a804bd54ced66e43c))
+* **runner:**
+  * Cleaner commit log formatting ([2e27958a](https://github.com/fvdm/nodejs-dotest/commit/2e27958aad5c7a9352ed021942159fd931a4ae5e))
+  * Commits author not in bold ([b6a0e087](https://github.com/fvdm/nodejs-dotest/commit/b6a0e0876879ed6b9029299477c4945c67dbe671))
+
+##### Tests
+
+* **eslint:** Ignore no-undefined on Methods test (#16) ([5d2d1224](https://github.com/fvdm/nodejs-dotest/commit/5d2d1224c771bfca3fe4859baf7a60f5a2dca867))
+* **config:** Use dynamic node versions on Travis CI ([3fc1bae6](https://github.com/fvdm/nodejs-dotest/commit/3fc1bae66470410ec4b5688078cf86a80fdd5dcf))
+
 #### 1.13.5 (2016-8-26)
 
 ##### Bug Fixes
