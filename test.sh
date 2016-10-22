@@ -41,4 +41,6 @@ if [ "$TRAVIS" == "true" ]; then
   cat `pwd`/coverage/lcov.info | $nodebin/coveralls || result=1
 fi
 
+
+# All done, return exit status
 exit $result
