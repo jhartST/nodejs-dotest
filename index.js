@@ -55,6 +55,8 @@ function colorStr (color, str) {
 }
 
 
+/* eslint-disable complexity */
+
 /**
  * console.log with style
  *
@@ -113,6 +115,8 @@ function log (type, str) {
       break;
   }
 }
+
+/* eslint-enable complexity */
 
 
 /**
