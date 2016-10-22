@@ -88,6 +88,8 @@ doTest.add ('Methods', function (test, fake) {
   doTest.log ('.log() This is a plain (default) message');
   doTest.log ('.log() This is a plain (preset) message');
 
+  /* eslint-disable no-undefined */
+
   doTest.test ()
     .info ('.length: ' + doTest.length)
     .isError ('fail', 'test() .isError', new Error ())
@@ -137,6 +139,8 @@ doTest.add ('Methods', function (test, fake) {
     .done (function () {
       doTest.log ('info', 'test() .done() callback');
     });
+
+  /* eslint-enable no-undefined */
 
   testsDone++;
 });
