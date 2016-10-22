@@ -230,6 +230,8 @@ function getType (input) {
 }
 
 
+/* eslint-disable complexity */
+
 /**
  * Get formatted var type for console
  *
@@ -298,6 +300,8 @@ function typeStr (str, noType) {
 
   return colorStr ('magenta', type) + length;
 }
+
+/* eslint-enable complexity */
 
 
 /**
