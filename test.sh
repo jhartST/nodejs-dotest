@@ -19,7 +19,7 @@ fi
 
 echo "Commits since $lastTag to $thisTag"
 echo
-git log $lastTag..HEAD --oneline --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
+git log $lastTag..HEAD --oneline --pretty=format:'%C(green)%h%C(reset)  %<(12)%C(blue)%cr%C(reset)% C(red)%D%C(reset)% C(cyan)%s%C(reset)' --abbrev-commit
 echo
 echo
 
