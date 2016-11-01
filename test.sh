@@ -5,7 +5,7 @@ repourl=`npm view . repository.url | sed 's/^git:/https:/' | sed 's/\.git$//'`
 
 
 # Detect ancient npm version
-if [[ ! -f $nodebin/coveralls ]]; then
+if [[ ! -f "$nodebin/coveralls" ]]; then
   nodebin=`pwd`/node_modules/dotest/node_modules/.bin
 fi
 
@@ -28,19 +28,19 @@ echo
 
 # ESLint
 echo "Running ESLint..."
-$nodebin/eslint *.js lib/ test/ || result=1
+"$nodebin/eslint" *.js lib/ test/ || result=1
 echo
 
 
 # Run test script with coverage
-$nodebin/istanbul cover test.js || result=1
+"$nodebin/istanbul" cover test.js || result=1
 
 
 # Submit coverage to Coveralls.io
 if [ "$TRAVIS" == "true" ]; then
   echo
   echo "Sending coverage report to Coveralls..."
-  cat `pwd`/coverage/lcov.info | $nodebin/coveralls || result=1
+  cat `pwd`/coverage/lcov.info | "$nodebin/coveralls" || result=1
 fi
 
 
