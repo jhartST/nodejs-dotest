@@ -1,3 +1,19 @@
+### 1.14.0 (2016-11-1)
+
+##### New Features
+
+* **runner:** Print GitHub compare URL ([87e6ecb7](https://github.com/fvdm/nodejs-dotest/commit/87e6ecb7f95d008f0985ddbca83539a604b79dfe))
+
+##### Bug Fixes
+
+* **runner:**
+  * Properly quote bin paths ([e81f2c4d](https://github.com/fvdm/nodejs-dotest/commit/e81f2c4dc5262299d99650da73ea632b10424d3d))
+  * Fixed binary operator on condition ([97e762a8](https://github.com/fvdm/nodejs-dotest/commit/97e762a81ba596c411256105dcc0c489f42f1dbb))
+
+##### Refactors
+
+* **runner:** Prettier commits report ([92b22118](https://github.com/fvdm/nodejs-dotest/commit/92b221181a92adc38d3a05fce6809eb354c3e2e4))
+
 #### 1.13.6 (2016-10-22)
 
 ##### Chores
