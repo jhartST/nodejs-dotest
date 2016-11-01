@@ -19,9 +19,10 @@ if [ "$thisTag" == "$lastTag" ]; then
 fi
 
 echo "Commits since $lastTag to $thisTag"
+echo
 echo "$repourl/compare/$lastTag...$thisTag"
 echo
-git log $lastTag..HEAD --oneline --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
+git log $lastTag..HEAD --oneline --pretty=format:'%C(green)%h%Creset -%C(red)%d%Creset %C(yellow)%s%Creset %C(blue)(%cr)' --abbrev-commit
 echo
 echo
 
