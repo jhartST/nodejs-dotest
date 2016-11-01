@@ -4,7 +4,7 @@ nodebin=`pwd`/node_modules/.bin
 
 
 # Detect ancient npm version
-if [ ! -f $nodebin/coveralls ]; then
+if [[ ! -f $nodebin/coveralls ]]; then
   nodebin=`pwd`/node_modules/dotest/node_modules/.bin
 fi
 
