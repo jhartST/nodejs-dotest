@@ -1,6 +1,7 @@
 #!/bin/bash
 result=0
 nodebin=`pwd`/node_modules/.bin
+repourl=`npm view . repository.url | sed 's/^git:/https:/' | sed 's/\.git$//'`
 
 
 # Detect ancient npm version
@@ -18,6 +19,7 @@ if [ "$thisTag" == "$lastTag" ]; then
 fi
 
 echo "Commits since $lastTag to $thisTag"
+echo "$repourl/compare/$lastTag...$thisTag"
 echo
 git log $lastTag..HEAD --oneline --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit
 echo
