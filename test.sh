@@ -1,7 +1,7 @@
 #!/bin/bash
 result=0
 nodebin=`pwd`/node_modules/.bin
-repourl=`npm view . repository.url | sed 's/^git:/https:/' | sed 's/\.git$//'`
+repourl=`git remote get-url origin | sed 's/git@\(.*\):\(.*\)\.git$/https:\/\/\1\/\2/'`
 
 
 # Detect ancient npm version
