@@ -1,7 +1,8 @@
 #!/bin/bash
 result=0
 nodebin=`pwd`/node_modules/.bin
-repourl=`git remote get-url origin | sed 's/git@\(.*\):\(.*\)\.git$/https:\/\/\1\/\2/'`
+reposlug=`cat .git/config | egrep -o 'git@github\.com:[^/]+/.+.git' | cut -d : -f 2 | sed 's/.git//'`
+repourl="https://github.com/$reposlug"
 
 
 # Detect ancient npm version
