@@ -4,6 +4,13 @@ nodebin=`pwd`/node_modules/.bin
 reposlug=`cat .git/config | grep -oE 'github\.com:.+.git' | sed 's/:/\//' | sed 's/.git//'`
 repourl="https://github.com/$reposlug"
 
+echo '--------------------'
+echo 'UGLY TRAVIS CI DEBUG'
+echo '--------------------'
+echo
+cat .git/config
+echo
+
 
 # Detect ancient npm version
 if [[ ! -f "$nodebin/coveralls" ]]; then
