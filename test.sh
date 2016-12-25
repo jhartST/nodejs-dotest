@@ -1,7 +1,7 @@
 #!/bin/bash
 result=0
 nodebin=`pwd`/node_modules/.bin
-reposlug=`cat .git/config | egrep -o 'git@github\.com:[^/]+/.+.git' | cut -d : -f 2 | sed 's/.git//'`
+reposlug=`cat .git/config | grep -oE 'github\.com:.+.git' | sed 's/:/\//' | sed 's/.git//'`
 repourl="https://github.com/$reposlug"
 
 
