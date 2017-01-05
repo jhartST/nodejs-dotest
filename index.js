@@ -983,6 +983,7 @@ function setConfig (name, value) {
 
 module.exports = {
   package: pkg,
+  githubRepo: githubRepo,
   add: add,
   run: run,
   log: log,
