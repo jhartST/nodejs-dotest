@@ -9,6 +9,7 @@ doTest.add ('Module interface', function () {
 
   test
     .isObject ('fail', 'exports', doTest)
+    .isObject ('fail', '.package', doTest.package)
     .isFunction ('fail', '.config', doTest.config)
     .isFunction ('fail', '.add', doTest.add)
     .isFunction ('fail', '.run', doTest.run)
