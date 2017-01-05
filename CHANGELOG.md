@@ -1,3 +1,33 @@
+### 1.15.0 (2017-1-5)
+
+##### Chores
+
+* **develop:** Debug Travis CI git config ([42b8fc29](https://github.com/fvdm/nodejs-dotest/commit/42b8fc298538b636c558125eb8980d3456b8f8e2))
+
+##### New Features
+
+* **main:**
+  * Add .githubRepo string to interface ([308ee862](https://github.com/fvdm/nodejs-dotest/commit/308ee862da014765876405c5e6ce4824d8cc475b))
+  * Report real GitHub repo and PR links ([474fd735](https://github.com/fvdm/nodejs-dotest/commit/474fd7358e19f9fb9e5d7e97bfadc9f15d34453c))
+
+##### Bug Fixes
+
+* **runner:**
+  * Another ancient git bypass ([ac68ef96](https://github.com/fvdm/nodejs-dotest/commit/ac68ef964783a0efaff1b06e6f23f97f307ba6c5))
+  * Fix compatible $repourl ([0148ce76](https://github.com/fvdm/nodejs-dotest/commit/0148ce7684ea1699765c2b4071bb2f3e43a590be))
+
+##### Refactors
+
+* **runner:**
+  * Fixed $reposlug detection ([2fe9beb0](https://github.com/fvdm/nodejs-dotest/commit/2fe9beb0cf9b32343c8e4f9f5c3fc1b7eb9f9f4a))
+  * Get repo URL from git instead of npm ([f94df351](https://github.com/fvdm/nodejs-dotest/commit/f94df35183639e7d52bcfab3d1c35fac3d3bd4ab))
+
+##### Tests
+
+* **main:**
+  * Add .githubRepo to interface test ([2a1cb045](https://github.com/fvdm/nodejs-dotest/commit/2a1cb045024347b530bc35d511873abffbf16cc1))
+  * Add .package to interface test ([a4f2dc20](https://github.com/fvdm/nodejs-dotest/commit/a4f2dc209dd373185c697d7f7825626bcf3191a5))
+
 ### 1.14.0 (2016-11-1)
 
 ##### New Features
