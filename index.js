@@ -29,6 +29,17 @@ var config = {
   noConsole: false
 };
 
+var githubRepo = '';
+var githubPR = '';
+
+if (process.env.GIT_REPO_SLUG) {
+  githubRepo = 'https://github.com/' + process.env.GIT_REPO_SLUG;
+}
+
+if (String (process.env.TRAVIS_PULL_REQUEST).match (/^\d+$/)) {
+  githubPR = githubRepo + '/pull/' + process.env.TRAVIS_PULL_REQUEST;
+}
+
 
 /**
  * ANSI colorize a string
@@ -899,8 +910,11 @@ function run (wait) {
     log ('note', 'Node.js version:  ' + colorStr ('yellow', process.versions.node));
     log ('note', 'dotest version:   ' + colorStr ('yellow', lib.version));
 
-    if (pkg.bugs && pkg.bugs.url) {
-      console.log ();
+    if (githubPR) {
+      console.log();
+      log ('note', 'GitHub PR:        ' + colorStr ('yellow', githubPR));
+    } else if (pkg.bugs && pkg.bugs.url) {
+      console.log();
       log ('note', 'Module issues:    ' + colorStr ('yellow', pkg.bugs.url));
     }
   }
