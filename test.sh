@@ -1,22 +1,19 @@
 #!/bin/bash
 result=0
 nodebin=`pwd`/node_modules/.bin
-reposlug=`cat .git/config | grep -oE 'github\.com:.+.git' | sed 's/:/\//' | sed 's/.git//'`
-repourl="https://github.com/$reposlug"
-
-echo '--------------------'
-echo 'UGLY TRAVIS CI DEBUG'
-echo '--------------------'
-echo
-cat .git/config
-echo
-
+export GIT_REPO_SLUG="$TRAVIS_REPO_SLUG"
 
 # Detect ancient npm version
 if [[ ! -f "$nodebin/coveralls" ]]; then
   nodebin=`pwd`/node_modules/dotest/node_modules/.bin
 fi
 
+# Find reposlug
+if [ "$reposlug" == "" ]; then
+  export GIT_REPO_SLUG=`git ls-remote --get-url | sed 's/.*[\/|@]github.com[:\/]\(.*\).git/\1/'`
+fi
+
+repourl="https://github.com/$GIT_REPO_SLUG"
 
 # List commits since last release
 thisTag=`git describe --tags --abbrev=0`
