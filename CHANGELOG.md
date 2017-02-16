@@ -1,3 +1,26 @@
+#### 1.15.1 (2017-2-16)
+
+##### Chores
+
+* **package:**
+  * Update dependencies ([b9867e3e](https://github.com/fvdm/nodejs-dotest/commit/b9867e3e2cd95a23b69d7996959cdc26b9d10587))
+  * Update eslint dep (#21) ([ea22b130](https://github.com/fvdm/nodejs-dotest/commit/ea22b13075aadb313da9e8134a42c1b4ff2f56af))
+* **develop:**
+  * Update .gitignore config ([f7cc3f44](https://github.com/fvdm/nodejs-dotest/commit/f7cc3f44f1efb6621d3f2fbd5a4084b4d2ad934a))
+  * Added .editorconfig file ([29a9c775](https://github.com/fvdm/nodejs-dotest/commit/29a9c7755045aa7cc26b330b271a5ae72b46bf9e))
+
+##### Bug Fixes
+
+* **isRegexpMatch:** Remove tilde from condition ([2d662bdc](https://github.com/fvdm/nodejs-dotest/commit/2d662bdce5633a6e9713cf7c11dc522460333913))
+
+##### Tests
+
+* **main:** Moved invalid check to coverage list ([2318443c](https://github.com/fvdm/nodejs-dotest/commit/2318443c3b376b870775b0636d707fac0afdd360))
+* **config:**
+  * bitHound allow 1200 lines ([6c74408b](https://github.com/fvdm/nodejs-dotest/commit/6c74408b10027cc8f65c6e3507b7368432aa1e96))
+  * ESLint allow all operator-linebreak ([7d51d09b](https://github.com/fvdm/nodejs-dotest/commit/7d51d09bfa4f2687ffee3423447e3d8ad118e2e3))
+  * Run latest node first on Travis CI ([a49da92e](https://github.com/fvdm/nodejs-dotest/commit/a49da92e9cf634b5a43044a2a0e6da9bc21e64fd))
+
 ### 1.15.0 (2017-1-5)
 
 ##### Chores
