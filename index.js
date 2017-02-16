@@ -759,7 +759,7 @@ unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
   var typestrOne = typeStr (input);
   var typestrTwo = typeStr (regex);
   var result = {
-    state: !!~input.match (regex),
+    state: !!input.match (regex),
     data: input
   };
 
