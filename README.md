@@ -698,3 +698,5 @@ Author
 ------
 
 [Franklin van de Meent](https://frankl.in)
+
+_[Buy me a coffee](https://ko-fi.com/A604LN7)_
