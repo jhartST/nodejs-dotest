@@ -1,3 +1,14 @@
+## 2.0.0 (2017-3-23)
+
+##### Bug Fixes
+
+* **runner:** Fixed invalid lcov.info path ([fad2bada](https://github.com/fvdm/nodejs-dotest/commit/fad2badab88f58f4a0835e73eb18d2ab36d6881b))
+
+##### Refactors
+
+* **runner:** Parent maintains dependecies ([b251c69f](https://github.com/fvdm/nodejs-dotest/commit/b251c69f885ff8a6f9c1f5ac71f1330cd412923b))
+* **package:** Moved deps to dev deps ([3952b3cf](https://github.com/fvdm/nodejs-dotest/commit/3952b3cf7517cc32bd8d1297706d1445f4c9eead))
+
 #### 1.15.2 (2017-3-23)
 
 ##### Documentation Changes
