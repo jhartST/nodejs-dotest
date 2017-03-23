@@ -1,23 +1,24 @@
 #!/bin/bash
 result=0
-nodebin=`pwd`/node_modules/.bin
+libpath="$(pwd)"
+nodebin="$libpath/node_modules/.bin"
 export GIT_REPO_SLUG="$TRAVIS_REPO_SLUG"
 
 # Detect ancient npm version
 if [[ ! -f "$nodebin/coveralls" ]]; then
-  nodebin=`pwd`/node_modules/dotest/node_modules/.bin
+  nodebin="$libpath/node_modules/dotest/node_modules/.bin"
 fi
 
 # Find reposlug
 if [ "$reposlug" == "" ]; then
-  export GIT_REPO_SLUG=`git ls-remote --get-url | sed 's/.*[\/|@]github.com[:\/]\(.*\).git/\1/'`
+  export GIT_REPO_SLUG=$(git ls-remote --get-url | sed 's/.*[\/|@]github.com[:\/]\(.*\).git/\1/')
 fi
 
 repourl="https://github.com/$GIT_REPO_SLUG"
 
 # List commits since last release
-thisTag=`git describe --tags --abbrev=0`
-lastTag=`git describe --tags --abbrev=0 HEAD^`
+thisTag=$(git describe --tags --abbrev=0)
+lastTag=$(git describe --tags --abbrev=0 HEAD^)
 
 if [ "$thisTag" == "$lastTag" ]; then
   thisTag="HEAD"
@@ -46,7 +47,7 @@ echo
 if [ "$TRAVIS" == "true" ]; then
   echo
   echo "Sending coverage report to Coveralls..."
-  cat `pwd`/coverage/lcov.info | "$nodebin/coveralls" || result=1
+  cat "$libpath/coverage/lcov.info" | "$nodebin/coveralls" || result=1
 fi
 
 
