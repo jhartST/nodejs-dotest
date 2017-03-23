@@ -1,13 +1,11 @@
 #!/bin/bash
 result=0
-libpath="$(pwd)"
-nodebin="$libpath/node_modules/.bin"
-export GIT_REPO_SLUG="$TRAVIS_REPO_SLUG"
+nodebin="$(pwd)/node_modules/.bin"
+eslintBin=$(command -v eslint)
+istanbulBin=$(command -v istanbul)
+coverallsBin=$(command -v coveralls)
 
-# Detect ancient npm version
-if [[ ! -f "$nodebin/coveralls" ]]; then
-  nodebin="$libpath/node_modules/dotest/node_modules/.bin"
-fi
+export GIT_REPO_SLUG="$TRAVIS_REPO_SLUG"
 
 # Find reposlug
 if [ "$reposlug" == "" ]; then
@@ -34,20 +32,39 @@ echo
 
 
 # ESLint
-echo "Running ESLint..."
-"$nodebin/eslint" *.js lib/ test/ || result=1
-echo
-
+if [[ -x "$eslintBin" ]]; then
+  echo "Running ESLint..."
+  "$eslintBin" *.js lib/ test/ || result=1
+  echo
+else
+  result=1
+  echo -e "\033[31mERROR:\033[0m ESLint is not installed"
+  echo "Run 'npm i eslint --save-dev'"
+  echo
+fi
 
 # Run test script with coverage
-"$nodebin/istanbul" cover test.js || result=1
-
+if [[ -x "$istanbulBin" ]]; then
+  "$istanbulBin" cover test.js || result=1
+else
+  result=1
+  echo -e "\033[31mERROR:\033[0m Istanbul is not installed"
+  echo "Run 'npm i istanbull --save-dev'"
+  echo
+fi
 
 # Submit coverage to Coveralls.io
-if [ "$TRAVIS" == "true" ]; then
-  echo
-  echo "Sending coverage report to Coveralls..."
-  "$nodebin/coveralls" < "$libpath/coverage/lcov.info" || result=1
+if [[ "$TRAVIS" == "true" ]]; then
+  if [[ -x "$coverallsBin" ]]; then
+    echo
+    echo "Sending coverage report to Coveralls..."
+    "$coverallsBin" < "$libpath/coverage/lcov.info" || result=1
+  else
+    result=1
+    echo -e "\033[31mERROR:\033[0m Coveralls is not installed"
+    echo "Run 'npm i coveralls --save-dev'"
+    echo
+  fi
 fi
 
 
