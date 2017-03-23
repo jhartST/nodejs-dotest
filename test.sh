@@ -47,7 +47,7 @@ echo
 if [ "$TRAVIS" == "true" ]; then
   echo
   echo "Sending coverage report to Coveralls..."
-  cat "$libpath/coverage/lcov.info" | "$nodebin/coveralls" || result=1
+  "$nodebin/coveralls" < "$libpath/coverage/lcov.info" || result=1
 fi
 
 
