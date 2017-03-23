@@ -58,7 +58,7 @@ if [[ "$TRAVIS" == "true" ]]; then
   if [[ -x "$coverallsBin" ]]; then
     echo
     echo "Sending coverage report to Coveralls..."
-    "$coverallsBin" < "$libpath/coverage/lcov.info" || result=1
+    "$coverallsBin" < "$(pwd)/coverage/lcov.info" || result=1
   else
     result=1
     echo -e "\033[31mERROR:\033[0m Coveralls is not installed"
