@@ -1,3 +1,15 @@
+#### 1.15.2 (2017-3-23)
+
+##### Documentation Changes
+
+* **readme:** Added coffee request to author ([56b6cfac](https://github.com/fvdm/nodejs-dotest/commit/56b6cfacda7472294033490cd93e9f40f4bcec6a))
+
+##### Refactors
+
+* **runner:**
+  * Replaced unnecessary cat pipe ([64d06887](https://github.com/fvdm/nodejs-dotest/commit/64d06887005530fe47043c98565aaaa692bcc4af))
+  * Replaced legacy backtick cmds ([d7d52200](https://github.com/fvdm/nodejs-dotest/commit/d7d5220081f23a8ba9fabe429487dc963b243c62))
+
 #### 1.15.1 (2017-2-16)
 
 ##### Chores
