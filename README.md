@@ -699,4 +699,4 @@ Author
 
 [Franklin van de Meent](https://frankl.in)
 
-_[Buy me a coffee](https://ko-fi.com/A604LN7)_
+[![Buy me a coffee](https://frankl.in/u/kofi/kofi-readme.png)](https://ko-fi.com/franklin)
