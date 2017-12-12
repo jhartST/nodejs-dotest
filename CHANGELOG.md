@@ -1,3 +1,21 @@
+### 2.1.0 (2017-12-12)
+
+##### Chores
+
+* **package:** Update dependencies to enable Greenkeeper ([#23](https://github.com/fvdm/nodejs-dotest/pull/23)) ([d7267d8c](https://github.com/fvdm/nodejs-dotest/commit/d7267d8c6e9e37917a9f7fe7d060f3f881d00bb6))
+
+##### Documentation Changes
+
+* **readme:** Replaced coffee link with a button ([b6489bb6](https://github.com/fvdm/nodejs-dotest/commit/b6489bb627d5acc8214ca2ef4457e0a1885ea251))
+
+##### Refactors
+
+* Revert devdeps to dotest ([0dceea5b](https://github.com/fvdm/nodejs-dotest/commit/0dceea5b93d2766ce612c2c8f94e0fcef5a92ebd))
+
+##### Tests
+
+* **config:** Update Travis CI node versions ([67bd9241](https://github.com/fvdm/nodejs-dotest/commit/67bd9241fcce0754ab29d44334e7ade67ffcc1ed))
+
 ## 2.0.0 (2017-3-23)
 
 ##### Bug Fixes
