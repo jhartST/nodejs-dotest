@@ -1,14 +1,15 @@
 #!/bin/bash
 result=0
-nodebin="$(pwd)/node_modules/.bin"
-eslintBin=$(command -v eslint)
-istanbulBin=$(command -v istanbul)
-coverallsBin=$(command -v coveralls)
+libpath="$(pwd)"
+nodebin="$libpath/node_modules/.bin"
+eslintBin="$nodebin/eslint"
+istanbulBin="$nodebin/istanbul"
+coverallsBin="$nodebin/coveralls"
 
 export GIT_REPO_SLUG="$TRAVIS_REPO_SLUG"
 
 # Find reposlug
-if [ "$reposlug" == "" ]; then
+if [ "$GIT_REPO_SLUG" == "" ]; then
   export GIT_REPO_SLUG=$(git ls-remote --get-url | sed 's/.*[\/|@]github.com[:\/]\(.*\).git/\1/')
 fi
 
@@ -39,7 +40,7 @@ if [[ -x "$eslintBin" ]]; then
 else
   result=1
   echo -e "\033[31mERROR:\033[0m ESLint is not installed"
-  echo "Run 'npm i eslint --save-dev'"
+  echo "Run 'npm i' to install all dependencies."
   echo
 fi
 
@@ -49,7 +50,7 @@ if [[ -x "$istanbulBin" ]]; then
 else
   result=1
   echo -e "\033[31mERROR:\033[0m Istanbul is not installed"
-  echo "Run 'npm i istanbull --save-dev'"
+  echo "Run 'npm i' to install all dependencies."
   echo
 fi
 
@@ -62,7 +63,7 @@ if [[ "$TRAVIS" == "true" ]]; then
   else
     result=1
     echo -e "\033[31mERROR:\033[0m Coveralls is not installed"
-    echo "Run 'npm i coveralls --save-dev'"
+    echo "Run 'npm i' to install all dependencies."
     echo
   fi
 fi
