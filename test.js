@@ -1,11 +1,11 @@
-var doTest = require ('./');
+const doTest = require ('./');
 
-var testsDone = 0;
+let testsDone = 0;
 
 
 // Tests
-  var test = doTest.test ();
 doTest.add ('Module interface', () => {
+  const test = doTest.test ();
 
   test
     .isObject ('fail', 'exports', doTest)
@@ -33,9 +33,9 @@ doTest.add ('Module interface', () => {
 });
 
 
-  var arg = doTest.config ('first', true);
-  var obj;
 doTest.add ('.config()', (test) => {
+  const arg = doTest.config ('first', true);
+  let obj;
 
   test ()
     .isObject ('fail', 'argument return', arg)
@@ -83,9 +83,9 @@ doTest.add ('test() .info()', (test) => {
 });
 
 
-  var colorTest = doTest.colorStr ('magenta', 'magenta');
-  var colorMatch = '\u001b[35mmagenta\u001b[0m';
 doTest.add ('Methods', (test, fake) => {
+  const colorTest = doTest.colorStr ('magenta', 'magenta');
+  const colorMatch = '\u001b[35mmagenta\u001b[0m';
 
   doTest.log ('.log() This is a plain (default) message');
   doTest.log ('.log() This is a plain (preset) message');
