@@ -165,7 +165,7 @@ function doNext (index) {
  */
 
 function done (callback) {
-  const timing = (Date.now ()  counters.startTime) / 1000;
+  const timing = (Date.now () - counters.startTime) / 1000;
 
   if (callback instanceof Function) {
     callback (next);
