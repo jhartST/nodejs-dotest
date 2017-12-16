@@ -1018,15 +1018,15 @@ function setConfig (name, value) {
 
 module.exports = {
   package: pkg,
-  githubRepo: githubRepo,
-  add: add,
-  run: run,
-  log: log,
-  test: test,
+  githubRepo,
+  add,
+  run,
+  log,
+  test,
   exit: unitTests.exit,
-  onExit: onExit,
-  colorStr: colorStr,
-  getType: getType,
+  onExit,
+  colorStr,
+  getType,
   config: setConfig,
   get length () {
     return queue.length;
