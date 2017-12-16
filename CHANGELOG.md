@@ -1,3 +1,17 @@
+### 2.3.0 (2017-12-16)
+
+##### Chores
+
+* **package:** Add nsp dependency ([4b8440a8](https://github.com/fvdm/nodejs-dotest/commit/4b8440a84491e614ffdd41e07f97391e878bf0ca))
+
+##### New Features
+
+* **runner:** Add NSP check ([4f945d21](https://github.com/fvdm/nodejs-dotest/commit/4f945d21aa5c515380c7eb7abf219594fa154d72))
+
+##### Code Style Changes
+
+* **runner:** Clean up ([a6772a78](https://github.com/fvdm/nodejs-dotest/commit/a6772a782bd6e7236b04e84ad9413eb703160546))
+
 ### 2.2.0 (2017-12-16)
 
 ##### Chores
