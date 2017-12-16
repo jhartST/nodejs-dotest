@@ -136,6 +136,8 @@ function log (type, str) {
  */
 
 function doNext (index) {
+  const testF = testFunc (index);
+
   console.log (
     '\n\n'
     + colorStr ('cyan', (index + 1) + '/' + queue.length)
@@ -144,7 +146,7 @@ function doNext (index) {
   );
 
   console.log ();
-  queue [index] .runner (testFunc);
+  queue [index].runner (testF);
 }
 
 
@@ -158,10 +160,18 @@ function doNext (index) {
  */
 
 function done (callback) {
-  const timing = (Date.now () - counters.startTime) / 1000;
+  const timing = (Date.now() - counters.startTime) / 1000;
+  let ms = 0;
 
   if (typeof callback === 'function') {
     callback (next);
+  }
+
+  if (this.startTime) {
+    ms = (Date.now() - this.startTime) / 1000;
+
+    console.log();
+    log ('info', colorStr ('yellow', ms + ' ms'));
   }
 
   next++;
@@ -915,7 +925,21 @@ function test (err) {
   return unitTests;
 }
 
-testFunc = test;
+
+testFunc = (index) => {
+  const ut = unitTests;
+
+  ut.queueIndex = index;
+  ut.startTime = Date.now();
+
+  return (err) => {
+    if (err) {
+      log ('error', err);
+    }
+
+    return ut;
+  };
+};
 
 
 /**
