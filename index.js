@@ -44,9 +44,10 @@ if (String (process.env.TRAVIS_PULL_REQUEST).match (/^\d+$/)) {
 /**
  * ANSI colorize a string
  *
- * @param color {String} - The color to add
- * @param str {String} - The string to alter
- * @returns {String}
+ * @return  {string}
+ *
+ * @param   {string}  color  The color to add
+ * @param   {string}  str    The string to alter
  */
 
 function colorStr (color, str) {
@@ -71,9 +72,10 @@ function colorStr (color, str) {
 /**
  * console.log with style
  *
- * @param [type] {String=plain} - Formatting style
- * @param str {String} - The string to alter
- * @returns {void}
+ * @return  {void}
+ *
+ * @param   {string}  [type=plain]  Formatting style
+ * @param   {string}  str           The string to alter
  */
 
 function log (type, str) {
@@ -133,8 +135,9 @@ function log (type, str) {
 /**
  * Run next test in queue
  *
- * @param index {number} - queue[] index
- * @returns {void}
+ * @return  {void}
+ *
+ * @param   {int}   index  `queue[]` index
  */
 
 function doNext (index) {
@@ -154,9 +157,10 @@ function doNext (index) {
 /**
  * Run callback, optional wait time, run next test in queue
  *
- * @callback callback
- * @param [callback] {function} - Run callback before next test
- * @returns {void}
+ * @callback  callback
+ * @return    {void}
+ *
+ * @param     {function}  [callback]  Called before next test: `(next)`
  */
 
 function done (callback) {
@@ -201,11 +205,12 @@ function done (callback) {
 
 
 /**
- * Get any var type
+ * Get any let type
  * The order of if's is important
  *
- * @param input {mixed} - The value to check
- * @returns {string} - Lowercase type
+ * @return  {string}         Lowercase type
+ *
+ * @param   {mixed}   input  The value to check
  */
 
 function getType (input) {
@@ -244,11 +249,12 @@ function getType (input) {
 /* eslint-disable complexity */
 
 /**
- * Get formatted var type for console
+ * Get formatted let type for console
  *
- * @param str {string} - The var to convert
- * @param [noType = false] {boolean} - Don't append ' (type)'
- * @returns {string} - i.e. hello (string)
+ * @return  {string}            i.e. hello (string)
+ *
+ * @param   {string}  str       The let to translate
+ * @param   {bool}    [noType]  Don't append ' (type)'
  */
 
 function typeStr (str, noType) {
@@ -318,15 +324,18 @@ function typeStr (str, noType) {
 /**
  * Write test result to console
  *
- * @param level {string} - fail, warn
- * @param what {string} - Text to prepend in blue
- * @param result {object}
- * @param result.state {boolean} - Check result
- * @param result.data {mixed} - Check input
- * @param describe {string, object} - Describe result, i.e. 'an Array'
- * @param describe.true {string} - Override default describe if true
- * @param describe.false {string} - Override default describe if false
- * @returns {void}
+ * @return  {void}
+ *
+ * @param   {string}         level           fail, warn
+ * @param   {string}         what            Text to prepend in blue
+
+ * @param   {object}         result
+ * @param   {bool}           result.state    Check result
+ * @param   {mixed}          result.data     Check input
+
+ * @param   {string|object}  describe        Describe result, i.e. 'an Array'
+ * @param   {string}         describe.true   Override default describe if true
+ * @param   {string}         describe.false  Override default describe if false
  */
 
 function output (level, what, result, describe) {
@@ -363,9 +372,10 @@ function output (level, what, result, describe) {
 /**
  * Handle process exit
  *
- * @param [fromMethod] {boolean} - Used internally to prevent double logs
- * @param [code] {number} - Enforce exit status code if not fail
- * @returns {void}
+ * @return  {void}
+ *
+ * @param   {bool}  [fromProcess]  Used internally to prevent double logs
+ * @param   {int}   [code]        Enforce exit status code if not fail
  */
 
 function processExit (fromProcess, code) {
@@ -388,8 +398,9 @@ process.on ('exit', function (code) {
 /**
  * Prevent errors from killing the process
  *
- * @param err {Error} - The error that occured
- * @returns {void}
+ * @return  {void}
+ *
+ * @param   {Error}  err  The error that occured
  */
 
 function uncaughtException (err) {
@@ -452,10 +463,11 @@ unitTests = {
 /**
  * Test for Error
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isError = function isError (level, what, input) {
@@ -472,10 +484,11 @@ unitTests.isError = function isError (level, what, input) {
 /**
  * Test for Object
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ &
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isObject = function isObject (level, what, input) {
@@ -492,10 +505,11 @@ unitTests.isObject = function isObject (level, what, input) {
 /**
  * Test for Array
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isArray = function isArray (level, what, input) {
@@ -512,10 +526,11 @@ unitTests.isArray = function isArray (level, what, input) {
 /**
  * Test for String
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test againstuncaughtException
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test againstuncaughtException
  */
 
 unitTests.isString = function isString (level, what, input) {
@@ -532,10 +547,11 @@ unitTests.isString = function isString (level, what, input) {
 /**
  * Test for Number
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isNumber = function isNumber (level, what, input) {
@@ -552,10 +568,11 @@ unitTests.isNumber = function isNumber (level, what, input) {
 /**
  * Test for Undefined
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isUndefined = function isUndefined (level, what, input) {
@@ -572,10 +589,11 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
 /**
  * Test for null
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isNull = function isNull (level, what, input) {
@@ -592,10 +610,11 @@ unitTests.isNull = function isNull (level, what, input) {
 /**
  * Test for NaN
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isNaN = function isNan (level, what, input) {
@@ -612,10 +631,11 @@ unitTests.isNaN = function isNan (level, what, input) {
 /**
  * Test for Boolean
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isBoolean = function isBoolean (level, what, input) {
@@ -632,10 +652,11 @@ unitTests.isBoolean = function isBoolean (level, what, input) {
 /**
  * Test for Function
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isFunction = function isFunction (level, what, input) {
@@ -652,10 +673,11 @@ unitTests.isFunction = function isFunction (level, what, input) {
 /**
  * Test for Date
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isDate = function isDate (level, what, input) {
@@ -672,11 +694,12 @@ unitTests.isDate = function isDate (level, what, input) {
 /**
  * Check if two values are exactly the same
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param one {mixed} - variable to test against
- * @param two {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   one    variable to test against
+ * @param   {mixed}   two    variable to test against
  */
 
 unitTests.isExactly = function isExactly (level, what, one, two) {
@@ -700,11 +723,12 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
 /**
  * Check if two values are not the same
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param one {mixed} - variable to test against
- * @param two {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   one    variable to test against
+ * @param   {mixed}   two    variable to test against
  */
 
 unitTests.isNot = function isNot (level, what, one, two) {
@@ -728,10 +752,11 @@ unitTests.isNot = function isNot (level, what, one, two) {
 /**
  * Check if input is a RegExp
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isRegexp = function isRegexp (level, what, input) {
@@ -748,11 +773,12 @@ unitTests.isRegexp = function isRegexp (level, what, input) {
 /**
  * Check if a string matches a regex
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @param regex {mixed} - regular expression to match
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
+ * @param   {mixed}   regex  regular expression to match
  */
 
 unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
@@ -776,12 +802,13 @@ unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
 /**
  * Check if the two values meet the condition
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe the test
- * @param one {mixed} - variable to test against
- * @param operator {string} - < > <= >=
- * @param two {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}            unitTests
+ *
+ * @param   {string}  level     fail, warn
+ * @param   {string}  what      describe input data, i.e. 'data.sub'
+ * @param   {mixed}   one       variable to test against
+ * @param   {string}  operator  < > <= >=
+ * @param   {mixed}   two       variable to test against
  */
 
 unitTests.isCondition = function isCondition (level, what, one, operator, two) {
@@ -815,10 +842,11 @@ unitTests.isCondition = function isCondition (level, what, one, operator, two) {
 /**
  * Check if input is an empty var, string, object, array, error
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isEmpty = function isEmpty (level, what, input) {
@@ -850,10 +878,11 @@ unitTests.isEmpty = function isEmpty (level, what, input) {
 /**
  * Check if input is not an empty var, string, object, array, error
  *
- * @param level {string} - fail, warn
- * @param what {string} - describe input data, i.e. 'data.sub'
- * @param input {mixed} - variable to test against
- * @returns {object} - unitTests
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail, warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
  */
 
 unitTests.isNotEmpty = function isNotEmpty (level, what, input) {
@@ -896,8 +925,9 @@ testFunc = test;
 /**
  * Start tests
  *
- * @param wait {number=0} - Wait time between tests, in ms (1000 = 1 sec)
- * @returns {void}
+ * @return  {void}
+ *
+ * @param   {int}  wait  Wait time between tests, in ms (1000 = 1 sec)
  */
 
 function run (wait) {
@@ -926,9 +956,10 @@ function run (wait) {
 /**
  * Add a test to the queue
  *
- * @param label {string} - Text to describe test
- * @param runner {function} - The function with test code, `function (test) { test().isObject(...); }`
- * @returns {void}
+ * @return  {void}
+ *
+ * @param   {string}    label   Text to describe test
+ * @param   {function}  runner  The function with test code, `(test) => { test().isObject(...); }`
  */
 
 function add (label, runner) {
@@ -942,9 +973,9 @@ function add (label, runner) {
 /**
  * Set callback that runs when process exits
  *
- * @callcack callback
- * @param callback {function} - `function (code) {}`
- * @returns {void}
+ * @callcack  callback
+ * @return    {void}
+ * @param     {function}  callback  `(code)`
  */
 
 function onExit (callback) {
@@ -955,10 +986,11 @@ function onExit (callback) {
 /**
  * Change configuration
  *
- * @param name {object, string) - Config param or object
- * @param [name.noConsole = false] {boolean} - Don't console.log anything
- * @param [value] {string) - Param value if name is a string
- * @returns config {object} - Current settings
+ * @return  {object}                           Current settings
+ *
+ * @param {object|string}  name                Config param or object
+ * @param {bool}           [name.noConsole=2]  Don't console.log anything
+ * @param {string}         [value]             Param value if name is a string
  */
 
 function setConfig (name, value) {
