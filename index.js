@@ -955,8 +955,8 @@ function run (wait) {
 
   if (!config.noConsole && next === -1) {
     log ('note', 'Running tests...\n');
-    log ('note', 'Module name:      ' + colorStr ('yellow', pkg.name));
-    log ('note', 'Module version:   ' + colorStr ('yellow', pkg.version));
+    log ('note', 'Package name:     ' + colorStr ('yellow', pkg.name));
+    log ('note', 'Package version:  ' + colorStr ('yellow', pkg.version));
     log ('note', 'Node.js version:  ' + colorStr ('yellow', process.versions.node));
     log ('note', 'dotest version:   ' + colorStr ('yellow', lib.version));
 
