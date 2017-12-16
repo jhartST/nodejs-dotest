@@ -27,7 +27,10 @@ echo "Commits since $lastTag to $thisTag"
 echo
 echo "$repourl/compare/$lastTag...$thisTag"
 echo
-git log $lastTag..HEAD --oneline --pretty=format:'%C(green)%h%Creset -%C(red)%d%Creset %C(yellow)%s%Creset %C(blue)(%cr)' --abbrev-commit
+git log $lastTag..HEAD \
+  --oneline \
+  --pretty=format:'%C(green)%h%Creset -%C(red)%d%Creset %C(yellow)%s%Creset %C(blue)(%cr)' \
+  --abbrev-commit
 echo
 echo
 
@@ -60,6 +63,7 @@ if [[ "$TRAVIS" == "true" ]]; then
     echo
     echo "Sending coverage report to Coveralls..."
     "$coverallsBin" < "$(pwd)/coverage/lcov.info" || result=1
+    echo
   else
     result=1
     echo -e "\033[31mERROR:\033[0m Coveralls is not installed"
