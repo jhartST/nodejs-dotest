@@ -176,7 +176,7 @@ function done (callback) {
   if (queue [next]) {
     if (next && config.wait) {
       setTimeout (
-        function () {
+        () => {
           doNext (next);
         },
         config.wait
@@ -435,23 +435,23 @@ function testLog (level, str) {
 
 unitTests = {
   done: done,
-  error: function error (str) {
+  error: (str) => {
     log ('error', str);
     return unitTests;
   },
-  good: function good (str) {
+  good: (str) => {
     testLog ('good', str);
     return unitTests;
   },
-  fail: function fail (str) {
+  fail: (str) => {
     testLog ('fail', str);
     return unitTests;
   },
-  warn: function warn (str) {
+  warn: (str) => {
     testLog ('warn', str);
     return unitTests;
   },
-  info: function info (str) {
+  info: (str) => {
     testLog ('info', str);
     return unitTests;
   },
@@ -473,7 +473,7 @@ unitTests = {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isError = function isError (level, what, input) {
+unitTests.isError = (level, what, input) => {
   const result = {
     state: getType (input) === 'error',
     data: input
@@ -494,7 +494,7 @@ unitTests.isError = function isError (level, what, input) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isObject = function isObject (level, what, input) {
+unitTests.isObject = (level, what, input) => {
   const result = {
     state: getType (input) === 'object',
     data: input
@@ -515,7 +515,7 @@ unitTests.isObject = function isObject (level, what, input) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isArray = function isArray (level, what, input) {
+unitTests.isArray = (level, what, input) => {
   const result = {
     state: getType (input) === 'array',
     data: input
@@ -536,7 +536,7 @@ unitTests.isArray = function isArray (level, what, input) {
  * @param   {mixed}   input  variable to test againstuncaughtException
  */
 
-unitTests.isString = function isString (level, what, input) {
+unitTests.isString = (level, what, input) => {
   const result = {
     state: getType (input) === 'string',
     data: input
@@ -557,7 +557,7 @@ unitTests.isString = function isString (level, what, input) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isNumber = function isNumber (level, what, input) {
+unitTests.isNumber = (level, what, input) => {
   const result = {
     state: getType (input) === 'number',
     data: input
@@ -578,7 +578,7 @@ unitTests.isNumber = function isNumber (level, what, input) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isUndefined = function isUndefined (level, what, input) {
+unitTests.isUndefined = (level, what, input) => {
   const result = {
     state: getType (input) === 'undefined',
     data: input
@@ -599,7 +599,7 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isNull = function isNull (level, what, input) {
+unitTests.isNull = (level, what, input) => {
   const result = {
     state: input === null,
     data: input
@@ -620,7 +620,7 @@ unitTests.isNull = function isNull (level, what, input) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isNaN = function isNan (level, what, input) {
+unitTests.isNaN = (level, what, input) => {
   const result = {
     state: isNaN (input),
     data: input
@@ -641,7 +641,7 @@ unitTests.isNaN = function isNan (level, what, input) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isBoolean = function isBoolean (level, what, input) {
+unitTests.isBoolean = (level, what, input) => {
   const result = {
     state: getType (input) === 'boolean',
     data: input
@@ -662,7 +662,7 @@ unitTests.isBoolean = function isBoolean (level, what, input) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isFunction = function isFunction (level, what, input) {
+unitTests.isFunction = (level, what, input) => {
   const result = {
     state: getType (input) === 'function',
     data: input
@@ -683,7 +683,7 @@ unitTests.isFunction = function isFunction (level, what, input) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isDate = function isDate (level, what, input) {
+unitTests.isDate = (level, what, input) => {
   const result = {
     state: getType (input) === 'date',
     data: input
@@ -705,7 +705,7 @@ unitTests.isDate = function isDate (level, what, input) {
  * @param   {mixed}   two    variable to test against
  */
 
-unitTests.isExactly = function isExactly (level, what, one, two) {
+unitTests.isExactly = (level, what, one, two) => {
   const typestrOne = typeStr (one);
   const typestrTwo = typeStr (two);
   const result = {
@@ -734,7 +734,7 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
  * @param   {mixed}   two    variable to test against
  */
 
-unitTests.isNot = function isNot (level, what, one, two) {
+unitTests.isNot = (level, what, one, two) => {
   const typestrOne = typeStr (one);
   const typestrTwo = typeStr (two);
   const result = {
@@ -762,7 +762,7 @@ unitTests.isNot = function isNot (level, what, one, two) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isRegexp = function isRegexp (level, what, input) {
+unitTests.isRegexp = (level, what, input) => {
   const result = {
     state: getType (input) === 'regexp',
     data: input
@@ -784,7 +784,7 @@ unitTests.isRegexp = function isRegexp (level, what, input) {
  * @param   {mixed}   regex  regular expression to match
  */
 
-unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
+unitTests.isRegexpMatch = (level, what, input, regex) => {
   const typestrOne = typeStr (input);
   const typestrTwo = typeStr (regex);
   const result = {
@@ -814,7 +814,7 @@ unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
  * @param   {mixed}   two       variable to test against
  */
 
-unitTests.isCondition = function isCondition (level, what, one, operator, two) {
+unitTests.isCondition = (level, what, one, operator, two) => {
   const typestrOne = typeStr (one);
   const typestrTwo = typeStr (two);
   const result = {
@@ -852,7 +852,7 @@ unitTests.isCondition = function isCondition (level, what, one, operator, two) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isEmpty = function isEmpty (level, what, input) {
+unitTests.isEmpty = (level, what, input) => {
   const type = getType (input);
   const result = {
     state: false,
@@ -888,7 +888,7 @@ unitTests.isEmpty = function isEmpty (level, what, input) {
  * @param   {mixed}   input  variable to test against
  */
 
-unitTests.isNotEmpty = function isNotEmpty (level, what, input) {
+unitTests.isNotEmpty = (level, what, input) => {
   const type = getType (input);
   const result = {
     state: true,
