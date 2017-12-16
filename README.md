@@ -26,11 +26,11 @@ Example
 
 ```js
 // Load test runner and your app
-var doTest = require ('dotest');
-var app = require ('./');
+const doTest = require ('dotest');
+const app = require ('./');
 
 // Check app interface
-doTest.add ('App interface', function (test) {
+doTest.add ('App interface', (test) => {
   test ()
     .isFunction ('fail', 'methodOne', app.methodOne)
     .isObject ('fail', 'sub', app.sub)
@@ -39,8 +39,8 @@ doTest.add ('App interface', function (test) {
 });
 
 // Check method response
-doTest.add ('App methodOne', function (test) {
-  app.methodOne (function (err, data) {
+doTest.add ('App methodOne', (test) => {
+  app.methodOne ((err, data) => {
     test (err)
       .isObject ('fail', 'Callback data', data)
       .isArray ('fail', 'data.music', data.music)
@@ -194,8 +194,8 @@ You can concat the check functions for clean code.
 
 ```js
 // Using the method
-doTest.add ('App interface', function () {
   doTest.test ()
+doTest.add ('App interface', function() {
     .isObject ('fail', 'Callback data', data)
     .done ();
 });
@@ -322,7 +322,7 @@ test() .error
 Output 'ERROR' log line with dump and stack trace.
 
 ```js
-var err = new Error ('Oops');
+const err = new Error ('Oops');
 
 test ()
   .error (err)
@@ -567,7 +567,7 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-var myDate = new Date ();
+const myDate = new Date();
 
 test ()
   .isDate ('fail', 'My data', myDate)
