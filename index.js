@@ -382,7 +382,7 @@ function processExit (fromProcess, code) {
   }
 }
 
-process.on ('exit', function (code) {
+process.on ('exit', (code) => {
   if (typeof onExitCallback === 'function') {
     onExitCallback (code);
   }
@@ -448,7 +448,7 @@ unitTests = {
     testLog ('info', str);
     return unitTests;
   },
-  exit: function exit () {
+  exit: () => {
     testLog ('info', 'Exit process');
     processExit (false);
     return unitTests;
