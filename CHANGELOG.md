@@ -1,3 +1,47 @@
+### 2.2.0 (2017-12-16)
+
+##### Chores
+
+* **develop:**
+  * Add package-lock.json to gitignore ([c4478f92](https://github.com/fvdm/nodejs-dotest/commit/c4478f92ffd7ebcd467eeeff3333ab6e5e13b37d))
+  * Clean up .gitignore ([9a61a5e8](https://github.com/fvdm/nodejs-dotest/commit/9a61a5e8bdc84fa27a039f07451104206d136070))
+
+##### Documentation Changes
+
+* **readme:**
+  * Minor tweaks and text edits ([d039a044](https://github.com/fvdm/nodejs-dotest/commit/d039a04418d6f863f0ed8393daee4cc34479edf8))
+  * Code examples in ES6 style ([5396e1ff](https://github.com/fvdm/nodejs-dotest/commit/5396e1ff62f89f83ad1ce3b8bd547ac46b7c6520))
+* **badges:** Limit to master branch ([8405dd59](https://github.com/fvdm/nodejs-dotest/commit/8405dd59ca51d4f2cef03dddfa4c4bdfea1d37a5))
+
+##### Bug Fixes
+
+* **done:**
+  * Value was converted to seconds ([0a62b49d](https://github.com/fvdm/nodejs-dotest/commit/0a62b49d116c18a9315dd4fb6ab3b8f66ee0332c))
+  * Fixed syntax typo ([4465468f](https://github.com/fvdm/nodejs-dotest/commit/4465468f8b95165015005f63826f0b726b29831a))
+
+##### Refactors
+
+* **testFunc:** Rewrite to add test details ([6fc83fb0](https://github.com/fvdm/nodejs-dotest/commit/6fc83fb0c788db4b9a4732baa80717aee3a5d304))
+* **log:** Removed pre node v6 conditional ([36480a24](https://github.com/fvdm/nodejs-dotest/commit/36480a24a641a359b23395cad412b54b747715c3))
+
+##### Code Style Changes
+
+* **syntax:**
+  * Clean up ([4803a6cd](https://github.com/fvdm/nodejs-dotest/commit/4803a6cd4a62c8b912f962caebadc2b28832e6f3))
+  * Short inline functions ([f7e15688](https://github.com/fvdm/nodejs-dotest/commit/f7e15688a76149beb59210bfdb09bfb22d0504e1))
+  * Change inline functions to ES6 ([640124c8](https://github.com/fvdm/nodejs-dotest/commit/640124c8dc580c99152ac8e2271967edcfd4c535))
+  * ES6 named object props ([69ae83fa](https://github.com/fvdm/nodejs-dotest/commit/69ae83fa1f343f41be346a3260d09c2c17a1b12b))
+  * Changed var to ES6 const and let ([402c6a47](https://github.com/fvdm/nodejs-dotest/commit/402c6a4782c4a70c66236c4e844fdb6d6344614d))
+* **example:** Changed var to ES6 const and let ([8baf36ff](https://github.com/fvdm/nodejs-dotest/commit/8baf36ffb737ca832965937bedc3a77aecf4250b))
+* **test:**
+  * Changed var to ES6 const and let ([d21f11f4](https://github.com/fvdm/nodejs-dotest/commit/d21f11f459d9f4cf28934d083de8cf02781c293c))
+  * Change inline functions to ES6 ([513f8e4f](https://github.com/fvdm/nodejs-dotest/commit/513f8e4facd9dc2a041230d2040044af5e77f1b5))
+* **comment:** Clean up JSDoc ([21c6ff1b](https://github.com/fvdm/nodejs-dotest/commit/21c6ff1b1c2f51d4952170e8601ff11312459dd0))
+
+##### Tests
+
+* **config:** Removed obsolete ecmaVersion ([3104d88c](https://github.com/fvdm/nodejs-dotest/commit/3104d88cdf205218cd62ec3daf29a24903fb0f0d))
+
 ### 2.1.0 (2017-12-12)
 
 ##### Chores
