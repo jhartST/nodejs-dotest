@@ -140,7 +140,7 @@ function doNext (index) {
     '\n\n'
     + colorStr ('cyan', (index + 1) + '/' + queue.length)
     + '  '
-    + colorStr ('bold', queue [index] .label)
+    + colorStr ('bold', queue [index].label)
   );
 
   console.log ();
@@ -160,7 +160,7 @@ function doNext (index) {
 function done (callback) {
   const timing = (Date.now () - counters.startTime) / 1000;
 
-  if (callback instanceof Function) {
+  if (typeof callback === 'function') {
     callback (next);
   }
 
@@ -323,11 +323,11 @@ function typeStr (str, noType) {
  *
  * @param   {string}         level           fail, warn
  * @param   {string}         what            Text to prepend in blue
-
+ *
  * @param   {object}         result
  * @param   {bool}           result.state    Check result
  * @param   {mixed}          result.data     Check input
-
+ *
  * @param   {string|object}  describe        Describe result, i.e. 'an Array'
  * @param   {string}         describe.true   Override default describe if true
  * @param   {string}         describe.false  Override default describe if false
@@ -960,8 +960,8 @@ function run (wait) {
 
 function add (label, runner) {
   queue.push ({
-    label: label,
-    runner: runner
+    label,
+    runner
   });
 }
 
