@@ -4,8 +4,8 @@ var testsDone = 0;
 
 
 // Tests
-doTest.add ('Module interface', function () {
   var test = doTest.test ();
+doTest.add ('Module interface', () => {
 
   test
     .isObject ('fail', 'exports', doTest)
@@ -33,9 +33,9 @@ doTest.add ('Module interface', function () {
 });
 
 
-doTest.add ('.config()', function (test) {
   var arg = doTest.config ('first', true);
   var obj;
+doTest.add ('.config()', (test) => {
 
   test ()
     .isObject ('fail', 'argument return', arg)
@@ -55,7 +55,7 @@ doTest.add ('.config()', function (test) {
 });
 
 
-doTest.add ('test() shortcut', function (test) {
+doTest.add ('test() shortcut', (test) => {
   doTest.test ()
     .isFunction ('fail', 'test', test)
     .isObject ('fail', 'test() return', test ())
@@ -65,7 +65,7 @@ doTest.add ('test() shortcut', function (test) {
 });
 
 
-doTest.add ('test() .info()', function (test) {
+doTest.add ('test() .info()', (test) => {
   doTest.test ()
     .info ('-- Short object:')
     .info ({ hello: 'world' })
@@ -83,9 +83,9 @@ doTest.add ('test() .info()', function (test) {
 });
 
 
-doTest.add ('Methods', function (test, fake) {
   var colorTest = doTest.colorStr ('magenta', 'magenta');
   var colorMatch = '\u001b[35mmagenta\u001b[0m';
+doTest.add ('Methods', (test, fake) => {
 
   doTest.log ('.log() This is a plain (default) message');
   doTest.log ('.log() This is a plain (preset) message');
@@ -103,7 +103,7 @@ doTest.add ('Methods', function (test, fake) {
     .isNull ('fail', 'test() .isNull', null)
     .isNaN ('fail', 'test() .isNaN', NaN)
     .isBoolean ('fail', 'test() .isBoolean', true)
-    .isFunction ('fail', 'test() .isFunction', function () {})
+    .isFunction ('fail', 'test() .isFunction', () => {})
     .isDate ('fail', 'test() .isDate', new Date ())
     .isExactly ('fail', 'test() .isExactly', ':)', ':)')
     .isNot ('fail', 'test() .isNot', 'a', 'b')
@@ -138,7 +138,7 @@ doTest.add ('Methods', function (test, fake) {
     .isEmpty ('warn', 'output() warn', 'test warning')
     .warn ('This is a warn message')
     .good ('This is a good message')
-    .done (function () {
+    .done (() => {
       doTest.log ('info', 'test() .done() callback');
     });
 
@@ -148,7 +148,7 @@ doTest.add ('Methods', function (test, fake) {
 });
 
 
-doTest.add ('All tests done', function (test) {
+doTest.add ('All tests done', (test) => {
   testsDone++;
 
   test ()
