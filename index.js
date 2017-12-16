@@ -168,7 +168,7 @@ function done (callback) {
   }
 
   if (this.startTime) {
-    ms = (Date.now() - this.startTime) / 1000;
+    ms = Date.now() - this.startTime;
 
     console.log();
     log ('info', colorStr ('yellow', ms + ' ms'));
