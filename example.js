@@ -1,7 +1,7 @@
 // Load test runner and your app
-var doTest = require ('dotest');
+const doTest = require ('dotest');
 
-var app = {
+const app = {
   methodOne: function (callback) {
     var data = {
       music: ['song']
