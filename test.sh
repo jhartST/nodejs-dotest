@@ -5,6 +5,7 @@ nodebin="$libpath/node_modules/.bin"
 eslintBin="$nodebin/eslint"
 istanbulBin="$nodebin/istanbul"
 coverallsBin="$nodebin/coveralls"
+nspBin="$nodebin/nsp"
 
 export GIT_REPO_SLUG="$TRAVIS_REPO_SLUG"
 
@@ -72,6 +73,19 @@ if [[ "$TRAVIS" == "true" ]]; then
   fi
 fi
 
+# Check for vulnerabilities
+if [[ -x "$nspBin" ]]; then
+  echo
+  echo "Running NSP..."
+  echo
+  "$nspBin" check || result=1
+  echo
+else
+  result=1
+  echo -e "\033[31mERROR:\033[0m NSP is not installed"
+  echo "Run 'npm i' to install all dependencies."
+  echo
+fi
 
 # All done, return exit status
 exit $result
