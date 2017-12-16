@@ -1,8 +1,8 @@
 dotest
 ======
 
-One dev dependency to run ESLint, your test.js, coverage and report to Coveralls.io
-Or only run the test.js without doing anything else.
+One dev dependency for your [Node.js](https://nodejs.org) package to run ESLint,
+your test.js, coverage and report to Coveralls.io when running on Travis CI.
 
 [![npm](https://img.shields.io/npm/v/dotest.svg?maxAge=3600)](https://github.com/fvdm/nodejs-dotest/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-dotest.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-dotest/branches)
@@ -11,10 +11,10 @@ Or only run the test.js without doing anything else.
 [![Code Quality](https://www.bithound.io/github/fvdm/nodejs-dotest/badges/master/code.svg)](https://www.bithound.io/github/fvdm/nodejs-dotest/master/files)
 [![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-dotest.svg)](https://greenkeeper.io/)
 
-* It first lists all new commits sinces the last release (tag) without their relative date and author
+* It first lists all new commits sinces the last release (tag) with their relative date
 * Then runs ESLint with your package's `.eslintrc` config
 * Finally it runs your `test.js` with `istanbul` for coverage
-* When it detects Travis CI it will also submit the coverage report to Coveralls.io
+* When it detects Travis CI it will also submit the coverage report to [Coveralls.io](https://coveralls.io)
 
 [![Console example](https://frankl.in/wp-content/uploads/2016/05/nodejs_dotest_example-340x400.png)](https://frankl.in/micro/nodejs-dotest-console-output)
 
@@ -31,11 +31,11 @@ const app = require ('./');
 
 // Check app interface
 doTest.add ('App interface', (test) => {
-  test ()
+  test()
     .isFunction ('fail', 'methodOne', app.methodOne)
     .isObject ('fail', 'sub', app.sub)
     .isFunction ('fail', 'sub.methodTwo', app.sub.methodTwo)
-    .done ();
+    .done();
 });
 
 // Check method response
@@ -45,12 +45,12 @@ doTest.add ('App methodOne', (test) => {
       .isObject ('fail', 'Callback data', data)
       .isArray ('fail', 'data.music', data.music)
       .isNotEmpty ('warn', 'data.music', data.music)
-      .done ();
+      .done();
   });
 });
 
 // Run the tests
-doTest.run ();
+doTest.run();
 ```
 
 **package.json**
@@ -70,7 +70,7 @@ Or just run your `test.js`
     "test": "node test.js"
   }
 ```
-  
+
 
 Just run `npm test`
 
@@ -78,17 +78,15 @@ Just run `npm test`
 Installation
 ------------
 
-This is usually intended for CI builds,
-so best to make sure it's in your dev dependencies ;)
+This is usually intended for CI builds, so best to make sure it's in your dev dependencies ;)
 
-`npm install dotest --save-dev`
+`npm i dotest --save-dev`
 
 
 Configuration
 -------------
 
-The script takes these env variables.
-They override the code settings.
+The script takes these env variables. They override the code settings.
 
 
 name        | default | description
@@ -105,9 +103,9 @@ Add a new test to the queue.
 
 ```js
 doTest.add ('App interface', function (test) {
-  test ()
+  test()
     .isArray ('fail', 'my array', [])
-    .done ();
+    .done();
 });
 ```
 
@@ -121,12 +119,12 @@ Run the tests from the queue, one by one.
 
 param | type   | required | default | description
 :-----|:-------|:---------|:--------|:--------------------------------------------
-wait  | number | no       | 0       | Wait time between tests in ms (1000 = 1 sec)
+wait  | int    | no       | 0       | Wait time between tests in ms (1000 = 1 sec)
 
 
 ```js
 // Normal, without pause between tests
-doTest.run ();
+doTest.run();
 
 // Or wait 2 seconds
 doTest.run (2000);
@@ -174,7 +172,7 @@ doTest.log ('note', 'Hello world');
 Force exit the process, after writing statistics to the console.
 
 ```js
-doTest.exit ();
+doTest.exit();
 ```
 
 
@@ -194,17 +192,17 @@ You can concat the check functions for clean code.
 
 ```js
 // Using the method
-  doTest.test ()
 doTest.add ('App interface', function() {
+  doTest.test()
     .isObject ('fail', 'Callback data', data)
-    .done ();
+    .done();
 });
 
 // Or using the shortcut
 doTest.add ('App interface', function (test) {
-  test ()
+  test()
     .isObject ('fail', 'Callback data', data)
-    .done ();
+    .done();
 });
 ```
 
@@ -228,9 +226,9 @@ Works similar to `.done()` where it ends the test,
 but `.exit()` also ends the whole script.
 
 ```js
-test ()
+test()
   .isArray ('fail', 'data', [])
-  .exit ();
+  .exit();
 ```
 
 
@@ -245,9 +243,9 @@ When it is not a string, the type is written instead
 and the full value of `message` dumped right below.
 
 ```js
-test ()
+test()
   .info ({ hello: 'world' })
-  .done ();
+  .done();
 
 // Output:
 // info    Object
@@ -266,9 +264,9 @@ When it is not a string, the type is written instead
 and the full value of `message` dumped right below.
 
 ```js
-test ()
+test()
   .good ('It works great')
-  .done ();
+  .done();
 
 // Output:
 // good    It works great
@@ -286,9 +284,9 @@ When it is not a string, the type is written instead
 and the full value of `message` dumped right below.
 
 ```js
-test ()
+test()
   .warn ('Hmm something odd happened')
-  .done ();
+  .done();
 
 // Output:
 // warn    Hmm something odd happend
@@ -306,9 +304,9 @@ When it is not a string, the type is written instead
 and the full value of `message` dumped right below.
 
 ```js
-test ()
+test()
   .fail ('We have a problem')
-  .done ();
+  .done();
 
 // Output:
 // FAIL    We have a problem
@@ -324,9 +322,9 @@ Output 'ERROR' log line with dump and stack trace.
 ```js
 const err = new Error ('Oops');
 
-test ()
+test()
   .error (err)
-  .done ();
+  .done();
 
 // Output:
 // ERROR   Oops
@@ -351,9 +349,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-test ()
+test()
   .isError ('fail', 'My data', data)
-  .done ();
+  .done();
 ```
 
 
@@ -372,9 +370,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-test ()
+test()
   .isObject ('fail', 'My data', data)
-  .done ();
+  .done();
 ```
 
 
@@ -393,9 +391,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-test ()
+test()
   .isArray ('fail', 'My data', data)
-  .done ();
+  .done();
 ```
 
 
@@ -414,9 +412,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-test ()
+test()
   .isString ('fail', 'My data', data)
-  .done ();
+  .done();
 ```
 
 
@@ -435,9 +433,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-test ()
+test()
   .isNumber ('fail', 'My data', data)
-  .done ();
+  .done();
 ```
 
 
@@ -457,9 +455,9 @@ input | mixed  | yes      | The variable to check
 
 ```js
 function (err, data) {
-  test ()
+  test()
     .isUndefined ('warn', 'My data', data)
-    .done ();
+    .done();
 }
 ```
 
@@ -480,9 +478,9 @@ input | mixed  | yes      | The variable to check
 
 ```js
 function (err, data) {
-  test ()
+  test()
     .isNull ('warn', 'My data', data)
-    .done ();
+    .done();
 }
 ```
 
@@ -503,9 +501,9 @@ input | mixed  | yes      | The variable to check
 
 ```js
 function (err, data) {
-  test ()
+  test()
     .isNaN ('warn', 'My data', data)
-    .done ();
+    .done();
 }
 ```
 
@@ -525,9 +523,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-test ()
+test()
   .isBoolean ('fail', 'My data', data)
-  .done ();
+  .done();
 ```
 
 
@@ -546,9 +544,9 @@ input | mixed  | yes      | The variable to check
 
 
 ```js
-test ()
+test()
   .isFunction ('fail', 'My data', data)
-  .done ();
+  .done();
 ```
 
 
@@ -569,9 +567,9 @@ input | mixed  | yes      | The variable to check
 ```js
 const myDate = new Date();
 
-test ()
+test()
   .isDate ('fail', 'My data', myDate)
-  .done ();
+  .done();
 ```
 
 
@@ -591,9 +589,9 @@ two   | mixed  | yes      | The variable to check against
 
 
 ```js
-test ()
+test()
   .isExactly ('fail', 'My data', 'foo', 'bar')
-  .done ();
+  .done();
 ```
 
 
@@ -614,9 +612,9 @@ two      | mixed  |          | Variable to test against
 
 
 ```js
-test ()
+test()
   .isCondition ('fail', 'My data', 1, '<', 2)
-  .done ();
+  .done();
 ```
 
 
@@ -637,9 +635,9 @@ input | mixed  | yes      | The variable to check
 
 ```js
 // Object is empty
-test ()
+test()
   .isEmpty ('fail', 'My data', {})
-  .done ();
+  .done();
 ```
 
 
@@ -660,14 +658,14 @@ input | mixed  | yes      | The variable to check
 
 ```js
 // Object is not empty
-test ()
+test()
   .isNotEmpty ('fail', 'My data', { foo: 'bar' })
-  .done ();
+  .done();
 ```
 
 
-License
--------
+Unlicense
+---------
 
 This is free and unencumbered software released into the public domain.
 
