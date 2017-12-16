@@ -7,30 +7,32 @@ Feedback:       https://github.com/fvdm/nodejs-dotest/issues
 License:        Unlicense (public domain, see LICENSE file)
 */
 
-var path = require ('path');
-var util = require ('util');
-var dir = path.parse (process.mainModule.filename) .dir.replace (/\/(lib|test)$/, '');
-var pkg = require (path.join (dir, 'package.json'));
-var lib = require (path.join (__dirname, 'package.json'));
+const path = require ('path');
+const util = require ('util');
+const dir = path.parse (process.mainModule.filename)
+  .dir.replace (/\/(lib|test)$/, '');
+const pkg = require (path.join (dir, 'package.json'));
+const lib = require (path.join (__dirname, 'package.json'));
 
-var testFunc;
-var queue = [];
-var next = -1;
-var unitTests = {};
-var onExitCallback;
-var counters = {
+const counters = {
   fail: 0,
   warn: 0,
   startTime: Date.now ()
 };
 
-var config = {
+const config = {
   wait: 0,
   noConsole: false
 };
 
-var githubRepo = '';
-var githubPR = '';
+let testFunc;
+let queue = [];
+let next = -1;
+let unitTests = {};
+let onExitCallback;
+
+let githubRepo = '';
+let githubPR = '';
 
 if (process.env.GIT_REPO_SLUG) {
   githubRepo = 'https://github.com/' + process.env.GIT_REPO_SLUG;
@@ -51,7 +53,7 @@ if (String (process.env.TRAVIS_PULL_REQUEST).match (/^\d+$/)) {
  */
 
 function colorStr (color, str) {
-  var colors = {
+  const colors = {
     red: '\u001b[31m',
     green: '\u001b[32m',
     yellow: '\u001b[33m',
@@ -79,7 +81,7 @@ function colorStr (color, str) {
  */
 
 function log (type, str) {
-  var types = {
+  const types = {
     good: ['green', 'good'],
     info: ['cyan', 'info']
   };
@@ -149,7 +151,6 @@ function doNext (index) {
   );
 
   console.log ();
-
   queue [index] .runner (testFunc);
 }
 
@@ -164,7 +165,7 @@ function doNext (index) {
  */
 
 function done (callback) {
-  var timing = (Date.now () - counters.startTime) / 1000;
+  const timing = (Date.now ()  counters.startTime) / 1000;
 
   if (callback instanceof Function) {
     callback (next);
@@ -258,10 +259,11 @@ function getType (input) {
  */
 
 function typeStr (str, noType) {
-  var type = getType (str);
-  var doType = !noType ? ' (' + type + ')' : '';
-  var typeMatch = type.match (/(string|boolean|number|date|regexp|array)/);
-  var length = '';
+  const type = getType (str);
+  const doType = !noType ? ' (' + type + ')' : '';
+  const typeMatch = type.match (/(string|boolean|number|date|regexp|array)/);
+
+  let length = '';
 
   // length
   switch (type) {
@@ -339,10 +341,11 @@ function typeStr (str, noType) {
  */
 
 function output (level, what, result, describe) {
-  var state = (result.state === true) ? 'good' : level;
-  var typestrGood = typeStr (result.data, true);
-  var typestrFail = typeStr (result.data);
-  var str = '';
+  const state = (result.state === true) ? 'good' : level;
+  const typestrGood = typeStr (result.data, true);
+  const typestrFail = typeStr (result.data);
+
+  let str = '';
 
   // log line
   switch (state) {
@@ -415,8 +418,8 @@ process.on ('uncaughtException', uncaughtException);
  */
 
 function testLog (level, str) {
-  var typestr = typeStr (str);
-  var doDump = typestr.match (/(object|array)/) && typestr.match (/ \(\d+\)/);
+  const typestr = typeStr (str);
+  const doDump = typestr.match (/(object|array)/) && typestr.match (/ \(\d+\)/);
 
   if (typeof str === 'string') {
     log (level, str);
@@ -471,7 +474,7 @@ unitTests = {
  */
 
 unitTests.isError = function isError (level, what, input) {
-  var result = {
+  const result = {
     state: getType (input) === 'error',
     data: input
   };
@@ -492,7 +495,7 @@ unitTests.isError = function isError (level, what, input) {
  */
 
 unitTests.isObject = function isObject (level, what, input) {
-  var result = {
+  const result = {
     state: getType (input) === 'object',
     data: input
   };
@@ -513,7 +516,7 @@ unitTests.isObject = function isObject (level, what, input) {
  */
 
 unitTests.isArray = function isArray (level, what, input) {
-  var result = {
+  const result = {
     state: getType (input) === 'array',
     data: input
   };
@@ -534,7 +537,7 @@ unitTests.isArray = function isArray (level, what, input) {
  */
 
 unitTests.isString = function isString (level, what, input) {
-  var result = {
+  const result = {
     state: getType (input) === 'string',
     data: input
   };
@@ -555,7 +558,7 @@ unitTests.isString = function isString (level, what, input) {
  */
 
 unitTests.isNumber = function isNumber (level, what, input) {
-  var result = {
+  const result = {
     state: getType (input) === 'number',
     data: input
   };
@@ -576,7 +579,7 @@ unitTests.isNumber = function isNumber (level, what, input) {
  */
 
 unitTests.isUndefined = function isUndefined (level, what, input) {
-  var result = {
+  const result = {
     state: getType (input) === 'undefined',
     data: input
   };
@@ -597,7 +600,7 @@ unitTests.isUndefined = function isUndefined (level, what, input) {
  */
 
 unitTests.isNull = function isNull (level, what, input) {
-  var result = {
+  const result = {
     state: input === null,
     data: input
   };
@@ -618,7 +621,7 @@ unitTests.isNull = function isNull (level, what, input) {
  */
 
 unitTests.isNaN = function isNan (level, what, input) {
-  var result = {
+  const result = {
     state: isNaN (input),
     data: input
   };
@@ -639,7 +642,7 @@ unitTests.isNaN = function isNan (level, what, input) {
  */
 
 unitTests.isBoolean = function isBoolean (level, what, input) {
-  var result = {
+  const result = {
     state: getType (input) === 'boolean',
     data: input
   };
@@ -660,7 +663,7 @@ unitTests.isBoolean = function isBoolean (level, what, input) {
  */
 
 unitTests.isFunction = function isFunction (level, what, input) {
-  var result = {
+  const result = {
     state: getType (input) === 'function',
     data: input
   };
@@ -681,7 +684,7 @@ unitTests.isFunction = function isFunction (level, what, input) {
  */
 
 unitTests.isDate = function isDate (level, what, input) {
-  var result = {
+  const result = {
     state: getType (input) === 'date',
     data: input
   };
@@ -703,14 +706,14 @@ unitTests.isDate = function isDate (level, what, input) {
  */
 
 unitTests.isExactly = function isExactly (level, what, one, two) {
-  var typestrOne = typeStr (one);
-  var typestrTwo = typeStr (two);
-  var result = {
+  const typestrOne = typeStr (one);
+  const typestrTwo = typeStr (two);
+  const result = {
     state: one === two,
     data: two
   };
 
-  var describe = {
+  const describe = {
     true: 'is exactly ' + typestrTwo,
     false: typestrOne + ' should be exactly ' + typestrTwo
   };
@@ -732,14 +735,14 @@ unitTests.isExactly = function isExactly (level, what, one, two) {
  */
 
 unitTests.isNot = function isNot (level, what, one, two) {
-  var typestrOne = typeStr (one);
-  var typestrTwo = typeStr (two);
-  var result = {
+  const typestrOne = typeStr (one);
+  const typestrTwo = typeStr (two);
+  const result = {
     state: one !== two,
     data: two
   };
 
-  var describe = {
+  const describe = {
     true: typestrOne + ' is not equal to ' + typestrTwo,
     false: typestrOne + ' should not be equal to ' + typestrTwo
   };
@@ -760,7 +763,7 @@ unitTests.isNot = function isNot (level, what, one, two) {
  */
 
 unitTests.isRegexp = function isRegexp (level, what, input) {
-  var result = {
+  const result = {
     state: getType (input) === 'regexp',
     data: input
   };
@@ -782,14 +785,14 @@ unitTests.isRegexp = function isRegexp (level, what, input) {
  */
 
 unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
-  var typestrOne = typeStr (input);
-  var typestrTwo = typeStr (regex);
-  var result = {
+  const typestrOne = typeStr (input);
+  const typestrTwo = typeStr (regex);
+  const result = {
     state: !!input.match (regex),
     data: input
   };
 
-  var describe = {
+  const describe = {
     true: typestrOne + ' is matching ' + typestrTwo,
     false: typestrOne + ' should be matching ' + typestrTwo
   };
@@ -812,16 +815,16 @@ unitTests.isRegexpMatch = function isRegexpMatch (level, what, input, regex) {
  */
 
 unitTests.isCondition = function isCondition (level, what, one, operator, two) {
-  var typestrOne = typeStr (one);
-  var typestrTwo = typeStr (two);
-  var result = {
+  const typestrOne = typeStr (one);
+  const typestrTwo = typeStr (two);
+  const result = {
     state: false,
     data: two
   };
 
-  var str = typestrOne + ' ' + colorStr ('yellow', operator) + ' ' + typestrTwo;
+  const str = typestrOne + ' ' + colorStr ('yellow', operator) + ' ' + typestrTwo;
 
-  var describe = {
+  const describe = {
     true: str,
     false: str
   };
@@ -850,8 +853,8 @@ unitTests.isCondition = function isCondition (level, what, one, operator, two) {
  */
 
 unitTests.isEmpty = function isEmpty (level, what, input) {
-  var type = getType (input);
-  var result = {
+  const type = getType (input);
+  const result = {
     state: false,
     data: input
   };
@@ -886,8 +889,8 @@ unitTests.isEmpty = function isEmpty (level, what, input) {
  */
 
 unitTests.isNotEmpty = function isNotEmpty (level, what, input) {
-  var type = getType (input);
-  var result = {
+  const type = getType (input);
+  const result = {
     state: true,
     data: input
   };
@@ -994,7 +997,7 @@ function onExit (callback) {
  */
 
 function setConfig (name, value) {
-  var key;
+  let key;
 
   if (name instanceof Object) {
     for (key in name) {
