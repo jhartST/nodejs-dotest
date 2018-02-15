@@ -2,7 +2,7 @@
 const doTest = require ('dotest');
 
 const app = {
-  methodOne: function (callback) {
+  methodOne: callback => {
     var data = {
       music: ['song']
     };
@@ -10,12 +10,12 @@ const app = {
     callback (null, data);
   },
   sub: {
-    methodTwo: function () {}
+    methodTwo: () => {}
   }
 };
 
 // Check app interface
-doTest.add ('App interface', function (test) {
+doTest.add ('App interface', test => {
   test ()
     .isFunction ('fail', 'methodOne', app.methodOne)
     .isObject ('fail', 'sub', app.sub)
@@ -24,8 +24,8 @@ doTest.add ('App interface', function (test) {
 });
 
 // Check method response
-doTest.add ('App methodOne', function (test) {
-  app.methodOne (function (err, data) {
+doTest.add ('App methodOne', test => {
+  app.methodOne ((err, data) => {
     test (err)
       .isObject ('fail', 'Callback data', data)
       .isArray ('fail', 'data.music', data.music)
