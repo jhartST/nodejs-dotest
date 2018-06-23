@@ -7,8 +7,6 @@ your test.js, coverage and report to Coveralls.io when running on Travis CI.
 [![npm](https://img.shields.io/npm/v/dotest.svg?maxAge=3600)](https://github.com/fvdm/nodejs-dotest/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-dotest.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-dotest/branches)
 [![Coverage Status](https://coveralls.io/repos/github/fvdm/nodejs-dotest/badge.svg?branch=master)](https://coveralls.io/github/fvdm/nodejs-dotest?branch=master)
-[![Dependencies](https://www.bithound.io/github/fvdm/nodejs-dotest/badges/master/dependencies.svg)](https://www.bithound.io/github/fvdm/nodejs-dotest/master/dependencies/npm)
-[![Code Quality](https://www.bithound.io/github/fvdm/nodejs-dotest/badges/master/code.svg)](https://www.bithound.io/github/fvdm/nodejs-dotest/master/files)
 [![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-dotest.svg)](https://greenkeeper.io/)
 
 * It first lists all new commits sinces the last release (tag) with their relative date
