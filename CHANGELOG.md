@@ -1,3 +1,9 @@
+#### 2.4.1 (2018-07-25)
+
+##### Chores
+
+* **package:**  Update ESLint to 5.2 ([7169bf12](https://github.com/fvdm/nodejs-dotest/commit/7169bf12940fd349cb1a3c324f6372caa6039cfa))
+
 ### 2.4.0 (2018-07-25)
 
 ##### New Features
