@@ -488,6 +488,32 @@ unitTests.isError = (level, what, input) => {
 
 
 /**
+ * Test for instanceof
+ *
+ * @return  {object}         unitTests
+ *
+ * @param   {string}  level  fail or warn
+ * @param   {string}  what   describe input data, i.e. 'data.sub'
+ * @param   {mixed}   input  variable to test against
+ * @param   {string}  name   name of instance to test for
+ */
+
+unitTests.isInstanceOf = (level, what, input, name) => {
+  const result = {
+    state: false,
+    data: input
+  };
+
+  if (typeof input === 'function') {
+    result.state = !!~input.constructor.toString().match (/^\w+ ${name} /);
+  }
+
+  output (level, what, result, `an instance of ${name}`);
+  return unitTests;
+};
+
+
+/**
  * Test for Object
  *
  * @return  {object}         unitTests

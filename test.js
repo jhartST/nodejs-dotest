@@ -92,9 +92,12 @@ doTest.add ('Methods', (test, fake) => {
 
   /* eslint-disable no-undefined */
 
+  class TestClass {}
+
   doTest.test ()
     .info ('.length: ' + doTest.length)
     .isError ('fail', 'test() .isError', new Error ())
+    .isInstanceOf ('fail', 'test() .isInstanceOf', TestClass, 'TestClass')
     .isObject ('fail', 'test() .isObject', {})
     .isArray ('fail', 'test() .isArray', [])
     .isString ('fail', 'test() .isString', 'hello')
