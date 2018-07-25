@@ -913,18 +913,16 @@ unitTests.isEmpty = (level, what, input) => {
     data: input
   };
 
-  if (type === 'undefined') {
-    result.state = true;
-  } else if (input === null) {
-    result.state = true;
-  } else if (type === 'string' && !input) {
-    result.state = true;
-  } else if (type === 'object' && !Object.keys (input).length) {
-    result.state = true;
-  } else if (type === 'array' && !input.length) {
-    result.state = true;
-  } else if (type === 'error' && !Object.keys (input).length && !input.message) {
-    result.state = true;
+  if (typeof input === 'object') {
+    result.state = !Object.keys (input).length;
+  }
+
+  if (type.match (/^(string|array)$/)) {
+    result.state = !input.length;
+  }
+
+  if (type === 'undefined' || input === null) {
+    result = true;
   }
 
   output (level, what, result, 'Empty');
@@ -949,18 +947,16 @@ unitTests.isNotEmpty = (level, what, input) => {
     data: input
   };
 
-  if (type === 'undefined') {
-    result.state = false;
-  } else if (input === null) {
-    result.state = false;
-  } else if (type === 'string' && !input) {
-    result.state = false;
-  } else if (type === 'object' && !Object.keys (input).length) {
-    result.state = false;
-  } else if (type === 'array' && !input.length) {
-    result.state = false;
-  } else if (type === 'error' && !Object.keys (input).length && !input.message) {
-    result.state = false;
+  if (typeof input === 'object') {
+    result.state = !!Object.keys (input).length;
+  }
+
+  if (type.match (/^(string|array)$/)) {
+    result.state = !!input.length;
+  }
+
+  if (result.state) {
+    result.state = (type !== 'undefined' && input !== null);
   }
 
   output (level, what, result, 'not Empty');
