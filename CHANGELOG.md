@@ -1,3 +1,11 @@
+### 2.4.0 (2018-07-25)
+
+##### New Features
+
+* **main:**
+  *  Added .isClass check ([f1f9c87c](https://github.com/fvdm/nodejs-dotest/commit/f1f9c87c1d80c1612c2250b26ca7dd345e210fbd))
+  *  Added .isInstanceOf check ([897b2712](https://github.com/fvdm/nodejs-dotest/commit/897b27124bbc5fc899c3c351e5c584e074bffddc))
+
 ### 2.3.0 (2017-12-16)
 
 ##### Chores
