@@ -5,6 +5,7 @@ nodebin="$libpath/node_modules/.bin"
 eslintBin="$nodebin/eslint"
 istanbulBin="$nodebin/istanbul"
 coverallsBin="$nodebin/coveralls"
+codacyBin="$nodebin/codacy-coverage"
 
 export GIT_REPO_SLUG="$TRAVIS_REPO_SLUG"
 
@@ -76,6 +77,21 @@ if [[ "$TRAVIS" == "true" ]]; then
   else
     result=1
     echo -e "\033[31mERROR:\033[0m Coveralls is not installed"
+    echo "Run 'npm i' to install all dependencies."
+    echo
+  fi
+fi
+
+# Submit coverage to Codacy
+if [[ -e $CODACY_PROJECT_TOKEN ]]; then
+  if [[ -x "$codacyBin" ]]; then
+    echo
+    echo "Sending coverage report to Codacy..."
+    "$codacyBin" < "$(pwd)/coverage/lcov.info" || result=1
+    echo
+  else
+    result=1
+    echo -e "\033[31mERROR:\033[0m Codacy is not installed"
     echo "Run 'npm i' to install all dependencies."
     echo
   fi
