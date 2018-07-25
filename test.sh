@@ -38,7 +38,16 @@ echo
 # ESLint
 if [[ -x "$eslintBin" ]]; then
   echo "Running ESLint..."
-  "$eslintBin" *.js lib/ test/ || result=1
+  "$eslintBin" *.js || result=1
+
+  if [[ -d ./lib ]]; then
+    "$eslintBin" ./lib || result=1
+  fi
+
+  if [[ -d ./test ]]; then
+    "$eslintBin" ./test || result=1
+  fi
+
   echo
 else
   result=1
