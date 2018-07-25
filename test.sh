@@ -83,7 +83,7 @@ if [[ "$TRAVIS" == "true" ]]; then
 fi
 
 # Submit coverage to Codacy
-if [[ -e $CODACY_PROJECT_TOKEN ]]; then
+if [[ -n "$CODACY_PROJECT_TOKEN" ]]; then
   if [[ -x "$codacyBin" ]]; then
     echo
     echo "Sending coverage report to Codacy..."
