@@ -908,7 +908,7 @@ unitTests.isCondition = (level, what, one, operator, two) => {
 
 unitTests.isEmpty = (level, what, input) => {
   const type = getType (input);
-  const result = {
+  let result = {
     state: false,
     data: input
   };
