@@ -942,7 +942,7 @@ unitTests.isEmpty = (level, what, input) => {
 
 unitTests.isNotEmpty = (level, what, input) => {
   const type = getType (input);
-  const result = {
+  let result = {
     state: true,
     data: input
   };
