@@ -98,6 +98,7 @@ doTest.add ('Methods', (test, fake) => {
     .info ('.length: ' + doTest.length)
     .isError ('fail', 'test() .isError', new Error ())
     .isInstanceOf ('fail', 'test() .isInstanceOf', TestClass, 'TestClass')
+    .isClass ('fail', 'test() .isClass', TestClass)
     .isObject ('fail', 'test() .isObject', {})
     .isArray ('fail', 'test() .isArray', [])
     .isString ('fail', 'test() .isString', 'hello')
