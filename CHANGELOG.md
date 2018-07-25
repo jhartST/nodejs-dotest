@@ -1,3 +1,9 @@
+### 2.5.0 (2018-07-25)
+
+##### New Features
+
+* **runner:**  Send coverage report to Codacy ([dcc12307](https://github.com/fvdm/nodejs-dotest/commit/dcc12307b7d8173b0f7ca413c79f227f9736fa08))
+
 #### 2.4.1 (2018-07-25)
 
 ##### Chores
