@@ -945,9 +945,7 @@ unitTests.isNotEmpty = (level, what, input) => {
 
   if (type === 'undefined' || input === null) {
     result.state = false;
-  }
-
-  if (type.match (/^(string|array)$/)) {
+  } else if (type.match (/^(string|array)$/)) {
     result.state = (input.length !== 0);
   } else if (type === 'object') {
     result.state = (Object.keys (input).length !== 0);
