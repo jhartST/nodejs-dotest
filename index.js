@@ -500,15 +500,11 @@ unitTests.isError = (level, what, input) => {
 
 unitTests.isInstanceOf = (level, what, input, name) => {
   const result = {
-    state: false,
+    state: (typeof input === 'function') && !!~input.constructor.toString().match (/^\w+ ${name} /),
     data: input
   };
 
-  if (typeof input === 'function') {
-    result.state = !!~input.constructor.toString().match (/^\w+ ${name} /);
-  }
-
-  output (level, what, result, `an instance of ${name}`);
+  output (level, what, result, `an instance of '${name}'`);
   return unitTests;
 };
 
@@ -525,13 +521,9 @@ unitTests.isInstanceOf = (level, what, input, name) => {
 
 unitTests.isClass = (level, what, input) => {
   const result = {
-    state: false,
+    state: (typeof input === 'function') && !!~input.constructor.toString().match (/^class /),
     data: input
   };
-
-  if (typeof input === 'function') {
-    result.state = !!~input.constructor.toString().match (/^class /);
-  }
 
   output (level, what, result, 'a class');
   return unitTests;
