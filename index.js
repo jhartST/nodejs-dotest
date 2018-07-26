@@ -913,16 +913,12 @@ unitTests.isEmpty = (level, what, input) => {
     data: input
   };
 
-  if (typeof input === 'object') {
-    result.state = !Object.keys (input).length;
-  }
-
-  if (type.match (/^(string|array)$/)) {
-    result.state = !input.length;
-  }
-
   if (type === 'undefined' || input === null) {
-    result = true;
+    result.state = true;
+  } else if (type.match (/^(string|array)$/)) {
+    result.state = (input.length === 0);
+  } else if (typeof input === 'object') {
+    result.state = (Object.keys (input).length === 0);
   }
 
   output (level, what, result, 'Empty');
@@ -947,16 +943,14 @@ unitTests.isNotEmpty = (level, what, input) => {
     data: input
   };
 
-  if (typeof input === 'object') {
-    result.state = !!Object.keys (input).length;
+  if (type === 'undefined' || input === null) {
+    result.state = false;
   }
 
   if (type.match (/^(string|array)$/)) {
-    result.state = !!input.length;
-  }
-
-  if (result.state) {
-    result.state = (type !== 'undefined' && input !== null);
+    result.state = (input.length !== 0);
+  } else if (type === 'object') {
+    result.state = (Object.keys (input).length !== 0);
   }
 
   output (level, what, result, 'not Empty');
